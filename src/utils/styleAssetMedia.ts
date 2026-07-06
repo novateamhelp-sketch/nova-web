@@ -2,6 +2,10 @@ import type { StyleAsset } from "../types/api.types";
 import { cloudinaryUrl } from "./cloudinaryUrl";
 
 export const DAY_NIGHT_SECTION_BANNER_KEY = "banner1";
+export const ILLUMINATE_INTRO_IMAGE_KEY = "image1";
+export const CONTACT_SECTION_BG_KEY = "image1";
+export const ABOUT_HERO_BANNER_KEY = "image2";
+export const PROJECTS_HERO_BANNER_KEY = "image3";
 
 export const resolveStyleAssetImageByKey = (
   styleAssets: StyleAsset[] | null | undefined,

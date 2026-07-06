@@ -4,6 +4,7 @@ import { ChevronDown, Phone, X } from "lucide-react";
 import { ButtonLink } from "../ui/Button";
 import { ThemeToggle } from "../ui/ThemeToggle";
 import { useCategoriesNav } from "../../context/CategoriesNavContext";
+import { SERVICE_AREA_NAV_ITEMS } from "../../config/serviceAreas.config";
 
 interface MobileMenuProps {
   open: boolean;
@@ -21,6 +22,7 @@ const navLinks = [
 
 export const MobileMenu = ({ open, onClose }: MobileMenuProps) => {
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [serviceAreasOpen, setServiceAreasOpen] = useState(false);
   const { menuCategories } = useCategoriesNav();
 
   useEffect(() => {
@@ -63,7 +65,7 @@ export const MobileMenu = ({ open, onClose }: MobileMenuProps) => {
           <button
             type="button"
             onClick={onClose}
-            className="flex min-h-11 min-w-11 items-center justify-center rounded-lg text-white transition hover:bg-white/10"
+            className="flex min-h-11 min-w-11 items-center justify-center rounded-none text-white transition hover:bg-white/10"
             aria-label="Close menu"
           >
             <X size={22} strokeWidth={1.75} />
@@ -80,7 +82,7 @@ export const MobileMenu = ({ open, onClose }: MobileMenuProps) => {
                     onClick={onClose}
                     tabIndex={open ? 0 : -1}
                     className={({ isActive }) =>
-                      `min-h-11 flex-1 rounded-lg px-3 py-3 text-base font-medium transition ${
+                      `min-h-11 flex-1 rounded-none px-3 py-3 text-base font-medium transition ${
                         isActive
                           ? "bg-forest text-gold"
                           : "text-white/80 hover:bg-forest hover:text-white"
@@ -93,7 +95,7 @@ export const MobileMenu = ({ open, onClose }: MobileMenuProps) => {
                     <button
                       type="button"
                       onClick={() => setServicesOpen((v) => !v)}
-                      className="flex min-h-11 min-w-11 items-center justify-center rounded-lg text-white/80 hover:bg-forest"
+                      className="flex min-h-11 min-w-11 items-center justify-center rounded-none text-white/80 hover:bg-forest"
                       aria-expanded={servicesOpen}
                       aria-label="Toggle service categories"
                     >
@@ -111,9 +113,55 @@ export const MobileMenu = ({ open, onClose }: MobileMenuProps) => {
                         <Link
                           to={`/services/${category.slug}`}
                           onClick={onClose}
-                          className="block rounded-lg px-3 py-2 text-sm text-white/75 hover:bg-forest hover:text-gold"
+                          className="block rounded-none px-3 py-2 text-sm text-white/75 hover:bg-forest hover:text-gold"
                         >
                           {category.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                ) : null}
+              </div>
+            ) : link.to === "/service-areas" ? (
+              <div key="service-areas">
+                <div className="flex items-center gap-1">
+                  <NavLink
+                    to="/service-areas"
+                    onClick={onClose}
+                    tabIndex={open ? 0 : -1}
+                    className={({ isActive }) =>
+                      `min-h-11 flex-1 rounded-none px-3 py-3 text-base font-medium transition ${
+                        isActive
+                          ? "bg-forest text-gold"
+                          : "text-white/80 hover:bg-forest hover:text-white"
+                      }`
+                    }
+                  >
+                    Service Areas
+                  </NavLink>
+                  <button
+                    type="button"
+                    onClick={() => setServiceAreasOpen((v) => !v)}
+                    className="flex min-h-11 min-w-11 items-center justify-center rounded-none text-white/80 hover:bg-forest"
+                    aria-expanded={serviceAreasOpen}
+                    aria-label="Toggle service area states"
+                  >
+                    <ChevronDown
+                      size={18}
+                      className={`transition ${serviceAreasOpen ? "rotate-180" : ""}`}
+                    />
+                  </button>
+                </div>
+                {serviceAreasOpen ? (
+                  <ul className="mb-2 ml-3 space-y-1 border-l border-white/10 pl-3">
+                    {SERVICE_AREA_NAV_ITEMS.map((area) => (
+                      <li key={area.slug}>
+                        <Link
+                          to={`/service-areas/${area.slug}`}
+                          onClick={onClose}
+                          className="block rounded-none px-3 py-2 text-sm text-white/75 hover:bg-forest hover:text-gold"
+                        >
+                          {area.stateName}
                         </Link>
                       </li>
                     ))}
@@ -128,7 +176,7 @@ export const MobileMenu = ({ open, onClose }: MobileMenuProps) => {
                 onClick={onClose}
                 tabIndex={open ? 0 : -1}
                 className={({ isActive }) =>
-                  `min-h-11 rounded-lg px-3 py-3 text-base font-medium transition ${
+                  `min-h-11 rounded-none px-3 py-3 text-base font-medium transition ${
                     isActive
                       ? "bg-forest text-gold"
                       : "text-white/80 hover:bg-forest hover:text-white"

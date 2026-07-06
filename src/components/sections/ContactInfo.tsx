@@ -1,6 +1,7 @@
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import type { ReactNode } from "react";
 import type { SiteSettings } from "../../types/api.types";
-import { OLIVE, oliveMix } from "../../constants/olivePalette";
 
 const InstagramIcon = ({ size = 18 }: { size?: number }) => (
   <svg
@@ -43,10 +44,27 @@ interface ContactInfoProps {
   settings?: SiteSettings | null;
 }
 
-const contactRowClass =
-  "flex items-center gap-4 rounded-2xl border p-4";
-const iconBoxClass =
-  "flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border";
+interface ContactRowProps {
+  icon: LucideIcon;
+  label: string;
+  children: ReactNode;
+}
+
+const ContactRow = ({ icon: Icon, label, children }: ContactRowProps) => (
+  <div className="theme-card-border flex items-center gap-4 bg-theme-card p-4">
+    <div className="flex h-11 w-11 shrink-0 items-center justify-center bg-theme-accent/12">
+      <Icon size={18} className="text-theme-accent" strokeWidth={1.75} aria-hidden />
+    </div>
+    <div className="min-w-0">
+      <p className="font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-theme-kicker">
+        {label}
+      </p>
+      <div className="mt-0.5 font-sans text-sm font-semibold text-forest-dark">
+        {children}
+      </div>
+    </div>
+  </div>
+);
 
 export const ContactInfo = ({ settings }: ContactInfoProps) => {
   const phoneCalls = settings?.phoneCalls || FALLBACK.phoneCalls;
@@ -56,165 +74,75 @@ export const ContactInfo = ({ settings }: ContactInfoProps) => {
 
   return (
     <div className="flex flex-col gap-5">
-      <div className="contact-olive-card relative overflow-hidden rounded-3xl p-7 sm:p-8">
+      <article className="theme-card-border relative overflow-hidden bg-theme-elevated p-7 shadow-card transition-[border-color,box-shadow] duration-500 ease-out hover:border-theme-accent hover:shadow-card-hover sm:p-8">
         <div
-          className="pointer-events-none absolute -right-8 -bottom-10 h-40 w-40 rounded-full opacity-20"
-          style={{ backgroundColor: "#95ae2e" }}
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 80% 50% at 50% 0%, color-mix(in srgb, var(--theme-accent) 6%, transparent) 0%, transparent 58%)",
+          }}
           aria-hidden
         />
 
         <div className="relative">
-          <h2
-            className="font-serif text-2xl font-bold leading-tight sm:text-[1.65rem]"
-            style={{ color: OLIVE.text }}
-          >
-            Let&apos;s talk about your project
+          <div className="mb-6 flex items-center gap-3">
+            <span className="h-px w-10 shrink-0 bg-theme-accent" aria-hidden />
+            <p className="font-sans text-[11px] font-bold uppercase tracking-[0.22em] text-theme-accent">
+              Reach us
+            </p>
+          </div>
+
+          <h2 className="font-serif font-bold leading-[1.04] tracking-tight text-forest-dark">
+            <span className="block text-2xl sm:text-[1.75rem]">
+              Let&apos;s talk about
+            </span>
+            <span className="mt-1 block text-2xl italic theme-accent-gradient sm:text-[1.75rem]">
+              your project
+            </span>
           </h2>
-          <p
-            className="mt-3 font-sans text-sm leading-relaxed sm:text-[15px]"
-            style={{ color: oliveMix(OLIVE.text, 90) }}
-          >
+
+          <p className="mt-4 font-sans text-sm leading-relaxed text-body sm:text-[15px]">
             Ready to illuminate your outdoors? Reach out by email or phone and
             our team will get back to you shortly.
           </p>
 
           <div className="mt-7 space-y-3">
-            <div
-              className={contactRowClass}
-              style={{
-                borderColor: oliveMix(OLIVE.text, 18),
-                backgroundColor: oliveMix(OLIVE.bgDeep, 35),
-              }}
-            >
-              <div
-                className={iconBoxClass}
-                style={{
-                  borderColor: oliveMix(OLIVE.gold, 40),
-                  backgroundColor: oliveMix(OLIVE.bg, 50),
-                }}
+            <ContactRow icon={Phone} label="Calls only">
+              <a
+                href={`tel:${phoneCalls.replace(/\D/g, "")}`}
+                className="transition hover:text-theme-accent"
               >
-                <Phone size={18} className="text-olive-gold" strokeWidth={1.75} />
-              </div>
-              <div className="min-w-0">
-                <p
-                  className="font-sans text-[10px] font-bold uppercase tracking-[0.2em]"
-                  style={{ color: oliveMix(OLIVE.text, 70) }}
-                >
-                  Calls only
-                </p>
-                <a
-                  href={`tel:${phoneCalls.replace(/\D/g, "")}`}
-                  className="mt-0.5 block font-sans text-sm font-semibold transition hover:opacity-90"
-                  style={{ color: OLIVE.text }}
-                >
-                  {phoneCalls}
-                </a>
-              </div>
-            </div>
+                {phoneCalls}
+              </a>
+            </ContactRow>
 
-            <div
-              className={contactRowClass}
-              style={{
-                borderColor: oliveMix(OLIVE.text, 18),
-                backgroundColor: oliveMix(OLIVE.bgDeep, 35),
-              }}
-            >
-              <div
-                className={iconBoxClass}
-                style={{
-                  borderColor: oliveMix(OLIVE.gold, 40),
-                  backgroundColor: oliveMix(OLIVE.bg, 50),
-                }}
+            <ContactRow icon={MessageCircle} label="Messages only">
+              <a
+                href={`tel:${phoneMessages.replace(/\D/g, "")}`}
+                className="transition hover:text-theme-accent"
               >
-                <Phone size={18} className="text-olive-gold" strokeWidth={1.75} />
-              </div>
-              <div className="min-w-0">
-                <p
-                  className="font-sans text-[10px] font-bold uppercase tracking-[0.2em]"
-                  style={{ color: oliveMix(OLIVE.text, 70) }}
-                >
-                  Messages only
-                </p>
-                <a
-                  href={`tel:${phoneMessages.replace(/\D/g, "")}`}
-                  className="mt-0.5 block font-sans text-sm font-semibold transition hover:opacity-90"
-                  style={{ color: OLIVE.text }}
-                >
-                  {phoneMessages}
-                </a>
-              </div>
-            </div>
+                {phoneMessages}
+              </a>
+            </ContactRow>
 
-            <div
-              className={contactRowClass}
-              style={{
-                borderColor: oliveMix(OLIVE.text, 18),
-                backgroundColor: oliveMix(OLIVE.bgDeep, 35),
-              }}
-            >
-              <div
-                className={iconBoxClass}
-                style={{
-                  borderColor: oliveMix(OLIVE.gold, 40),
-                  backgroundColor: oliveMix(OLIVE.bg, 50),
-                }}
+            <ContactRow icon={Mail} label="Email">
+              <a
+                href={`mailto:${email}`}
+                className="block truncate transition hover:text-theme-accent"
               >
-                <Mail size={18} className="text-olive-gold" strokeWidth={1.75} />
-              </div>
-              <div className="min-w-0">
-                <p
-                  className="font-sans text-[10px] font-bold uppercase tracking-[0.2em]"
-                  style={{ color: oliveMix(OLIVE.text, 70) }}
-                >
-                  Email
-                </p>
-                <a
-                  href={`mailto:${email}`}
-                  className="mt-0.5 block truncate font-sans text-sm font-semibold transition hover:opacity-90"
-                  style={{ color: OLIVE.text }}
-                >
-                  {email}
-                </a>
-              </div>
-            </div>
+                {email}
+              </a>
+            </ContactRow>
 
-            <div
-              className={contactRowClass}
-              style={{
-                borderColor: oliveMix(OLIVE.text, 18),
-                backgroundColor: oliveMix(OLIVE.bgDeep, 35),
-              }}
-            >
-              <div
-                className={iconBoxClass}
-                style={{
-                  borderColor: oliveMix(OLIVE.gold, 40),
-                  backgroundColor: oliveMix(OLIVE.bg, 50),
-                }}
-              >
-                <MapPin size={18} className="text-olive-gold" strokeWidth={1.75} />
-              </div>
-              <div className="min-w-0">
-                <p
-                  className="font-sans text-[10px] font-bold uppercase tracking-[0.2em]"
-                  style={{ color: oliveMix(OLIVE.text, 70) }}
-                >
-                  Location
-                </p>
-                <p
-                  className="mt-0.5 font-sans text-sm font-semibold"
-                  style={{ color: OLIVE.text }}
-                >
-                  {location}
-                </p>
-              </div>
-            </div>
+            <ContactRow icon={MapPin} label="Location">
+              <span>{location}</span>
+            </ContactRow>
           </div>
         </div>
-      </div>
+      </article>
 
-      <div className="rounded-3xl border border-border/70 bg-white p-6 shadow-[var(--shadow-card)] sm:p-7">
-        <p className="font-sans text-[10px] font-bold uppercase tracking-[0.22em] text-muted">
+      <article className="theme-card-border bg-theme-elevated p-6 shadow-card transition-[border-color,box-shadow] duration-500 ease-out hover:border-theme-accent hover:shadow-card-hover sm:p-7">
+        <p className="font-sans text-[10px] font-bold uppercase tracking-[0.22em] text-theme-kicker">
           Social Media
         </p>
         <div className="mt-4 grid grid-cols-2 gap-3">
@@ -222,7 +150,7 @@ export const ContactInfo = ({ settings }: ContactInfoProps) => {
             href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#f3f4f6] px-4 py-3 font-sans text-sm font-semibold text-forest-dark transition hover:bg-[#e8eaee]"
+            className="theme-card-border inline-flex items-center justify-center gap-2 bg-theme-input px-4 py-3 font-sans text-sm font-semibold text-forest-dark transition hover:border-theme-accent/50 hover:text-theme-accent"
           >
             <InstagramIcon />
             Instagram
@@ -231,13 +159,13 @@ export const ContactInfo = ({ settings }: ContactInfoProps) => {
             href="https://facebook.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[#f3f4f6] px-4 py-3 font-sans text-sm font-semibold text-forest-dark transition hover:bg-[#e8eaee]"
+            className="theme-card-border inline-flex items-center justify-center gap-2 bg-theme-input px-4 py-3 font-sans text-sm font-semibold text-forest-dark transition hover:border-theme-accent/50 hover:text-theme-accent"
           >
             <FacebookIcon />
             Facebook
           </a>
         </div>
-      </div>
+      </article>
     </div>
   );
 };

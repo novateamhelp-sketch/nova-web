@@ -79,16 +79,23 @@ export const ServicesNavDropdown = ({ isActive }: ServicesNavDropdownProps) => {
             {menuCategories.length > 0 ? (
               <ul className="grid gap-x-10 gap-y-5 sm:grid-cols-2 lg:grid-cols-3">
                 {menuCategories.map((category) => (
-                  <li key={category._id}>
+                  <li key={category._id} className="min-w-0">
                     <Link
                       to={`/services/${category.slug}`}
-                      className="group/item flex items-center gap-4 rounded-lg px-2 py-2 transition hover:bg-white/5"
+                      className="group/item flex w-full items-center gap-0"
                       onMouseEnter={openMenu}
                     >
-                      <CategoryIconBox category={category} variant="outline" />
-                      <span className="text-sm font-semibold uppercase tracking-wide text-white transition group-hover/item:text-gold">
+                      <CategoryIconBox
+                        category={category}
+                        variant="outline"
+                        className="border-[1.5px] transition-transform duration-500 ease-in-out group-hover/item:rotate-90"
+                      />
+                      <section
+                        aria-label={category.name}
+                        className="services-nav-item-label flex h-10 min-w-0 flex-1 items-center bg-[#1a1a1a]/95 px-3 text-sm font-semibold uppercase tracking-wide text-white transition group-hover/item:bg-white/5 group-hover/item:text-gold"
+                      >
                         {category.name}
-                      </span>
+                      </section>
                     </Link>
                   </li>
                 ))}

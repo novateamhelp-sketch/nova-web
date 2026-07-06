@@ -15,16 +15,16 @@ const DEFAULT_TAGLINE =
   "Design, installation, innovation and custom lighting for luxury residences across New Jersey.";
 
 const centeredCtaClassName =
-  "inline-flex min-h-11 items-center justify-center rounded-sm bg-[#d4b45c] px-10 py-2.5 font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-[#1a1208] transition-all duration-300 hover:bg-[#e0c06a] hover:shadow-[0_8px_24px_rgba(212,180,92,0.32)] sm:min-h-12 sm:px-12 sm:text-[11px]";
+  "inline-flex min-h-11 items-center justify-center rounded-none bg-olive-gold px-10 py-2.5 font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-theme-accent-foreground transition-all duration-300 hover:brightness-105 hover:shadow-[0_8px_24px_color-mix(in_srgb,var(--theme-accent)_32%,transparent)] sm:min-h-12 sm:px-12 sm:text-[11px]";
 
 const panelCtaClassName =
-  "inline-flex min-h-10 w-full items-center justify-center rounded-sm bg-[#d4b45c] px-8 py-2.5 font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-[#1a1208] transition-all duration-300 hover:bg-[#e0c06a] hover:shadow-[0_8px_24px_rgba(212,180,92,0.32)] sm:min-h-11 sm:px-9 sm:text-[11px]";
+  "inline-flex min-h-10 w-full items-center justify-center rounded-none bg-olive-gold px-8 py-2.5 font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-theme-accent-foreground transition-all duration-300 hover:brightness-105 hover:shadow-[0_8px_24px_color-mix(in_srgb,var(--theme-accent)_32%,transparent)] sm:min-h-11 sm:px-9 sm:text-[11px]";
 
 const glassCtaClassName =
-  "inline-flex min-h-11 items-center justify-center rounded-full border border-[#f0ede4]/65 px-8 py-2.5 font-sans text-[11px] font-semibold uppercase tracking-[0.16em] text-[#f0ede4] transition-all duration-300 hover:border-[#d4b45c] hover:bg-[#d4b45c]/10 hover:text-[#d4b45c] sm:min-h-12 sm:px-10 sm:text-xs";
+  "inline-flex min-h-11 items-center justify-center rounded-none border border-olive-text/65 px-8 py-2.5 font-sans text-[11px] font-semibold uppercase tracking-[0.16em] text-olive-text transition-all duration-300 hover:border-olive-gold hover:bg-olive-gold/10 hover:text-olive-gold sm:min-h-12 sm:px-10 sm:text-xs";
 
 const ctaClassName =
-  "inline-flex min-h-10 items-center justify-center rounded-sm bg-gold px-9 py-2.5 font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-black transition-all duration-300 hover:bg-gold-light hover:shadow-[0_8px_24px_rgba(201,162,39,0.32)] sm:min-h-11 sm:px-10 sm:text-[11px]";
+  "inline-flex min-h-10 items-center justify-center rounded-none bg-gold px-9 py-2.5 font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-theme-accent-foreground transition-all duration-300 hover:brightness-105 hover:shadow-[0_8px_24px_color-mix(in_srgb,var(--theme-accent)_32%,transparent)] sm:min-h-11 sm:px-10 sm:text-[11px]";
 
 export const HeroCinematicContent = ({
   slider,
@@ -74,7 +74,7 @@ export const HeroCinematicContent = ({
           layout="brand"
           title={title}
           light
-          className="[&_span.text-gold-light]:text-[#d4b45c]"
+          className="[&_span.text-gold-light]:text-olive-gold"
         />
 
         <div
@@ -130,7 +130,7 @@ export const HeroCinematicContent = ({
           layout="brand"
           title={title}
           light
-          className="[&_span.text-gold-light]:text-[#d4b45c] sm:[&_span]:text-[1.85rem] lg:[&_span]:text-[2.15rem] [&_span.text-gold-light]:sm:text-[1.65rem] [&_span.text-gold-light]:lg:text-[1.95rem]"
+          className="[&_span.text-gold-light]:text-olive-gold sm:[&_span]:text-[1.85rem] lg:[&_span]:text-[2.15rem] [&_span.text-gold-light]:sm:text-[1.65rem] [&_span.text-gold-light]:lg:text-[1.95rem]"
         />
 
         <p

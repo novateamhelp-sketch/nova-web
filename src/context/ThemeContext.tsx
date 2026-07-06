@@ -8,6 +8,8 @@ import {
   type ReactNode,
 } from "react";
 import { ThemeTransitionOverlay } from "../components/ui/ThemeTransitionOverlay";
+import { getSiteTheme } from "../services/public.service";
+import { applySiteThemeTokens } from "../utils/applyThemeOverrides";
 
 export type Theme = "light" | "dark";
 
@@ -38,7 +40,11 @@ const readStoredTheme = (): Theme => {
 const applyTheme = (theme: Theme) => {
   document.documentElement.setAttribute("data-theme", theme);
   const meta = document.querySelector('meta[name="theme-color"]');
-  meta?.setAttribute("content", theme === "dark" ? "#0a1612" : "#ececea");
+  const lightBg =
+    getComputedStyle(document.documentElement).getPropertyValue("--theme-bg").trim() ||
+    "#f8f6f0";
+  const darkBg = "#09090b";
+  meta?.setAttribute("content", theme === "dark" ? darkBg : lightBg);
 };
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
@@ -56,6 +62,23 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     applyTheme(theme);
   }, [theme]);
+
+  useEffect(() => {
+    let cancelled = false;
+    getSiteTheme()
+      .then((payload) => {
+        if (!cancelled) {
+          applySiteThemeTokens(payload.tokens);
+          applyTheme(readStoredTheme());
+        }
+      })
+      .catch(() => {
+        /* CSS file defaults remain active */
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => () => clearTimeouts(), [clearTimeouts]);
 

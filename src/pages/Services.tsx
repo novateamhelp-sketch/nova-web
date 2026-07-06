@@ -12,7 +12,6 @@ import { PageError } from "../components/ui/ErrorMessage";
 import { ServiceGrid } from "../components/services/ServiceGrid";
 import { ServiceDetailBlock } from "../components/services/ServiceDetailBlock";
 import { SubCategoryGrid } from "../components/services/SubCategoryGrid";
-import { ContactCTA } from "../components/sections/ContactCTA";
 
 const ServicesList = () => {
   usePageMeta({
@@ -38,9 +37,6 @@ const ServicesList = () => {
           subtitle="Outdoor lighting, landscaping, and hardscaping services."
         />
         <ServiceGrid categories={data ?? []} />
-      </Section>
-      <Section tone="muted" size="sm">
-        <ContactCTA />
       </Section>
     </>
   );
@@ -88,9 +84,6 @@ const ServiceDetail = ({ slug }: { slug: string }) => {
       <Section tone="white">
         <ServiceDetailBlock category={category!} />
         <SubCategoryGrid items={subCategories} />
-      </Section>
-      <Section tone="muted" size="sm">
-        <ContactCTA />
       </Section>
     </>
   );

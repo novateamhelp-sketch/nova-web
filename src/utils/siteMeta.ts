@@ -91,7 +91,9 @@ export const serviceAreaStateSeo = (area: ServiceArea) => {
       : "homeowners statewide";
 
   return {
-    title: area.title.trim() || `Outdoor Lighting in ${area.stateName}`,
+    title:
+      area.title.trim() ||
+      `Professional Outdoor Lighting Services in ${area.stateName}`,
     description:
       area.description.trim() ||
       `Professional outdoor and landscape lighting throughout ${area.stateName} (${abbrev}). Serving ${countyPreview}. Licensed & insured. Free on-site estimates.`,

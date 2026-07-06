@@ -24,7 +24,7 @@ const ALL_FILTER = "all";
 const CAROUSEL_THRESHOLD = 3;
 
 const navBtnClass =
-  "services-carousel-nav flex h-11 w-11 items-center justify-center rounded-xl border border-cream-dark bg-cream text-slate-400 transition-colors duration-200 hover:border-gold hover:text-forest-dark";
+  "gallery-nav-btn services-carousel-nav flex h-11 w-11 items-center justify-center border border-border bg-theme-elevated text-muted transition-colors duration-200 hover:border-theme-accent hover:text-theme-accent";
 
 export const GalleryPreview = ({
   items,
@@ -66,15 +66,21 @@ export const GalleryPreview = ({
   if (items.length === 0) return null;
 
   const filterButtonClass = (active: boolean) =>
-    `rounded-full px-4 py-2 text-[11px] font-bold uppercase tracking-[0.12em] transition sm:px-5 sm:py-2.5 sm:text-xs ${
+    `px-4 py-2 text-[11px] font-bold uppercase tracking-[0.12em] transition-colors duration-200 sm:px-5 sm:py-2.5 sm:text-xs ${
       active
-        ? "bg-forest text-white shadow-sm"
-        : "border border-border bg-white text-forest-dark hover:border-forest/30"
+        ? "bg-theme-accent text-theme-accent-foreground shadow-sm"
+        : "gallery-filter-btn border border-border bg-theme-elevated text-forest-dark"
     }`;
 
   return (
     <>
       <ScrollReveal variant="fade-up">
+        <div className="mb-6 flex items-center gap-3 sm:mb-8">
+          <span className="h-px w-10 shrink-0 bg-theme-accent" aria-hidden />
+          <p className="font-sans text-[11px] font-bold uppercase tracking-[0.22em] text-theme-accent sm:text-xs">
+            Project Gallery
+          </p>
+        </div>
         <DisplayTitle title="Our Curated Project Gallery" />
       </ScrollReveal>
 
@@ -141,13 +147,17 @@ export const GalleryPreview = ({
             watchOverflow
           >
             {filteredItems.map((item, index) => (
-              <SwiperSlide key={item._id} className="!h-auto">
-                <ScrollReveal variant="zoom-in" staggerIndex={(index % 3) + 1}>
+              <SwiperSlide key={item._id} className="!flex !h-auto">
+                <ScrollReveal
+                  variant="zoom-in"
+                  staggerIndex={(index % 3) + 1}
+                  className="flex h-full w-full min-h-0"
+                >
                   <DayNightGallery
                     item={item}
                     categories={categories}
                     priority={index === 0}
-                    className="h-full"
+                    className="h-full w-full"
                   />
                 </ScrollReveal>
               </SwiperSlide>
@@ -161,11 +171,13 @@ export const GalleryPreview = ({
               key={item._id}
               variant="zoom-in"
               staggerIndex={index + 1}
+              className="h-full"
             >
               <DayNightGallery
                 item={item}
                 categories={categories}
                 priority={index === 0}
+                className="h-full"
               />
             </ScrollReveal>
           ))}

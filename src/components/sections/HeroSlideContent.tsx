@@ -33,7 +33,7 @@ export const HeroSlideContent = ({
       {slider?.buttonUrl?.startsWith("http") ? (
         <a
           href={slider.buttonUrl}
-          className="inline-flex min-h-11 items-center justify-center rounded-lg bg-gold px-6 py-3 text-base font-semibold text-forest-dark transition hover:bg-gold-dark"
+          className="inline-flex min-h-11 items-center justify-center rounded-none bg-gold px-6 py-3 text-base font-semibold text-forest-dark transition hover:bg-gold-dark"
         >
           {slider.buttonText || "Free Consultation"}
         </a>
@@ -70,7 +70,7 @@ export const HeroBackground = ({
         fetchPriority={priority ? "high" : "auto"}
         decoding="async"
       />
-      <div className="absolute inset-0 bg-forest-dark/70" />
+      <div className="absolute inset-0 bg-olive-bg-deep/70" />
     </>
   ) : null;
 

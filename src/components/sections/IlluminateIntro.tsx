@@ -1,9 +1,9 @@
-import { Leaf, PencilRuler, Shield, Sprout } from "lucide-react";
+import { Link } from "react-router-dom";
+import { PencilRuler, Shield, Sprout } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { OLIVE, oliveMix } from "../../constants/olivePalette";
 import { Container } from "../ui/Container";
-import { DisplayTitle } from "../ui/DisplayTitle";
 import { ScrollReveal } from "../ui/ScrollReveal";
+import { splitDisplayTitle } from "../../utils/titleDisplay";
 
 interface Feature {
   icon: LucideIcon;
@@ -32,79 +32,138 @@ const features: Feature[] = [
   },
 ];
 
-const SECTION_BG = `linear-gradient(180deg, #ffffff 0%, #fafafa 28%, #f3f3f3 52%, #ececec 78%, #e2e2e2 100%)`;
-
 interface IlluminateIntroProps {
   /** Rounded panel that scrolls up over the pinned hero */
   scrollOver?: boolean;
+  imageUrl?: string | null;
+  imageAlt?: string;
 }
 
-export const IlluminateIntro = ({ scrollOver = false }: IlluminateIntroProps) => (
+export const IlluminateIntro = ({
+  scrollOver = false,
+  imageUrl,
+  imageAlt = "Luxury home with professional outdoor lighting",
+}: IlluminateIntroProps) => (
   <section
-    className={`relative overflow-hidden ${scrollOver ? "hero-scroll-over-panel" : ""}`}
-    style={{ background: SECTION_BG }}
+    className={`illuminate-intro relative overflow-hidden bg-theme-warm ${
+      scrollOver ? "hero-scroll-over-panel" : ""
+    }`}
   >
-    <div
-      className="pointer-events-none absolute inset-0"
-      style={{
-        background:
-          "radial-gradient(ellipse 90% 50% at 50% 0%, rgba(255,255,255,0.65) 0%, transparent 55%)",
-      }}
-      aria-hidden
-    />
+    <Container className="relative pt-12 pb-16 sm:pt-14 sm:pb-20 lg:pt-16 lg:pb-24">
+      <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+        <ScrollReveal variant="slide-left" className="max-w-xl lg:max-w-none">
+          <div className="mb-8 flex items-center gap-3 sm:mb-10">
+            <span className="h-px w-10 shrink-0 bg-theme-accent" aria-hidden />
+            <p className="font-sans text-[11px] font-bold uppercase tracking-[0.22em] text-theme-accent sm:text-xs">
+              About Nova · Since 2025
+            </p>
+          </div>
 
-    <Container className="relative pt-8 pb-14 sm:pt-10 sm:pb-16 lg:pt-12 lg:pb-24">
-      <ScrollReveal variant="fade-up" className="mx-auto max-w-3xl text-center">
-        <Leaf
-          size={28}
-          strokeWidth={2}
-          className="mx-auto mb-5 text-olive-gold sm:mb-6"
-          aria-hidden
-        />
-        <DisplayTitle title="Illuminate Your Outdoors" />
-        <div
-          className="mx-auto mt-5 h-1 w-16 rounded-full bg-gold sm:mt-6"
-          aria-hidden
-        />
-        <p className="text-body mx-auto mt-8 max-w-2xl font-sans text-sm font-medium leading-relaxed tracking-[0.03em] sm:mt-10 sm:text-base sm:leading-7">
-          At{" "}
-          <strong className="font-semibold text-forest-dark">
-            Nova Outdoor Lighting
-          </strong>
-          , we specialize in transforming ordinary landscape features into
-          breathtaking, luxury environments. Our designs prioritize safety,
-          elegant functionality, and high architectural harmony through custom,
-          eco-friendly systems.
-        </p>
-      </ScrollReveal>
+          <h2 className="font-serif font-bold leading-[1.04] tracking-tight text-forest-dark">
+            <span className="block text-[2.35rem] sm:text-5xl lg:text-[3.5rem] xl:text-[4rem]">
+              Illuminate Your
+            </span>
+            <span className="mt-2 block text-[2.5rem] italic theme-accent-gradient sm:text-[3.25rem] lg:text-[3.75rem] xl:text-[4.25rem]">
+              Outdoors.
+            </span>
+          </h2>
+
+          <p className="mt-7 max-w-lg font-sans text-sm font-medium leading-relaxed tracking-[0.02em] text-sage sm:mt-9 sm:text-base sm:leading-8">
+            At{" "}
+            <strong className="font-semibold text-forest-dark">
+              Nova Outdoor Lighting
+            </strong>
+            , we specialize in transforming ordinary landscape features into
+            breathtaking, luxury environments. Our designs prioritize safety,
+            elegant functionality, and high architectural harmony through custom,
+            eco-friendly systems.
+          </p>
+
+          <div className="mt-8 sm:mt-9">
+            <Link
+              to="/projects"
+              className="inline-flex min-h-11 items-center justify-center rounded-none bg-[var(--theme-btn-solid-bg)] px-8 py-3 font-sans text-xs font-bold uppercase tracking-[0.14em] text-[var(--theme-btn-solid-text)] transition hover:brightness-110"
+            >
+              View Projects
+            </Link>
+          </div>
+        </ScrollReveal>
+
+        <ScrollReveal variant="slide-right" className="w-full lg:justify-self-end">
+          <div className="relative w-full p-4">
+            <div
+              className="pointer-events-none absolute -left-4 -top-4 z-0 h-32 w-32 border border-theme-accent/50"
+              aria-hidden
+            />
+            <div className="relative z-10 overflow-hidden">
+              {imageUrl ? (
+                <img
+                  src={imageUrl}
+                  alt={imageAlt}
+                  className="h-[min(22rem,72vw)] w-full object-cover sm:h-[26rem] lg:h-[520px]"
+                  loading="lazy"
+                  decoding="async"
+                />
+              ) : (
+                <div
+                  className="h-[min(22rem,72vw)] w-full bg-forest sm:h-[26rem] lg:h-[520px]"
+                  role="img"
+                  aria-label="Outdoor lighting showcase — image coming soon"
+                />
+              )}
+            </div>
+            <div
+              className="pointer-events-none absolute -bottom-4 -right-4 z-0 h-32 w-32 border border-theme-accent/50"
+              aria-hidden
+            />
+          </div>
+        </ScrollReveal>
+      </div>
 
       <div className="mt-14 grid gap-6 sm:mt-16 sm:grid-cols-2 lg:mt-20 lg:grid-cols-3 lg:gap-8">
-        {features.map(({ icon: Icon, title, description }, index) => (
-          <ScrollReveal
-            key={title}
-            variant="fade-up"
-            staggerIndex={index + 1}
-            className="h-full"
-          >
-            <article className="group h-full rounded-2xl border border-border/80 bg-white p-6 shadow-card transition-all duration-300 ease-out hover:-translate-y-1 hover:border-olive-gold hover:shadow-card-hover sm:p-8">
-            <div
-              className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl transition-colors duration-300 group-hover:bg-olive-gold/12"
-              style={{ backgroundColor: oliveMix(OLIVE.gold, 12) }}
+        {features.map(({ icon: Icon, title, description }, index) => {
+          const split = splitDisplayTitle(title);
+          const primary = split.mode === "default" ? split.primary : title;
+          const accent = split.mode === "default" ? split.accent : null;
+
+          return (
+            <ScrollReveal
+              key={title}
+              variant="fade-up"
+              staggerIndex={index + 1}
+              className="h-full"
             >
-              <Icon
-                size={22}
-                strokeWidth={1.75}
-                className="text-olive-gold"
-                aria-hidden
-              />
-            </div>
-            <DisplayTitle as="h3" size="card" title={title} />
-            <p className="text-body mt-3 font-sans text-sm font-medium leading-relaxed tracking-[0.03em]">
-              {description}
-            </p>
-            </article>
-          </ScrollReveal>
-        ))}
+              <article className="theme-card-border group relative h-full bg-theme-card p-8">
+                <div className="mb-7 flex h-12 w-12 items-center justify-center bg-theme-accent/12 transition-colors group-hover:bg-theme-accent/22">
+                  <Icon
+                    size={22}
+                    strokeWidth={1.75}
+                    className="text-theme-accent"
+                    aria-hidden
+                  />
+                </div>
+
+                <h3 className="font-serif text-[26px] leading-tight text-forest-dark">
+                  {primary}
+                </h3>
+                {accent ? (
+                  <div className="font-serif text-[26px] italic leading-tight text-theme-accent">
+                    {accent}
+                  </div>
+                ) : null}
+
+                <p className="mt-5 font-sans text-[14px] font-light leading-[1.75] text-muted">
+                  {description}
+                </p>
+
+                <div
+                  className="mt-7 h-px w-10 bg-theme-accent transition-all duration-500 group-hover:w-20"
+                  aria-hidden
+                />
+              </article>
+            </ScrollReveal>
+          );
+        })}
       </div>
     </Container>
   </section>

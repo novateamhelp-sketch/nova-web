@@ -23,7 +23,7 @@ export const HeroBottomBar = ({
           <Star
             key={i}
             size={13}
-            className="fill-[#d4b45c] text-[#d4b45c]"
+            className="fill-olive-gold text-olive-gold"
             strokeWidth={0}
           />
         ))}
@@ -48,7 +48,7 @@ export const HeroBottomBar = ({
           type="button"
           onClick={onPrev}
           aria-label="Previous scenario"
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-olive-muted/70 bg-olive-bg-deep/80 text-olive-text transition hover:border-olive-gold/50 hover:text-olive-gold"
+          className="flex h-10 w-10 items-center justify-center rounded-none border border-olive-muted/70 bg-olive-bg-deep/80 text-olive-text transition hover:border-olive-gold/50 hover:text-olive-gold"
         >
           <ChevronLeft size={18} strokeWidth={2} />
         </button>
@@ -56,7 +56,7 @@ export const HeroBottomBar = ({
           type="button"
           onClick={onNext}
           aria-label="Next scenario"
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-olive-muted/70 bg-olive-bg-deep/80 text-olive-text transition hover:border-olive-gold/50 hover:text-olive-gold"
+          className="flex h-10 w-10 items-center justify-center rounded-none border border-olive-muted/70 bg-olive-bg-deep/80 text-olive-text transition hover:border-olive-gold/50 hover:text-olive-gold"
         >
           <ChevronRight size={18} strokeWidth={2} />
         </button>

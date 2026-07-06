@@ -11,8 +11,10 @@ import { PageError } from "../components/ui/ErrorMessage";
 import { ProjectGrid } from "../components/projects/ProjectGrid";
 import { CategoryFilter } from "../components/projects/CategoryFilter";
 import { SubCategoryGrid } from "../components/services/SubCategoryGrid";
-import { ContactCTA } from "../components/sections/ContactCTA";
+import { PageHeroBanner } from "../components/sections/PageHeroBanner";
+import { PageHeroScrollStack } from "../components/sections/PageHeroScrollStack";
 import { cloudinaryUrl } from "../utils/cloudinaryUrl";
+import { PROJECTS_HERO_BANNER_KEY } from "../utils/styleAssetMedia";
 
 const ProjectsList = () => {
   usePageMeta({
@@ -21,11 +23,12 @@ const ProjectsList = () => {
   });
 
   const fetchData = useCallback(async () => {
-    const [projects, categories] = await Promise.all([
+    const [projects, categories, styleAssets] = await Promise.all([
       publicService.getProjects(),
       publicService.getCategories(),
+      publicService.getStyleAssets().catch(() => []),
     ]);
-    return { projects, categories };
+    return { projects, categories, styleAssets };
   }, []);
 
   const { data, isLoading, error, refetch } = usePublicData(
@@ -38,18 +41,18 @@ const ProjectsList = () => {
 
   return (
     <>
-      <Section tone="white">
-        <SectionTitle
+      <PageHeroScrollStack>
+        <PageHeroBanner
+          imageKey={PROJECTS_HERO_BANNER_KEY}
+          styleAssets={data?.styleAssets}
           eyebrow="Portfolio"
           title="Our Projects"
-          subtitle="Completed outdoor lighting and landscaping work."
         />
-        <CategoryFilter categories={data?.categories ?? []} />
-        <ProjectGrid projects={data?.projects ?? []} />
-      </Section>
-      <Section tone="muted" size="sm">
-        <ContactCTA />
-      </Section>
+        <Section tone="white" className="hero-scroll-over-panel">
+          <CategoryFilter categories={data?.categories ?? []} />
+          <ProjectGrid projects={data?.projects ?? []} />
+        </Section>
+      </PageHeroScrollStack>
     </>
   );
 };
@@ -105,7 +108,7 @@ const ProjectsByCategory = ({ categorySlug }: { categorySlug: string }) => {
               fetchPriority="high"
               decoding="async"
             />
-            <div className="absolute inset-0 bg-forest-dark/75" />
+            <div className="absolute inset-0 bg-olive-bg-deep/75" />
           </>
         ) : null}
         <div className="relative">
@@ -135,10 +138,6 @@ const ProjectsByCategory = ({ categorySlug }: { categorySlug: string }) => {
           projects={projects}
           emptyMessage={`No projects published under ${loadedCategory.name} yet.`}
         />
-      </Section>
-
-      <Section tone="muted" size="sm">
-        <ContactCTA />
       </Section>
     </>
   );

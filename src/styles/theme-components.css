@@ -1,0 +1,89 @@
+/* Component styles that read tokens — no per-theme color overrides here */
+
+.day-night-section__glow {
+  background: var(--day-night-glow);
+}
+
+.day-night-section__vignette {
+  background: var(--day-night-vignette);
+}
+
+.dark-grid-section__glow--showroom,
+.dark-grid-section__glow--centered {
+  opacity: var(--dark-grid-glow-opacity);
+  filter: blur(var(--dark-grid-glow-blur, 0));
+}
+
+.dark-grid-section__glow--showroom {
+  background: var(--dark-grid-showroom-glow);
+}
+
+.dark-grid-section__glow--centered {
+  background: var(--dark-grid-centered-glow);
+}
+
+.dark-grid-section__vignette--showroom {
+  background: var(--dark-grid-vignette-showroom);
+}
+
+.dark-grid-section__vignette--centered {
+  background: var(--dark-grid-vignette-centered);
+}
+
+.contact-cta-section__overlay {
+  background-color: color-mix(in srgb, var(--contact-cta-base) 68%, transparent);
+}
+
+.contact-cta-section__gradient {
+  background: linear-gradient(
+    to right,
+    color-mix(in srgb, var(--contact-cta-base) 82%, transparent) 0%,
+    color-mix(in srgb, var(--contact-cta-base) 62%, transparent) 50%,
+    color-mix(in srgb, var(--contact-cta-base) 52%, transparent) 100%
+  );
+}
+
+.contact-cta-section__fallback-bg {
+  background-color: var(--contact-cta-base);
+}
+
+.theme-accent-gradient {
+  font-style: inherit;
+  background: var(--accent-display-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: var(--accent-display-color);
+}
+
+.contact-banner__title-accent {
+  font-style: italic;
+  background: var(--banner-title-accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: var(--banner-title-accent);
+}
+
+.contact-banner__subtitle--short {
+  display: block;
+}
+
+.contact-banner__subtitle--long {
+  display: none;
+}
+
+[data-theme="dark"] .contact-banner__subtitle--short {
+  display: none;
+}
+
+[data-theme="dark"] .contact-banner__subtitle--long {
+  display: block;
+}
+
+.contact-banner__cta-icon {
+  display: var(--banner-cta-show-icon);
+}
+
+.contact-banner__cta:hover {
+  background: var(--banner-btn-bg-hover);
+  filter: var(--banner-btn-hover-filter);
+}

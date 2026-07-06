@@ -1,13 +1,16 @@
 import type { ButtonHTMLAttributes } from "react";
 import { Link } from "react-router-dom";
 
-type Variant = "primary" | "outline" | "ghost";
+type Variant = "primary" | "outline" | "ghost" | "solid";
 type Size = "sm" | "md" | "lg";
 
 const variants: Record<Variant, string> = {
-  primary: "bg-gold text-forest-dark hover:bg-gold-dark",
+  primary:
+    "bg-theme-accent text-theme-accent-foreground hover:brightness-105",
+  solid:
+    "bg-[var(--theme-btn-solid-bg)] text-[var(--theme-btn-solid-text)] hover:brightness-110",
   outline:
-    "border border-gold bg-transparent text-gold hover:bg-gold hover:text-forest-dark",
+    "border border-theme-accent bg-transparent text-theme-accent hover:bg-theme-accent hover:text-theme-accent-foreground",
   ghost: "bg-transparent text-forest hover:bg-forest/5",
 };
 
@@ -18,7 +21,7 @@ const sizes: Record<Size, string> = {
 };
 
 const base =
-  "inline-flex items-center justify-center rounded-lg font-semibold transition disabled:cursor-not-allowed disabled:opacity-50";
+  "inline-flex items-center justify-center rounded-none font-semibold transition disabled:cursor-not-allowed disabled:opacity-50";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;

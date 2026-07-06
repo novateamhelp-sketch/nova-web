@@ -7,6 +7,7 @@ import {
   galleryCategorySlug,
   galleryLocationBadge,
 } from "../../utils/galleryDisplay";
+import { splitDisplayTitle } from "../../utils/titleDisplay";
 
 interface DayNightGalleryProps {
   item: GalleryItem;
@@ -28,13 +29,14 @@ export const DayNightGallery = ({
   const projectsLink = categorySlug
     ? `/projects/category/${categorySlug}`
     : "/projects";
+  const titleSplit = splitDisplayTitle(item.title || "Untitled project");
 
   return (
     <article
-      className={`group flex h-full min-h-0 cursor-default flex-col overflow-hidden rounded-3xl bg-white shadow-[0_4px_22px_rgb(15_36_25/0.08)] transition-shadow duration-300 hover:shadow-[0_10px_36px_rgb(15_36_25/0.12)] ${className}`}
+      className={`gallery-card theme-card-border group flex h-full min-h-0 cursor-default flex-col overflow-hidden bg-theme-elevated shadow-[0_4px_22px_rgb(15_36_25/0.08)] transition-shadow duration-300 hover:shadow-[0_10px_36px_rgb(15_36_25/0.12)] ${className}`}
       aria-label={`${item.title || "Project"} — hover to preview night lighting`}
     >
-      <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden bg-forest-dark">
+      <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden bg-olive-bg-deep">
         {dayUrl ? (
           <img
             src={dayUrl}
@@ -60,44 +62,56 @@ export const DayNightGallery = ({
           </div>
         ) : null}
 
-        <span className="pointer-events-none absolute left-4 top-4 rounded-full bg-olive-gold px-3.5 py-1.5 font-sans text-[10px] font-bold uppercase tracking-[0.08em] text-[#1a1208] shadow-sm sm:text-[11px]">
+        <span className="pointer-events-none absolute left-4 top-4 bg-theme-accent px-3.5 py-1.5 font-sans text-[10px] font-bold uppercase tracking-[0.1em] text-theme-accent-foreground shadow-sm sm:text-[11px]">
           {galleryLocationBadge(item, categories)}
         </span>
       </div>
 
-      <div className="flex flex-1 flex-col px-6 pt-5 pb-0">
-        <h3 className="font-serif text-xl font-bold leading-snug text-forest-dark sm:text-[1.35rem]">
-          {item.title || "Untitled project"}
+      <div className="flex min-h-0 flex-1 flex-col bg-theme-elevated px-6 pt-5">
+        <h3 className="line-clamp-2 min-h-[3.25rem] font-serif text-xl font-bold leading-snug text-forest-dark sm:min-h-[3.5rem] sm:text-[1.35rem]">
+          {titleSplit.mode === "default" && titleSplit.accent ? (
+            <>
+              {titleSplit.primary}{" "}
+              <span className="italic text-theme-accent">{titleSplit.accent}</span>
+            </>
+          ) : (
+            titleSplit.mode === "default"
+              ? titleSplit.primary
+              : item.title || "Untitled project"
+          )}
         </h3>
 
-        {item.description ? (
-          <p className="mt-2 line-clamp-2 font-sans text-sm leading-relaxed text-sage">
-            {item.description}
-          </p>
-        ) : null}
+        <p className="mt-2 line-clamp-2 min-h-[2.75rem] font-sans text-sm leading-relaxed text-sage">
+          {item.description ?? ""}
+        </p>
 
         <div className="mt-4 flex items-start gap-2 font-sans text-sm text-sage">
           <MapPin
             size={16}
             strokeWidth={1.75}
-            className="mt-0.5 shrink-0 text-olive-gold"
+            className="mt-0.5 shrink-0 text-theme-accent"
             aria-hidden
           />
           <span>New Jersey</span>
         </div>
 
-        <p className="mt-3 font-sans text-[11px] font-bold uppercase tracking-[0.14em] text-muted">
+        <p className="mt-3 font-serif text-sm italic text-theme-accent">
           {categoryName}
         </p>
       </div>
 
-      <div className="mt-5 border-t border-border/50">
+      <div className="mt-auto border-t border-border/50">
         <Link
           to={projectsLink}
-          className="flex w-full items-center justify-center gap-1 bg-[#f0f1f3] px-4 py-4 font-sans text-sm font-semibold text-forest-dark transition-colors duration-300 hover:bg-[#e6e8eb]"
+          className="group/link flex w-full items-center justify-center gap-1 bg-theme-elevated px-4 py-4 font-sans text-[11px] font-bold uppercase tracking-[0.14em] text-forest-dark transition-colors duration-300 hover:text-theme-accent"
         >
           See more
-          <ChevronRight size={16} strokeWidth={2.25} aria-hidden />
+          <ChevronRight
+            size={16}
+            strokeWidth={2.25}
+            className="transition-colors group-hover/link:text-theme-accent"
+            aria-hidden
+          />
         </Link>
       </div>
     </article>

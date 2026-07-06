@@ -15,7 +15,7 @@ export const HeroRatingBadge = ({ className = "" }: { className?: string }) => (
           <Star
             key={index}
             size={12}
-            className="fill-[#d4b45c] text-[#d4b45c]"
+            className="fill-olive-gold text-olive-gold"
             strokeWidth={0}
           />
         ))}

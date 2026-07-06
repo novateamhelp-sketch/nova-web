@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
 import { useTheme } from "../../context/ThemeContext";
 import { Container } from "../ui/Container";
-import { LightingControlsPanel } from "../lighting/LightingControlsPanel";
+import { LightingControlsPanel, LightingMasterDimmer, LightingSectionHeader } from "../lighting/LightingControlsPanel";
 import { LightingShowroomCanvas } from "../lighting/LightingShowroomCanvas";
 import { useFixtureLayout } from "../../hooks/useFixtureLayout";
 import {
@@ -10,15 +10,18 @@ import {
   isZoneActive,
   LIGHT_FIXTURES,
   LIGHTING_PRESETS,
-  type ColorableZoneId,
   type LightingPresetId,
   type LightingZoneId,
 } from "../lighting/lightingZones.config";
+import { DarkGridSection } from "./DarkGridSection";
+import { ScrollReveal } from "../ui/ScrollReveal";
 
 interface InteractiveLightingSectionProps {
   showroomImageUrl: string;
   /** Home page rhythm — keep dark block after light sections */
   forceDark?: boolean;
+  /** Plain white surface (e.g. after gallery on home) */
+  surface?: "dark-grid" | "plain";
 }
 
 const readLayoutEditFromUrl = () => {
@@ -29,10 +32,11 @@ const readLayoutEditFromUrl = () => {
 export const InteractiveLightingSection = ({
   showroomImageUrl,
   forceDark = false,
+  surface = "dark-grid",
 }: InteractiveLightingSectionProps) => {
   const [fixtures, setFixtures] = useState(() => defaultFixtureState());
   const [colors, setColors] = useState(() => defaultColorState());
-  const [brightness, setBrightness] = useState(75);
+  const [brightness, setBrightness] = useState(100);
   const [selectedScene, setSelectedScene] = useState<LightingPresetId | null>(
     null
   );
@@ -65,10 +69,6 @@ export const InteractiveLightingSection = ({
     });
   }, [clearSceneSelection]);
 
-  const setZoneColor = useCallback((zoneId: ColorableZoneId, color: string) => {
-    setColors((prev) => ({ ...prev, [zoneId]: color }));
-  }, []);
-
   const handleScene = useCallback((presetId: LightingPresetId) => {
     setSelectedScene((current) => {
       if (current === presetId) {
@@ -86,7 +86,7 @@ export const InteractiveLightingSection = ({
     setFixtures(defaultFixtureState());
     setColors(defaultColorState());
     setSelectedScene(null);
-    setBrightness(75);
+    setBrightness(100);
     setLayoutEditMode(false);
   }, []);
 
@@ -107,49 +107,70 @@ export const InteractiveLightingSection = ({
   const zoneActive = (zoneId: LightingZoneId) =>
     isZoneActive(zoneId, fixtures);
   const { theme } = useTheme();
-  const isLight = !forceDark && theme === "light";
+  const isPlain = surface === "plain";
+  const isLight =
+    isPlain || (surface !== "dark-grid" && !forceDark && theme === "light");
+
+  const content = (
+    <>
+      <ScrollReveal variant="fade-up">
+        <LightingSectionHeader isLight={isLight} onResetAll={resetAll} />
+      </ScrollReveal>
+
+      <div className="mt-10 grid items-start gap-8 lg:mt-12 lg:grid-cols-12 lg:gap-10 xl:gap-12">
+        <ScrollReveal
+          variant="slide-left"
+          className="order-2 lg:order-1 lg:col-span-5 xl:col-span-4"
+        >
+          <LightingControlsPanel
+            isLight={isLight}
+            zoneActive={zoneActive}
+            colors={colors}
+            layoutEditMode={layoutEditMode}
+            onLayoutEditModeChange={setLayoutEditMode}
+            onResetLayout={resetLayout}
+            onCopyLayout={copyLayout}
+            onToggleZone={toggleZone}
+            selectedScene={selectedScene}
+            onScene={handleScene}
+          />
+        </ScrollReveal>
+
+        <ScrollReveal
+          variant="slide-right"
+          className="order-1 flex flex-col gap-6 lg:order-2 lg:col-span-7 xl:col-span-8"
+        >
+          <LightingShowroomCanvas
+            showroomImageUrl={showroomImageUrl}
+            positionedFixtures={positionedFixtures}
+            fixtures={fixtures}
+            colors={colors}
+            brightness={brightness}
+            layoutEditMode={layoutEditMode}
+            onToggleFixture={toggleFixture}
+            onMoveFixture={moveFixture}
+          />
+          <LightingMasterDimmer
+            isLight={isLight}
+            brightness={brightness}
+            onBrightnessChange={setBrightness}
+          />
+        </ScrollReveal>
+      </div>
+    </>
+  );
+
+  if (isPlain) {
+    return (
+      <section className="relative overflow-hidden bg-theme-elevated py-12 text-forest-dark sm:py-16 lg:py-20">
+        <Container className="relative z-10">{content}</Container>
+      </section>
+    );
+  }
 
   return (
-    <section
-      className={`home-flow-dark overflow-hidden py-16 sm:py-20 lg:py-24 ${
-        isLight
-          ? "border-t border-[#d4d4d0] bg-gradient-to-b from-[#e4e4e2] via-[#ececea] to-[#e4e4e2] text-[#2a2a28]"
-          : "border-t border-white/10 bg-gradient-to-b from-forest-dark via-[#122a20] to-forest-dark text-white"
-      }`}
-    >
-      <Container>
-        <div className="grid items-start gap-8 lg:grid-cols-12 lg:gap-10">
-          <div className="lg:col-span-4">
-            <LightingControlsPanel
-              zoneActive={zoneActive}
-              colors={colors}
-              brightness={brightness}
-              layoutEditMode={layoutEditMode}
-              onLayoutEditModeChange={setLayoutEditMode}
-              onResetLayout={resetLayout}
-              onCopyLayout={copyLayout}
-              onToggleZone={toggleZone}
-              onColorChange={setZoneColor}
-              selectedScene={selectedScene}
-              onScene={handleScene}
-              onResetAll={resetAll}
-              onBrightnessChange={setBrightness}
-            />
-          </div>
-          <div className="lg:col-span-8">
-            <LightingShowroomCanvas
-              showroomImageUrl={showroomImageUrl}
-              positionedFixtures={positionedFixtures}
-              fixtures={fixtures}
-              colors={colors}
-              brightness={brightness}
-              layoutEditMode={layoutEditMode}
-              onToggleFixture={toggleFixture}
-              onMoveFixture={moveFixture}
-            />
-          </div>
-        </div>
-      </Container>
-    </section>
+    <DarkGridSection>
+      {content}
+    </DarkGridSection>
   );
 };

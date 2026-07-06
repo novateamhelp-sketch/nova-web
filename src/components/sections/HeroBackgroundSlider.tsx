@@ -112,7 +112,7 @@ export const HeroBackgroundSlider = ({
       ) : !blurred ? (
         <>
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(0,0,0,0.62)_0%,rgba(0,0,0,0.2)_45%,transparent_72%)]" />
-          <div className="absolute inset-0 bg-forest-dark/20 mix-blend-multiply" />
+          <div className="absolute inset-0 bg-olive-bg-deep/20 mix-blend-multiply" />
         </>
       ) : (
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(149,174,46,0.08)_0%,rgba(36,37,29,0.45)_55%,rgba(20,22,14,0.65)_100%)]" />

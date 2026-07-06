@@ -3,9 +3,13 @@ import { OLIVE, oliveMix } from "../../constants/olivePalette";
 
 interface HeroBackgroundVideoProps {
   poster?: string;
+  videoSrc?: string;
 }
 
-export const HeroBackgroundVideo = ({ poster }: HeroBackgroundVideoProps) => (
+export const HeroBackgroundVideo = ({
+  poster,
+  videoSrc = HERO_VIDEO_SRC,
+}: HeroBackgroundVideoProps) => (
   <div className="absolute inset-0 z-0 overflow-hidden" aria-hidden>
     <video
       className="absolute left-1/2 top-1/2 h-full w-full min-h-full min-w-full -translate-x-1/2 -translate-y-1/2 scale-[1.15] object-cover"
@@ -15,8 +19,9 @@ export const HeroBackgroundVideo = ({ poster }: HeroBackgroundVideoProps) => (
       playsInline
       poster={poster}
       preload="auto"
+      key={videoSrc}
     >
-      <source src={HERO_VIDEO_SRC} type="video/mp4" />
+      <source src={videoSrc} type="video/mp4" />
     </video>
 
     <div

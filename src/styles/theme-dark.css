@@ -1,0 +1,191 @@
+/* ── Dark theme: zinc backgrounds + gold accents ──
+   Surfaces stay zinc; text accents / CTAs use brand gold palette */
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Surfaces — zinc (unchanged) */
+  --theme-bg: #09090b;
+  --theme-bg-muted: #18181b;
+  --theme-bg-warm: #09090b;
+  --theme-bg-card: #18181b;
+  --theme-bg-elevated: #18181b;
+  --theme-bg-panel: #27272a;
+  --theme-bg-input: #27272a;
+  --theme-bg-chip: #18181b;
+
+  /* Text — zinc neutrals on light surfaces; warm cream on dark blocks via --olive-text */
+  --theme-text-primary: #ffffff;
+  --theme-text-secondary: #a1a1aa;
+  --theme-text-muted: #71717a;
+  --theme-text-kicker: #b4b4bc;
+
+  /* Borders */
+  --theme-border: #27272a;
+  --theme-border-strong: #3f3f46;
+  --theme-border-subtle: rgb(255 255 255 / 0.1);
+
+  /* Accent — gold */
+  --theme-accent: #d4b45c;
+  --theme-accent-light: #d4af37;
+  --theme-accent-mid: #d4b45c;
+  --theme-accent-dark: #a88620;
+  --theme-accent-foreground: #1a1208;
+  --theme-accent-gradient: linear-gradient(
+    135deg,
+    #d4af37 0%,
+    #d4b45c 100%
+  );
+
+  /* Solid CTA on dark surfaces */
+  --theme-btn-solid-bg: #18181b;
+  --theme-btn-solid-text: #ffffff;
+
+  /* Shadows */
+  --theme-shadow-card: 0 1px 3px rgb(0 0 0 / 0.35),
+    0 4px 12px rgb(0 0 0 / 0.25);
+  --theme-shadow-card-hover: 0 4px 16px rgb(0 0 0 / 0.45);
+
+  /* Selection & toggle */
+  --theme-selection-bg: #d4af37;
+  --theme-selection-text: #1a1208;
+  --theme-toggle-glow: radial-gradient(
+    circle,
+    rgb(201 162 39 / 0.35) 0%,
+    transparent 70%
+  );
+
+  /* Tailwind brand utilities — gold */
+  --brand-gold: #c9a227;
+  --brand-gold-light: #d4af37;
+  --brand-gold-dark: #a88620;
+  --brand-forest: #18181b;
+  --brand-forest-light: #27272a;
+  --brand-forest-muted: #52525b;
+  --brand-sage-light: #a1a1aa;
+
+  /* Dark blocks — zinc backgrounds, gold accent tokens */
+  --olive-bg-deep: #09090b;
+  --olive-bg: #18181b;
+  --olive-muted: #27272a;
+  --olive-mid: #a88620;
+  --olive-vivid: #d4af37;
+  --olive-gold: #d4b45c;
+  --olive-text: #f0ede4;
+  --olive-glass: rgb(9 9 11 / 0.72);
+
+  /* Headline accent on dark surfaces */
+  --accent-display-color: #d4b45c;
+  --accent-display-gradient: linear-gradient(
+    135deg,
+    #d4af37 0%,
+    #d4b45c 100%
+  );
+
+  /* Contact CTA overlays */
+  --contact-cta-base: #09090b;
+
+  /* Day & Night — zinc base + soft gold glow on text side */
+  --day-night-glow: radial-gradient(
+    ellipse 52% 82% at 24% 44%,
+    color-mix(in srgb, var(--olive-vivid) 10%, transparent) 0%,
+    color-mix(in srgb, var(--olive-mid) 5%, transparent) 28%,
+    transparent 58%
+  );
+  --day-night-vignette: radial-gradient(
+    ellipse 128% 112% at 50% 50%,
+    transparent 30%,
+    rgba(9, 9, 11, 0.42) 100%
+  );
+  --day-night-parallax-overlay: linear-gradient(
+    rgba(9, 9, 11, 0.48),
+    rgba(9, 9, 11, 0.74)
+  );
+
+  /* Dark grid section glows — zinc + subtle gold wash */
+  --dark-grid-glow-opacity: 1;
+  --dark-grid-glow-blur: 28px;
+  --grid-overlay-color: var(--olive-gold);
+  --grid-overlay-opacity: 0.05;
+  --dark-grid-showroom-glow:
+    linear-gradient(
+      108deg,
+      var(--olive-bg-deep) 0%,
+      var(--olive-bg-deep) 42%,
+      color-mix(in srgb, var(--olive-bg) 94%, var(--olive-vivid) 6%) 100%
+    ),
+    radial-gradient(
+      ellipse 95% 130% at 78% 46%,
+      color-mix(in srgb, var(--olive-vivid) 9%, transparent) 0%,
+      color-mix(in srgb, var(--olive-vivid) 4%, transparent) 32%,
+      color-mix(in srgb, var(--olive-mid) 2%, transparent) 52%,
+      transparent 72%
+    );
+  --dark-grid-centered-glow:
+    radial-gradient(
+      ellipse 88% 95% at 50% 44%,
+      color-mix(in srgb, var(--olive-vivid) 8%, transparent) 0%,
+      color-mix(in srgb, var(--olive-mid) 4%, transparent) 28%,
+      color-mix(in srgb, var(--olive-muted) 2%, transparent) 48%,
+      transparent 68%
+    ),
+    radial-gradient(
+      ellipse 55% 65% at 50% 40%,
+      color-mix(in srgb, var(--olive-vivid) 6%, transparent) 0%,
+      transparent 100%
+    );
+  --dark-grid-vignette-showroom: radial-gradient(
+    ellipse 140% 120% at 50% 50%,
+    transparent 42%,
+    rgba(9, 9, 11, 0.38) 100%
+  );
+  --dark-grid-vignette-centered: radial-gradient(
+    ellipse 85% 95% at 50% 48%,
+    transparent 35%,
+    rgba(9, 9, 11, 0.42) 100%
+  );
+
+  /* Contact banner — zinc bg, gold typography */
+  --banner-bg: #09090b;
+  --banner-accent-1: #d4af37;
+  --banner-accent-2: #d4b45c;
+  --banner-accent-3: #c9a227;
+  --banner-accent-4: #a88620;
+  --banner-accent-5: #27272a;
+  --banner-text: #ffffff;
+  --banner-text-muted: #a1a1aa;
+  --banner-eyebrow: var(--olive-gold);
+  --banner-eyebrow-line: color-mix(in srgb, var(--olive-gold) 70%, transparent);
+  --banner-title-accent: transparent;
+  --banner-title-accent-gradient: linear-gradient(
+    135deg,
+    #d4af37 0%,
+    #d4b45c 100%
+  );
+  --banner-grid-color: var(--olive-gold);
+  --banner-grid-opacity: 0.06;
+  --banner-border: rgb(255 255 255 / 0.08);
+  --banner-btn-bg: var(--olive-gold);
+  --banner-btn-text: #1a1208;
+  --banner-btn-border: transparent;
+  --banner-btn-bg-hover: transparent;
+  --banner-btn-hover-filter: brightness(1.05);
+  --banner-subtitle-mode: long;
+  --banner-cta-show-icon: block;
+  --banner-glow-blur: 24px;
+  --banner-glow-a: radial-gradient(
+    ellipse 72% 88% at 50% 40%,
+    color-mix(in srgb, var(--olive-vivid) 10%, transparent) 0%,
+    color-mix(in srgb, var(--olive-mid) 5%, transparent) 35%,
+    transparent 68%
+  );
+  --banner-glow-b: radial-gradient(
+    ellipse 48% 58% at 50% 38%,
+    color-mix(in srgb, var(--olive-vivid) 7%, transparent) 0%,
+    transparent 100%
+  );
+  --banner-vignette: radial-gradient(
+    ellipse 90% 95% at 50% 50%,
+    transparent 38%,
+    rgba(9, 9, 11, 0.45) 100%
+  );
+}

@@ -162,6 +162,16 @@ export interface ServiceArea {
   isActive: boolean;
 }
 
+export interface HeroVideo {
+  _id: string;
+  name: string;
+  video: {
+    url: string;
+    publicId: string;
+  };
+  isActive: boolean;
+}
+
 export interface HomeData {
   sliders: Slider[];
   news: NewsItem[];
@@ -171,6 +181,7 @@ export interface HomeData {
   categories: Category[];
   projects: Project[];
   gallery: GalleryItem[];
+  heroVideo: HeroVideo | null;
 }
 
 export interface ContactPayload {

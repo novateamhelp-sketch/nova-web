@@ -61,7 +61,7 @@ export const ImageModal = ({
   if (!open || !current) return null;
 
   const navBtnClass =
-    "absolute z-10 flex min-h-11 min-w-11 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-sm transition hover:bg-white/25 active:scale-95";
+    "absolute z-10 flex min-h-11 min-w-11 items-center justify-center rounded-none bg-white/15 text-white backdrop-blur-sm transition hover:bg-white/25 active:scale-95";
 
   return (
     <div

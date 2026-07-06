@@ -85,7 +85,7 @@ export const LIGHTING_ZONES: LightingZoneConfig[] = [
     id: "garden",
     label: "Garden & shrubs",
     subtitle: "Landscape accent lights",
-    defaultColor: "#34d399",
+    defaultColor: "#4ade80",
     colorable: false,
     watts: 40,
   },

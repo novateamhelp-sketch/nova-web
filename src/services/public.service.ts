@@ -100,3 +100,15 @@ export const getServiceAreaBySlug = async (slug: string) => {
 };
 
 export type { SiteSettings, FooterContent };
+
+export interface PublicThemePayload {
+  tokens: {
+    light: Record<string, string>;
+    dark: Record<string, string>;
+  };
+}
+
+export const getSiteTheme = async () => {
+  const { data } = await api.get<ApiResponse<PublicThemePayload>>("/public/theme");
+  return data.data;
+};

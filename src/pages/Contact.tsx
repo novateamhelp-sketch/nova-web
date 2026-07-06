@@ -10,9 +10,6 @@ import { SectionTitle } from "../components/ui/SectionTitle";
 import { ContactInfo } from "../components/sections/ContactInfo";
 import { ContactForm } from "../components/sections/ContactForm";
 
-const PAGE_BG =
-  "linear-gradient(180deg, #ffffff 0%, #fafafa 28%, #f3f3f3 52%, #ececec 78%, #e2e2e2 100%)";
-
 export const Contact = () => {
   usePageMeta({
     title: PAGE_SEO.contact.title,
@@ -30,7 +27,10 @@ export const Contact = () => {
   );
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20" style={{ background: PAGE_BG }}>
+    <section
+      id="contact-page"
+      className="scroll-mt-14 bg-theme-warm py-12 text-forest-dark sm:py-16 lg:scroll-mt-16 lg:py-20"
+    >
       <Container>
         <SectionTitle
           align="center"

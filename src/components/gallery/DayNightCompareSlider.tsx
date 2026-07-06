@@ -60,7 +60,7 @@ export const DayNightCompareSlider = ({
   return (
     <div
       ref={trackRef}
-      className={`relative aspect-[16/10] w-full select-none overflow-hidden rounded-2xl bg-forest-dark lg:rounded-3xl ${
+      className={`relative aspect-[16/10] w-full select-none overflow-hidden bg-olive-bg-deep ${
         dragging ? "cursor-ew-resize" : ""
       } ${className}`}
       onPointerDown={onPointerDown}
@@ -105,10 +105,10 @@ export const DayNightCompareSlider = ({
       </span>
 
       <div
-        className="absolute inset-y-0 z-10 w-0.5 -translate-x-1/2 bg-olive-gold shadow-[0_0_16px_rgba(212,180,92,0.55)]"
+        className="absolute inset-y-0 z-10 w-0.5 -translate-x-1/2 bg-olive-gold shadow-[0_0_16px_color-mix(in_srgb,var(--olive-gold)_55%,transparent)]"
         style={{ left: `${position}%` }}
       >
-        <div className="absolute left-1/2 top-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border-2 border-olive-gold bg-olive-text text-olive-bg shadow-[0_4px_20px_rgba(0,0,0,0.38)]">
+        <div className="absolute left-1/2 top-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center border-2 border-olive-gold bg-olive-text text-olive-bg shadow-[0_4px_20px_rgba(0,0,0,0.38)]">
           <ChevronsLeftRight size={18} strokeWidth={2.25} aria-hidden />
         </div>
       </div>

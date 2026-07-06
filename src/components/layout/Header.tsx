@@ -6,6 +6,7 @@ import { ButtonLink } from "../ui/Button";
 import { MobileMenu } from "./MobileMenu";
 import { SiteLogo } from "./SiteLogo";
 import { ServicesNavDropdown } from "./ServicesNavDropdown";
+import { ServiceAreasNavDropdown } from "./ServiceAreasNavDropdown";
 import { ThemeToggle } from "../ui/ThemeToggle";
 import { useHeaderScroll } from "../../hooks/useHeaderScroll";
 import { SITE_HEADER_ID } from "../../hooks/useSiteHeaderOffset";
@@ -15,7 +16,6 @@ const navLinks = [
   { to: "/", label: "Home", end: true },
   { to: "/projects", label: "Projects" },
   { to: "/about", label: "About" },
-  { to: "/service-areas", label: "Service Areas" },
 ];
 
 export const Header = () => {
@@ -26,7 +26,9 @@ export const Header = () => {
   const transparentHome = isHome && !scrolled;
   const servicesActive =
     pathname === "/services" || pathname.startsWith("/services/");
-  const isSolid = !transparentHome || servicesActive;
+  const serviceAreasActive =
+    pathname === "/service-areas" || pathname.startsWith("/service-areas/");
+  const isSolid = !transparentHome || servicesActive || serviceAreasActive;
 
   return (
     <header
@@ -65,6 +67,8 @@ export const Header = () => {
                 {link.label}
               </NavLink>
             ))}
+
+            <ServiceAreasNavDropdown isActive={serviceAreasActive} />
           </nav>
 
           <div className="flex items-center gap-3">
@@ -73,7 +77,7 @@ export const Header = () => {
               variant={transparentHome ? "outline" : "primary"}
               className={`hidden transition-all duration-300 ease-out hover:scale-105 active:scale-95 sm:inline-flex ${
                 transparentHome
-                  ? "!border-white/70 !text-white hover:!bg-white/10 hover:!text-gold"
+                  ? "!border-white/70 !text-white hover:!bg-white/10 hover:!text-olive-gold"
                   : ""
               }`}
             >
@@ -82,7 +86,7 @@ export const Header = () => {
             <ThemeToggle />
             <button
               type="button"
-              className="flex min-h-11 min-w-11 items-center justify-center rounded-lg text-white transition-all duration-300 hover:scale-105 hover:bg-white/10 active:scale-95 lg:hidden"
+              className="flex min-h-11 min-w-11 items-center justify-center rounded-none text-white transition-all duration-300 hover:scale-105 hover:bg-white/10 active:scale-95 lg:hidden"
               onClick={() => setMenuOpen(true)}
               aria-label="Open menu"
               aria-expanded={menuOpen}

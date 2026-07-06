@@ -59,7 +59,7 @@ export const DisplayTitle = ({
       >
         <span className={sizes.primary}>
           {split.lead} {split.linePrimary}{" "}
-          <span className={`italic text-gold-light ${sizes.accent}`}>
+          <span className={`italic ${light ? "text-olive-gold" : "text-theme-accent"} ${sizes.accent}`}>
             {split.accent}
           </span>
         </span>
@@ -74,7 +74,7 @@ export const DisplayTitle = ({
       <span className={`block ${sizes.primary}`}>{split.primary}</span>
       {split.accent ? (
         <span
-          className={`mt-1.5 block italic text-gold-light ${sizes.accent}`}
+          className={`mt-1.5 block italic ${light ? "text-olive-gold" : "text-theme-accent"} ${sizes.accent}`}
         >
           {split.accent}
         </span>

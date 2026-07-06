@@ -1,9 +1,9 @@
 import { useCallback, useMemo, useRef, useState } from "react";
 import { Star } from "lucide-react";
 import type { Swiper as SwiperInstance } from "swiper";
-import type { Slider, SiteSettings } from "../../types/api.types";
+import { resolveHeroSlides, resolveHeroVideoSrc } from "../../utils/heroMedia";
+import type { HeroVideo, Slider, SiteSettings } from "../../types/api.types";
 import { OLIVE, oliveMix } from "../../constants/olivePalette";
-import { resolveHeroSlides } from "../../utils/heroMedia";
 import { Container } from "../ui/Container";
 import { HeroBackgroundSlider } from "./HeroBackgroundSlider";
 import { HeroBackgroundVideo } from "./HeroBackgroundVideo";
@@ -12,11 +12,17 @@ import { HeroCinematicContent } from "./HeroCinematicContent";
 interface HeroProps {
   sliders?: Slider[];
   settings?: SiteSettings | null;
+  heroVideo?: HeroVideo | null;
   /** Hero video/image stays pinned while the next section scrolls over it */
   pinOnScroll?: boolean;
 }
 
-export const Hero = ({ sliders = [], settings, pinOnScroll = false }: HeroProps) => {
+export const Hero = ({
+  sliders = [],
+  settings,
+  heroVideo,
+  pinOnScroll = false,
+}: HeroProps) => {
   const swiperRef = useRef<SwiperInstance | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -35,6 +41,7 @@ export const Hero = ({ sliders = [], settings, pinOnScroll = false }: HeroProps)
 
   const desktopSlider = activeSliders[0] ?? sliders[0];
   const videoPoster = heroSlides[0]?.src;
+  const videoSrc = resolveHeroVideoSrc(heroVideo);
 
   const handleMobileSlideChange = useCallback((index: number) => {
     setActiveIndex(index);
@@ -61,7 +68,7 @@ export const Hero = ({ sliders = [], settings, pinOnScroll = false }: HeroProps)
 
       {/* Desktop — video background */}
       <div className="absolute inset-0 z-0 hidden lg:block">
-        <HeroBackgroundVideo poster={videoPoster} />
+        <HeroBackgroundVideo poster={videoPoster} videoSrc={videoSrc} />
       </div>
 
       <div
@@ -104,7 +111,7 @@ export const Hero = ({ sliders = [], settings, pinOnScroll = false }: HeroProps)
                 <Star
                   key={i}
                   size={13}
-                  className="fill-[#d4b45c] text-[#d4b45c]"
+                  className="fill-olive-gold text-olive-gold"
                   strokeWidth={0}
                 />
               ))}

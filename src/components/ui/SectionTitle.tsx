@@ -28,9 +28,9 @@ export const SectionTitle = ({
     <DisplayTitle as="h2" size="section" title={title} light={light} />
     {subtitle ? (
       <p
-        className={`text-ui mt-4 max-w-2xl ${
+        className={`mt-4 max-w-2xl font-sans text-[10px] font-bold uppercase leading-snug tracking-[0.18em] sm:text-xs sm:tracking-[0.2em] md:text-sm ${
           align === "center" ? "mx-auto" : ""
-        } ${light ? "!text-white/85" : ""}`}
+        } ${light ? "text-white/85" : "text-theme-kicker"}`}
       >
         {subtitle}
       </p>

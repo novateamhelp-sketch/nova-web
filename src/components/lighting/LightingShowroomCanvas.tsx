@@ -133,14 +133,14 @@ export const LightingShowroomCanvas = ({
   };
 
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-white/15 bg-forest-light/20 shadow-[0_20px_50px_rgba(0,0,0,0.3)] lg:rounded-3xl">
+    <div className="relative overflow-hidden border border-white/10 bg-[#0f100c]/60 shadow-[0_20px_50px_rgba(0,0,0,0.35)]">
       <div
         ref={canvasRef}
         className={`relative aspect-[4/3] overflow-hidden sm:aspect-[16/10] ${
           layoutEditMode ? "cursor-crosshair" : "select-none"
         }`}
       >
-        <div className="pointer-events-none absolute left-4 top-4 z-20 flex items-center gap-2 rounded-full border border-white/10 bg-forest-dark/85 px-3 py-1.5 backdrop-blur-sm">
+        <div className="pointer-events-none absolute left-4 top-4 z-20 flex items-center gap-2 border border-white/10 bg-olive-bg-deep/90 px-3 py-1.5 backdrop-blur-sm">
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
@@ -151,8 +151,8 @@ export const LightingShowroomCanvas = ({
         </div>
 
         {layoutEditMode ? (
-          <div className="pointer-events-none absolute inset-x-4 top-14 z-20 rounded-lg border border-gold/30 bg-gold/15 px-4 py-2.5 text-center backdrop-blur-sm">
-            <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-gold sm:text-[11px]">
+          <div className="pointer-events-none absolute inset-x-4 top-14 z-20 border border-olive-gold/30 bg-olive-gold/10 px-4 py-2.5 text-center backdrop-blur-sm">
+            <p className="font-sans text-[10px] font-bold uppercase tracking-[0.14em] text-olive-gold sm:text-[11px]">
               Tap anywhere on the canvas to place a solid-brass uplight
             </p>
           </div>
@@ -277,7 +277,7 @@ export const LightingShowroomCanvas = ({
                   />
                   <Move size={12} className="relative text-white" strokeWidth={2.5} />
                   {isDragging ? (
-                    <span className="absolute -bottom-7 left-1/2 z-20 -translate-x-1/2 whitespace-nowrap rounded bg-forest-dark/95 px-1.5 py-0.5 text-[9px] font-mono text-gold">
+                    <span className="absolute -bottom-7 left-1/2 z-20 -translate-x-1/2 whitespace-nowrap rounded bg-olive-bg-deep/95 px-1.5 py-0.5 text-[9px] font-mono text-gold">
                       {fixture.top} · {fixture.left}
                     </span>
                   ) : null}
@@ -309,16 +309,17 @@ export const LightingShowroomCanvas = ({
         })}
       </div>
 
-      <div className="flex flex-wrap items-center justify-between gap-2 border-t border-white/10 bg-forest-dark px-4 py-2.5 text-[11px] text-white/60">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-t border-white/10 bg-olive-bg-deep px-4 py-2.5 font-sans text-[11px] text-olive-text/55">
         <span>
           {layoutEditMode ? (
             <>
-              Edit mode · <strong className="text-gold">{draggingId ?? "drag a light"}</strong>
+              Edit mode ·{" "}
+              <strong className="text-olive-gold">{draggingId ?? "drag a light"}</strong>
             </>
           ) : (
             <>
               Lights on:{" "}
-              <strong className="text-white">
+              <strong className="text-olive-text/90">
                 {activeCount}/{positionedFixtures.length}
               </strong>
             </>

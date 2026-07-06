@@ -21,58 +21,47 @@ const STATS = [
   },
 ] as const;
 
-/** Vivid glow concentrated behind slider; dark on text side */
-const SECTION_GRADIENT = `radial-gradient(ellipse 62% 92% at 74% 44%, ${OLIVE.oliveVivid} 0%, ${OLIVE.oliveMid} 14%, ${OLIVE.oliveMuted} 34%, ${OLIVE.bg} 58%, ${OLIVE.bgDeep} 100%)`;
-
-const SECTION_VIGNETTE =
-  "radial-gradient(ellipse 128% 112% at 50% 50%, transparent 30%, rgba(18,20,12,0.38) 100%)";
-
 export const DayNightTransformSection = ({
   item,
   backgroundImageUrl,
 }: DayNightTransformSectionProps) => (
   <section
-    className="relative overflow-hidden py-16 sm:py-20 lg:py-24 xl:pb-28"
-    style={{ backgroundColor: OLIVE.bgDeep }}
+    className="relative overflow-hidden border-t border-white/10 py-20 text-olive-text sm:py-24 lg:py-28 xl:py-32"
+    style={{ backgroundColor: "var(--olive-bg-deep)" }}
   >
     <div
-      className="pointer-events-none absolute inset-0"
-      style={{ background: SECTION_GRADIENT }}
+      className="day-night-section__glow pointer-events-none absolute inset-0"
       aria-hidden
     />
 
     {backgroundImageUrl ? (
       <ParallaxBackground
         imageUrl={backgroundImageUrl}
-        overlay={`linear-gradient(rgba(10, 14, 8, 0.45), rgba(10, 14, 8, 0.72))`}
+        overlay="var(--day-night-parallax-overlay)"
         opacity={0.5}
         className="mix-blend-screen"
       />
     ) : null}
 
     <div
-      className="pointer-events-none absolute inset-0"
-      style={{ background: SECTION_VIGNETTE }}
+      className="day-night-section__vignette pointer-events-none absolute inset-0"
       aria-hidden
     />
 
-    <Container className="relative">
-      <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14 xl:gap-16">
+    <Container className="relative z-10">
+      <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20">
         <ScrollReveal variant="slide-left" className="max-w-xl lg:max-w-none">
-          <p
-            className="mb-4 font-sans text-xs font-bold uppercase tracking-[0.28em] sm:text-sm"
-            style={{ color: OLIVE.gold }}
-          >
-            Day &amp; Night Transformations
-          </p>
+          <div className="mb-6 flex items-center gap-3 sm:mb-8">
+            <span className="h-px w-10 shrink-0 bg-olive-gold" aria-hidden />
+            <p className="font-sans text-[11px] font-bold uppercase tracking-[0.22em] text-olive-gold sm:text-xs">
+              Day &amp; Night Transformations
+            </p>
+          </div>
 
-          <h2 className="font-serif text-3xl font-bold leading-[1.08] tracking-tight sm:text-4xl lg:text-[2.75rem]">
-            <span className="block" style={{ color: OLIVE.text }}>
-              Witness the
-            </span>
+          <h2 className="font-serif text-[2rem] font-bold leading-[1.08] tracking-tight text-olive-text sm:text-4xl lg:text-[2.75rem]">
+            <span className="block">Witness the</span>
             <span className="mt-1.5 block">
-              <span style={{ color: OLIVE.gold }}>Dramatic </span>
-              <span style={{ color: OLIVE.text }}>Transition</span>
+              <span className="italic text-olive-gold">Dramatic</span> Transition
             </span>
           </h2>
 
@@ -92,10 +81,7 @@ export const DayNightTransformSection = ({
             <div className="grid gap-8 sm:grid-cols-2">
               {STATS.map((stat) => (
                 <div key={stat.value}>
-                  <p
-                    className="font-serif text-3xl font-bold leading-none sm:text-4xl"
-                    style={{ color: OLIVE.gold }}
-                  >
+                  <p className="font-serif text-3xl font-bold leading-none text-olive-gold sm:text-4xl">
                     {stat.value}
                   </p>
                   <p

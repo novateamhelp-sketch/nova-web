@@ -16,11 +16,13 @@ import { Section } from "../components/ui/Section";
 import { SectionTitle } from "../components/ui/SectionTitle";
 import { PageLoading } from "../components/ui/Loading";
 import { PageError } from "../components/ui/ErrorMessage";
-import { ContactCTA } from "../components/sections/ContactCTA";
+import { ServiceAreaBreadcrumb } from "../components/serviceAreas/ServiceAreaBreadcrumb";
 import { ServiceAreaCard } from "../components/serviceAreas/ServiceAreaCard";
 import { CountyList } from "../components/serviceAreas/CountyList";
 import { ServiceAreaMap } from "../components/serviceAreas/ServiceAreaMap";
-import { ServiceAreaBreadcrumb } from "../components/serviceAreas/ServiceAreaBreadcrumb";
+import { ServiceAreaWhyChooseUs } from "../components/serviceAreas/ServiceAreaWhyChooseUs";
+import { ServiceAreaStateIntro } from "../components/serviceAreas/ServiceAreaStateIntro";
+import { ServiceAreaCountiesSection } from "../components/serviceAreas/ServiceAreaCountiesSection";
 import type { ServiceArea as ServiceAreaType } from "../types/api.types";
 
 const ServiceAreaList = () => {
@@ -68,10 +70,6 @@ const ServiceAreaList = () => {
             to confirm coverage in your area.
           </p>
         )}
-      </Section>
-
-      <Section tone="muted" size="sm">
-        <ContactCTA />
       </Section>
     </>
   );
@@ -148,38 +146,13 @@ const ServiceAreaCountyView = ({
 const ServiceAreaStateContent = ({ area }: { area: ServiceAreaType }) => {
   useServiceAreaSchema({ area });
 
-  const displayTitle = area.title.trim() || `Outdoor Lighting in ${area.stateName}`;
-  const displayDescription =
-    area.description.trim() ||
-    `We provide outdoor lighting, landscape lighting, and hardscaping throughout ${area.stateName}.`;
-
   return (
     <>
-      <Section tone="dark" size="lg">
-        <ServiceAreaBreadcrumb
-          items={[
-            { label: "Service Areas", to: "/service-areas" },
-            { label: area.stateName },
-          ]}
-        />
-        <SectionTitle light eyebrow="State" title={displayTitle} subtitle={displayDescription} />
-      </Section>
+      <ServiceAreaStateIntro area={area} />
 
-      <Section tone="white">
-        <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
-          <div className="space-y-8">
-            {area.customMessage ? (
-              <p className="text-body">{area.customMessage}</p>
-            ) : null}
-            <CountyList area={area} />
-          </div>
-          <ServiceAreaMap mapEmbedUrl={area.mapEmbedUrl} title={area.stateName} />
-        </div>
-      </Section>
+      <ServiceAreaWhyChooseUs />
 
-      <Section tone="muted" size="sm">
-        <ContactCTA />
-      </Section>
+      <ServiceAreaCountiesSection area={area} />
     </>
   );
 };
@@ -229,10 +202,6 @@ const ServiceAreaCountyContent = ({
             title={`${county}, ${area.stateName}`}
           />
         </div>
-      </Section>
-
-      <Section tone="muted" size="sm">
-        <ContactCTA />
       </Section>
     </>
   );

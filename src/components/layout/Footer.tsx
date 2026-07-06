@@ -11,7 +11,7 @@ const footerLinks = [
 ];
 
 export const Footer = () => (
-  <footer className="bg-forest-dark text-white/80">
+  <footer className="border-t border-theme-border-subtle bg-olive-bg-deep text-white/80">
     <Container className="py-12">
       <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3">
         <div>
@@ -25,7 +25,7 @@ export const Footer = () => (
         </div>
 
         <div>
-          <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-gold">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-olive-gold">
             Quick Links
           </p>
           <ul className="space-y-2">
@@ -33,7 +33,7 @@ export const Footer = () => (
               <li key={link.to}>
                 <Link
                   to={link.to}
-                  className="text-sm transition hover:text-gold"
+                  className="text-sm transition hover:text-olive-gold"
                 >
                   {link.label}
                 </Link>
@@ -43,7 +43,7 @@ export const Footer = () => (
         </div>
 
         <div>
-          <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-gold">
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-olive-gold">
             Contact
           </p>
           <ul className="space-y-2 text-sm">
@@ -52,7 +52,7 @@ export const Footer = () => (
             <li>
               <a
                 href="mailto:novasales@novainc.com"
-                className="transition hover:text-gold"
+                className="transition hover:text-olive-gold"
               >
                 novasales@novainc.com
               </a>

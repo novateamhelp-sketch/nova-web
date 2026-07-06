@@ -15,7 +15,7 @@ interface SectionProps {
 
 const toneClasses: Record<SectionTone, string> = {
   default: "bg-cream text-forest-dark",
-  dark: "bg-forest-dark text-white",
+  dark: "bg-theme-elevated text-forest-dark",
   muted: "bg-cream-dark text-forest-dark",
   white: "bg-surface text-forest-dark",
 };

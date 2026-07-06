@@ -11,7 +11,6 @@ import { PageLoading } from "../components/ui/Loading";
 import { PageError } from "../components/ui/ErrorMessage";
 import { ProjectInfo } from "../components/projects/ProjectInfo";
 import { ProjectGallery } from "../components/projects/ProjectGallery";
-import { ContactCTA } from "../components/sections/ContactCTA";
 
 export const ProjectDetails = () => {
   const { slug } = useParams();
@@ -69,10 +68,6 @@ export const ProjectDetails = () => {
             projectName={project!.name}
           />
         </div>
-      </Section>
-
-      <Section tone="muted" size="sm">
-        <ContactCTA />
       </Section>
     </>
   );

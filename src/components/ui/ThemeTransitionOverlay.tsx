@@ -24,7 +24,7 @@ export const ThemeTransitionOverlay = ({
       role="status"
     >
       <div
-        className={`relative w-full max-w-sm overflow-visible rounded-[2.5rem] border p-8 text-center shadow-2xl transition-all duration-700 ${
+        className={`relative w-full max-w-sm overflow-visible rounded-none border p-8 text-center shadow-2xl transition-all duration-700 ${
           toLight
             ? "border-[#e8e4d3] bg-[#fbfaf7] text-[#061c14] shadow-amber-500/10"
             : "border-[#133528] bg-[#0b241b] text-[#f4f1ea] shadow-emerald-950/50"

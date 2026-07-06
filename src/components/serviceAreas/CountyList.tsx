@@ -12,9 +12,7 @@ export const CountyList = ({ area, activeCountySlug }: CountyListProps) => {
 
   return (
     <div>
-      <h3 className="text-lg font-semibold text-forest-dark">
-        Counties we serve in {area.stateName}
-      </h3>
+      <h3 className="text-lg font-semibold text-forest-dark">Counties</h3>
       <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
         {area.counties.map((county) => {
           const countySlug = slugify(county);
@@ -24,7 +22,7 @@ export const CountyList = ({ area, activeCountySlug }: CountyListProps) => {
             <li key={county}>
               <Link
                 to={`/service-areas/${area.slug}/${countySlug}`}
-                className={`block rounded-lg border px-4 py-3 text-sm font-medium transition ${
+                className={`block border px-4 py-3 text-sm font-medium transition ${
                   isActive
                     ? "border-gold bg-gold/10 text-forest-dark"
                     : "border-border bg-white text-forest-dark hover:border-gold/40 hover:bg-cream"

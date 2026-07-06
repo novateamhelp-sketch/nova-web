@@ -3,6 +3,15 @@ import { cloudinaryUrl } from "./cloudinaryUrl";
 
 export const HERO_VIDEO_SRC = "/hero/videoprincipal.mp4";
 
+export const resolveHeroVideoSrc = (
+  heroVideo?: { video?: { url?: string }; isActive?: boolean } | null
+): string => {
+  if (heroVideo?.isActive !== false && heroVideo?.video?.url?.trim()) {
+    return heroVideo.video.url.trim();
+  }
+  return HERO_VIDEO_SRC;
+};
+
 export const HERO_FALLBACK_IMAGES = [
   "/hero/banner-opt.jpg",
   "/hero/banner2-opt.jpg",
