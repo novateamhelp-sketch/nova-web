@@ -737,6 +737,189 @@ textarea:disabled {
   pointer-events: auto;
 }
 
+/* Services page — category collage cards */
+.service-category-collage-grid {
+  display: grid;
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+@media (min-width: 640px) {
+  .service-category-collage-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .service-category-collage-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+.service-category-collage__media {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1;
+  container-type: inline-size;
+  background: var(--theme-bg-card);
+}
+
+.service-category-collage__thumb {
+  display: block;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.65s ease, filter 0.45s ease;
+  transform-origin: center;
+}
+
+.service-category-collage:hover .service-category-collage__thumb,
+.service-category-collage:focus-visible .service-category-collage__thumb {
+  transform: scale(1.06);
+  filter: brightness(0.45);
+}
+
+.service-category-collage__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--olive-bg-deep) 62%, transparent) 0%,
+      color-mix(in srgb, var(--olive-bg-deep) 92%, transparent) 100%
+    ),
+    color-mix(in srgb, var(--olive-bg-deep) 48%, transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.service-category-collage:hover .service-category-collage__overlay,
+.service-category-collage:focus-visible .service-category-collage__overlay {
+  opacity: 1;
+}
+
+.service-category-collage__overlay-inner {
+  width: 100%;
+  max-width: 16rem;
+  text-align: center;
+  transform: translateY(0.5rem);
+  opacity: 0;
+  transition:
+    transform 0.45s ease,
+    opacity 0.45s ease;
+}
+
+.service-category-collage:hover .service-category-collage__overlay-inner,
+.service-category-collage:focus-visible .service-category-collage__overlay-inner {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.service-category-collage__eyebrow-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  margin-bottom: 0.85rem;
+}
+
+.service-category-collage__eyebrow-line {
+  height: 1px;
+  width: 1.75rem;
+  background: color-mix(in srgb, var(--olive-gold) 75%, transparent);
+}
+
+.service-category-collage__eyebrow {
+  font-family: var(--font-sans);
+  font-size: clamp(0.6875rem, 3cqi, 0.75rem);
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--olive-gold);
+  text-shadow: 0 1px 12px rgb(0 0 0 / 0.65);
+}
+
+.service-category-collage__title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.125rem, 6.2cqi, 1.625rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+  text-shadow: 0 2px 18px rgb(0 0 0 / 0.55);
+}
+
+.service-category-collage__title-primary {
+  color: var(--olive-text);
+}
+
+.service-category-collage__title-accent {
+  font-style: italic;
+  color: var(--olive-gold);
+  text-shadow: 0 2px 20px rgb(0 0 0 / 0.7);
+}
+
+.service-category-collage__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 1rem;
+  font-family: var(--font-sans);
+  font-size: clamp(0.75rem, 3.4cqi, 0.8125rem);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--olive-text);
+  text-shadow: 0 1px 14px rgb(0 0 0 / 0.6);
+  transition: gap 0.3s ease;
+}
+
+.service-category-collage:hover .service-category-collage__cta,
+.service-category-collage:focus-visible .service-category-collage__cta {
+  gap: 0.55rem;
+}
+
+.service-category-collage__cta-line {
+  display: block;
+  height: 1px;
+  width: 2.5rem;
+  margin: 0.85rem auto 0;
+  background: color-mix(in srgb, var(--olive-gold) 65%, transparent);
+  transition: width 0.45s ease, background-color 0.45s ease;
+}
+
+.service-category-collage:hover .service-category-collage__cta-line,
+.service-category-collage:focus-visible .service-category-collage__cta-line {
+  width: 4.5rem;
+  background: var(--olive-gold);
+}
+
+.service-category-collage__label {
+  margin-top: 0.85rem;
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--theme-text-primary);
+  transition:
+    color 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.service-category-collage:hover .service-category-collage__label,
+.service-category-collage:focus-visible .service-category-collage__label {
+  color: var(--olive-gold);
+  opacity: 0.72;
+}
+
 /* Services signature carousel — featured left + 2×2 grid */
 .services-signature-layout {
   display: grid;

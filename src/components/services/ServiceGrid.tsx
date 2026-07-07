@@ -1,14 +1,20 @@
 import type { Category } from "../../types/api.types";
-import { ServiceCard } from "./ServiceCard";
+import { ServiceCategoryCollageCard } from "./ServiceCategoryCollageCard";
 
 interface ServiceGridProps {
   categories: Category[];
 }
 
-export const ServiceGrid = ({ categories }: ServiceGridProps) => (
-  <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-    {categories.map((category) => (
-      <ServiceCard key={category._id} category={category} />
-    ))}
-  </div>
-);
+export const ServiceGrid = ({ categories }: ServiceGridProps) => {
+  const activeCategories = [...categories]
+    .filter((category) => category.isActive !== false)
+    .sort((a, b) => a.order - b.order);
+
+  return (
+    <div className="service-category-collage-grid">
+      {activeCategories.map((category) => (
+        <ServiceCategoryCollageCard key={category._id} category={category} />
+      ))}
+    </div>
+  );
+};

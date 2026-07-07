@@ -26,14 +26,12 @@ export const ThemeTransitionOverlay = ({
       <div
         className={`relative w-full max-w-sm overflow-visible rounded-none border p-8 text-center shadow-2xl transition-all duration-700 ${
           toLight
-            ? "border-[#e8e4d3] bg-[#fbfaf7] text-[#061c14] shadow-amber-500/10"
-            : "border-[#133528] bg-[#0b241b] text-[#f4f1ea] shadow-emerald-950/50"
+            ? "border-theme-border-subtle bg-theme-warm text-forest-dark shadow-gold/10"
+            : "border-olive-muted bg-olive-bg-deep text-olive-text shadow-black/50"
         }`}
       >
         <div
-          className={`absolute left-1/2 top-[-48px] h-12 w-[2px] -translate-x-1/2 animate-pulse rounded-full ${
-            toLight ? "bg-[#cfa426]" : "bg-[#d4af37]"
-          }`}
+          className={`absolute left-1/2 top-[-48px] h-12 w-[2px] -translate-x-1/2 animate-pulse rounded-full bg-gold`}
           aria-hidden
         />
 
@@ -41,10 +39,10 @@ export const ThemeTransitionOverlay = ({
           <div
             className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full blur-[35px] transition-all duration-1000 ${
               bulbOn
-                ? "h-44 w-44 scale-110 bg-amber-400/40"
+                ? "h-44 w-44 scale-110 bg-gold/40"
                 : toLight
-                  ? "h-20 w-20 scale-95 bg-amber-500/10"
-                  : "h-10 w-10 scale-50 bg-amber-900/5 opacity-0"
+                  ? "h-20 w-20 scale-95 bg-gold/10"
+                  : "h-10 w-10 scale-50 bg-olive-bg-deep/80 opacity-0"
             }`}
             aria-hidden
           />
@@ -52,10 +50,10 @@ export const ThemeTransitionOverlay = ({
           <svg
             className={`relative z-10 h-24 w-24 transition-all duration-1000 ${
               bulbOn
-                ? "scale-110 text-amber-500 drop-shadow-[0_0_20px_rgba(251,191,36,0.8)]"
+                ? "scale-110 text-gold drop-shadow-[0_0_20px_color-mix(in_srgb,var(--olive-gold)_80%,transparent)]"
                 : toLight
-                  ? "scale-95 text-gray-400 opacity-50"
-                  : "scale-95 rotate-2 text-[#1c3f32]"
+                  ? "scale-95 text-muted opacity-50"
+                  : "scale-95 rotate-2 text-olive-bg-deep"
             }`}
             viewBox="0 0 24 24"
             fill="none"
@@ -66,7 +64,11 @@ export const ThemeTransitionOverlay = ({
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
-              fill={bulbOn ? "rgba(251, 191, 36, 0.2)" : "none"}
+              fill={
+                bulbOn
+                  ? "color-mix(in srgb, var(--olive-gold) 20%, transparent)"
+                  : "none"
+              }
               d="M12 3c-4.418 0-8 3.582-8 8 0 2.414 1.077 4.577 2.776 6.04C7.818 17.906 9 19.5 9 21h6c0-1.5 1.182-3.094 2.224-3.96C18.923 15.577 20 13.414 20 11c0-4.418-3.582-8-8-8z"
             />
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 21h6" strokeWidth="1.5" />
@@ -77,10 +79,10 @@ export const ThemeTransitionOverlay = ({
               strokeWidth="1.5"
               className={`transition-all duration-1000 ${
                 bulbOn
-                  ? "stroke-amber-300 opacity-100"
+                  ? "stroke-gold-light opacity-100"
                   : toLight
-                    ? "stroke-gray-500 opacity-30"
-                    : "stroke-emerald-900 opacity-20"
+                    ? "stroke-muted opacity-30"
+                    : "stroke-olive-muted opacity-40"
               }`}
               d="M12 11v4M9 13h6M12 7c-1.5 0-2 1-2 2h4c0-1-.5-2-2-2z"
             />
@@ -102,7 +104,7 @@ export const ThemeTransitionOverlay = ({
           {step === 1 ? (
             <div
               className={`absolute left-1/2 top-1/2 h-28 w-28 -translate-x-1/2 -translate-y-1/2 animate-ping rounded-full border-2 ${
-                toLight ? "border-amber-400" : "border-emerald-600"
+                toLight ? "border-gold" : "border-olive-muted"
               }`}
               style={{ animationDuration: "1.2s" }}
               aria-hidden
@@ -116,7 +118,7 @@ export const ThemeTransitionOverlay = ({
           </h3>
           <p
             className={`text-[11px] font-normal uppercase tracking-[0.2em] transition-colors duration-1000 ${
-              toLight ? "text-gray-500" : "text-emerald-300/70"
+              toLight ? "text-muted" : "text-olive-text/70"
             }`}
           >
             {toLight
@@ -126,12 +128,12 @@ export const ThemeTransitionOverlay = ({
 
           <div
             className={`relative mx-auto mt-4 h-px w-24 overflow-hidden rounded-full ${
-              toLight ? "bg-[#e2decb]" : "bg-[#1a382d]"
+              toLight ? "bg-theme-border" : "bg-olive-muted"
             }`}
           >
             <div
               className={`absolute left-0 top-0 h-full rounded-full ease-out ${
-                toLight ? "bg-amber-500" : "bg-emerald-400"
+                toLight ? "bg-gold" : "bg-olive-gold"
               }`}
               style={{
                 width: step === 0 ? "10%" : step === 1 ? "70%" : "100%",

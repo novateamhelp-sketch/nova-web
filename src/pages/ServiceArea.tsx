@@ -23,6 +23,9 @@ import { ServiceAreaMap } from "../components/serviceAreas/ServiceAreaMap";
 import { ServiceAreaWhyChooseUs } from "../components/serviceAreas/ServiceAreaWhyChooseUs";
 import { ServiceAreaStateIntro } from "../components/serviceAreas/ServiceAreaStateIntro";
 import { ServiceAreaCountiesSection } from "../components/serviceAreas/ServiceAreaCountiesSection";
+import { PageHeroBanner } from "../components/sections/PageHeroBanner";
+import { PageHeroScrollStack } from "../components/sections/PageHeroScrollStack";
+import { SERVICE_AREAS_HERO_BANNER_KEY } from "../utils/styleAssetMedia";
 import type { ServiceArea as ServiceAreaType } from "../types/api.types";
 
 const ServiceAreaList = () => {
@@ -32,7 +35,13 @@ const ServiceAreaList = () => {
     keywords: serviceAreaIndexSeo.keywords,
   });
 
-  const fetchAreas = useCallback(() => publicService.getServiceAreas(), []);
+  const fetchAreas = useCallback(async () => {
+    const [areas, styleAssets] = await Promise.all([
+      publicService.getServiceAreas(),
+      publicService.getStyleAssets().catch(() => []),
+    ]);
+    return { areas, styleAssets };
+  }, []);
   const { data, isLoading, error, refetch } = usePublicData(
     "service-areas",
     fetchAreas
@@ -41,36 +50,36 @@ const ServiceAreaList = () => {
   if (isLoading) return <PageLoading label="Loading service areas..." />;
   if (error) return <PageError message={error} onRetry={refetch} />;
 
-  const areas = data ?? [];
+  const areas = data?.areas ?? [];
 
   return (
     <>
-      <Section tone="dark" size="lg">
-        <SectionTitle
-          light
+      <PageHeroScrollStack>
+        <PageHeroBanner
+          imageKey={SERVICE_AREAS_HERO_BANNER_KEY}
+          styleAssets={data?.styleAssets}
           eyebrow="Coverage"
           title="Service Areas"
           subtitle={`Outdoor lighting across ${SERVICE_AREA_LONG} and beyond.`}
         />
-      </Section>
-
-      <Section tone="white">
-        {areas.length > 0 ? (
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {areas.map((area) => (
-              <ServiceAreaCard key={area._id} area={area} />
-            ))}
-          </div>
-        ) : (
-          <p className="text-body">
-            Service area details are being updated. Please{" "}
-            <Link to="/contact" className="font-semibold text-gold hover:text-gold-dark">
-              contact us
-            </Link>{" "}
-            to confirm coverage in your area.
-          </p>
-        )}
-      </Section>
+        <Section tone="white" className="hero-scroll-over-panel">
+          {areas.length > 0 ? (
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {areas.map((area) => (
+                <ServiceAreaCard key={area._id} area={area} />
+              ))}
+            </div>
+          ) : (
+            <p className="text-body">
+              Service area details are being updated. Please{" "}
+              <Link to="/contact" className="font-semibold text-gold hover:text-gold-dark">
+                contact us
+              </Link>{" "}
+              to confirm coverage in your area.
+            </p>
+          )}
+        </Section>
+      </PageHeroScrollStack>
     </>
   );
 };

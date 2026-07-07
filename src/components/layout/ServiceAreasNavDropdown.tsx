@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { ChevronDown, MapPin } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { SERVICE_AREA_NAV_ITEMS } from "../../config/serviceAreas.config";
 import { useSiteHeaderOffset } from "../../hooks/useSiteHeaderOffset";
 import { getStateAbbrev } from "../../utils/slugify";
@@ -76,31 +76,23 @@ export const ServiceAreasNavDropdown = ({
         <div className="shrink-0" style={{ height: HOVER_BRIDGE_PX }} aria-hidden />
         <div className="w-full overflow-hidden rounded-b-xl border border-gold/40 border-t-2 border-t-gold bg-[#1a1a1a]/95 shadow-2xl backdrop-blur-md">
           <div className="px-6 py-8 sm:px-8">
-            <ul className="grid gap-3 sm:grid-cols-3">
+            <ul className="grid gap-x-10 gap-y-5 sm:grid-cols-2 lg:grid-cols-3">
               {SERVICE_AREA_NAV_ITEMS.map((area) => (
-                <li key={area.slug}>
+                <li key={area.slug} className="min-w-0">
                   <Link
                     to={`/service-areas/${area.slug}`}
-                    className="group/item flex h-full flex-col gap-2 border border-white/10 px-4 py-4 transition hover:border-gold/40 hover:bg-white/5"
+                    className="group/item flex w-full items-center gap-0"
                     onMouseEnter={openMenu}
                   >
-                    <div className="flex items-center gap-3">
-                      <span className="flex h-10 w-10 shrink-0 items-center justify-center border border-gold/30 bg-gold/10 text-xs font-bold text-gold">
-                        {getStateAbbrev(area.stateName)}
-                      </span>
-                      <span className="text-sm font-semibold uppercase tracking-wide text-white transition group-hover/item:text-gold">
-                        {area.stateName}
-                      </span>
-                    </div>
-                    <p className="flex items-start gap-1.5 text-xs leading-relaxed text-white/55">
-                      <MapPin
-                        size={12}
-                        strokeWidth={2}
-                        className="mt-0.5 shrink-0"
-                        aria-hidden
-                      />
-                      {area.counties.join(", ")}
-                    </p>
+                    <span className="category-icon-box category-icon-box--outline flex h-10 w-10 shrink-0 items-center justify-center rounded border border-gold bg-transparent text-xs font-bold text-gold border-[1.5px] transition-transform duration-500 ease-in-out group-hover/item:rotate-90">
+                      {getStateAbbrev(area.stateName)}
+                    </span>
+                    <section
+                      aria-label={area.stateName}
+                      className="services-nav-item-label flex h-10 min-w-0 flex-1 items-center bg-[#1a1a1a]/95 px-3 text-sm font-semibold uppercase tracking-wide text-white transition group-hover/item:bg-white/5 group-hover/item:text-gold"
+                    >
+                      {area.stateName}
+                    </section>
                   </Link>
                 </li>
               ))}
@@ -108,13 +100,9 @@ export const ServiceAreasNavDropdown = ({
           </div>
 
           <div className="rounded-b-xl border-t border-white/10 bg-[#141414]/95 py-3 text-center">
-            <Link
-              to="/service-areas"
-              className="text-xs font-semibold uppercase tracking-[0.18em] text-white/80 transition hover:text-gold"
-              onMouseEnter={openMenu}
-            >
-              View all service areas →
-            </Link>
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/80">
+              Residential & commercial coverage across the tri-state area
+            </p>
           </div>
         </div>
       </div>

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const SCROLL_THRESHOLD = 32;
 
-/** Transparent at top of home; solid background once the user scrolls. */
+/** Solid header once the user scrolls past the hero on pages with a transparent header. */
 export const useHeaderScroll = (enabled: boolean) => {
   const [scrolled, setScrolled] = useState(false);
 

@@ -10,8 +10,15 @@ import {
 import { ThemeTransitionOverlay } from "../components/ui/ThemeTransitionOverlay";
 import { getSiteTheme } from "../services/public.service";
 import { applySiteThemeTokens } from "../utils/applyThemeOverrides";
+import {
+  applyDocumentTheme,
+  readStoredTheme,
+  THEME_STORAGE_KEY,
+  writeStoredTheme,
+  type Theme,
+} from "../utils/themeStorage";
 
-export type Theme = "light" | "dark";
+export type { Theme };
 
 type TransitionStep = 0 | 1 | 2;
 
@@ -21,8 +28,6 @@ interface ThemeContextValue {
   isTransitioning: boolean;
 }
 
-const STORAGE_KEY = "nova-theme";
-
 const TRANSITION_MS = {
   bulbAction: 400,
   applyTheme: 1400,
@@ -31,21 +36,6 @@ const TRANSITION_MS = {
 } as const;
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
-
-const readStoredTheme = (): Theme => {
-  if (typeof window === "undefined") return "light";
-  return localStorage.getItem(STORAGE_KEY) === "dark" ? "dark" : "light";
-};
-
-const applyTheme = (theme: Theme) => {
-  document.documentElement.setAttribute("data-theme", theme);
-  const meta = document.querySelector('meta[name="theme-color"]');
-  const lightBg =
-    getComputedStyle(document.documentElement).getPropertyValue("--theme-bg").trim() ||
-    "#f8f6f0";
-  const darkBg = "#09090b";
-  meta?.setAttribute("content", theme === "dark" ? darkBg : lightBg);
-};
 
 export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   const [theme, setTheme] = useState<Theme>(readStoredTheme);
@@ -60,8 +50,20 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   useEffect(() => {
-    applyTheme(theme);
+    applyDocumentTheme(theme);
   }, [theme]);
+
+  useEffect(() => {
+    const onStorage = (event: StorageEvent) => {
+      if (event.key !== THEME_STORAGE_KEY || !event.newValue) return;
+      const next = event.newValue === "dark" ? "dark" : "light";
+      setTheme(next);
+      applyDocumentTheme(next);
+    };
+
+    window.addEventListener("storage", onStorage);
+    return () => window.removeEventListener("storage", onStorage);
+  }, []);
 
   useEffect(() => {
     let cancelled = false;
@@ -69,7 +71,7 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
       .then((payload) => {
         if (!cancelled) {
           applySiteThemeTokens(payload.tokens);
-          applyTheme(readStoredTheme());
+          applyDocumentTheme(readStoredTheme());
         }
       })
       .catch(() => {
@@ -97,8 +99,8 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
       window.setTimeout(() => setTransitionStep(1), TRANSITION_MS.bulbAction),
       window.setTimeout(() => {
         setTheme(next);
-        localStorage.setItem(STORAGE_KEY, next);
-        applyTheme(next);
+        writeStoredTheme(next);
+        applyDocumentTheme(next);
         document.documentElement.classList.add("theme-transition");
       }, TRANSITION_MS.applyTheme),
       window.setTimeout(() => setTransitionStep(2), TRANSITION_MS.fadeOut),
