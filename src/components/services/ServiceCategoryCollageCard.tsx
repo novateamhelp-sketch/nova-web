@@ -4,6 +4,7 @@ import type { Category } from "../../types/api.types";
 import { cloudinaryUrl } from "../../utils/cloudinaryUrl";
 import { getServiceCategoryAnchorId } from "../../utils/serviceCategoryAnchors";
 import { splitDisplayTitle } from "../../utils/titleDisplay";
+import { renderSerifTitleText } from "../../utils/serifTitleText";
 
 interface ServiceCategoryCollageCardProps {
   category: Category;
@@ -47,15 +48,15 @@ export const ServiceCategoryCollageCard = ({
               {titleAccent ? (
                 <>
                   <span className="service-category-collage__title-primary">
-                    {titlePrimary}
+                    {renderSerifTitleText(titlePrimary)}
                   </span>{" "}
                   <span className="service-category-collage__title-accent">
-                    {titleAccent}
+                    {renderSerifTitleText(titleAccent)}
                   </span>
                 </>
               ) : (
                 <span className="service-category-collage__title-accent">
-                  {category.name}
+                  {renderSerifTitleText(category.name)}
                 </span>
               )}
             </h3>

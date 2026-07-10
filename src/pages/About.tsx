@@ -16,6 +16,7 @@ import * as publicService from "../services/public.service";
 import { PAGE_SEO } from "../utils/siteMeta";
 import { ABOUT_HERO_BANNER_KEY } from "../utils/styleAssetMedia";
 import { splitDisplayTitle } from "../utils/titleDisplay";
+import { renderSerifTitleText } from "../utils/serifTitleText";
 
 const ABOUT_COMPANY_DESCRIPTION =
   "Design, installation, and maintenance for residential and commercial outdoor spaces across New Jersey and the tri-state area.";
@@ -217,11 +218,11 @@ export const About = () => {
                     </div>
 
                     <h3 className="font-serif text-[26px] leading-tight text-forest-dark">
-                      {primary}
+                      {renderSerifTitleText(primary)}
                     </h3>
                     {accent ? (
                       <div className="font-serif text-[26px] italic leading-tight text-theme-accent">
-                        {accent}
+                        {renderSerifTitleText(accent)}
                       </div>
                     ) : null}
 

@@ -10,6 +10,7 @@ import type { LucideIcon } from "lucide-react";
 import { Container } from "../ui/Container";
 import { ScrollReveal } from "../ui/ScrollReveal";
 import { splitDisplayTitle } from "../../utils/titleDisplay";
+import { renderSerifTitleText } from "../../utils/serifTitleText";
 
 interface ProcessStep {
   icon: LucideIcon;
@@ -109,12 +110,9 @@ export const ProcessTimeline = ({
                 className="h-full"
               >
                 <article className="process-step-card theme-card-border group relative flex h-full flex-col bg-theme-card p-8">
-                  <div
-                    className="pointer-events-none absolute -right-3 -top-4 font-serif text-7xl font-bold leading-none text-forest-dark/4 transition-colors duration-1000 ease-in-out group-hover:text-theme-accent/10 sm:text-8xl"
-                    aria-hidden
-                  >
+                  <span className="process-step-card__number" aria-hidden>
                     {stepNum}
-                  </div>
+                  </span>
 
                   <div className="relative mb-7 flex items-center gap-4">
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center bg-theme-accent/12 transition-colors duration-1000 ease-in-out group-hover:bg-theme-accent/22">
@@ -131,11 +129,11 @@ export const ProcessTimeline = ({
                   </div>
 
                   <h3 className="relative font-serif text-[26px] leading-tight text-forest-dark">
-                    {titlePrimary}
+                    {renderSerifTitleText(titlePrimary)}
                   </h3>
                   {titleAccent ? (
                     <div className="relative font-serif text-[26px] italic leading-tight text-theme-accent">
-                      {titleAccent}
+                      {renderSerifTitleText(titleAccent)}
                     </div>
                   ) : null}
 

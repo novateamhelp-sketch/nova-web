@@ -1,4 +1,5 @@
 import { splitDisplayTitle } from "../../utils/titleDisplay";
+import { renderSerifTitleText } from "../../utils/serifTitleText";
 
 type DisplayTitleAs = "h1" | "h2" | "h3";
 type DisplayTitleSize = "hero" | "section" | "panel" | "card";
@@ -58,9 +59,9 @@ export const DisplayTitle = ({
         className={`font-serif font-bold tracking-tight ${sizes.wrapper ?? "leading-[1.08]"} ${textColor} ${className}`}
       >
         <span className={sizes.primary}>
-          {split.lead} {split.linePrimary}{" "}
+          {renderSerifTitleText(split.lead)} {renderSerifTitleText(split.linePrimary)}{" "}
           <span className={`italic ${light ? "text-olive-gold" : "text-theme-accent"} ${sizes.accent}`}>
-            {split.accent}
+            {renderSerifTitleText(split.accent)}
           </span>
         </span>
       </Tag>
@@ -71,12 +72,14 @@ export const DisplayTitle = ({
     <Tag
       className={`font-serif font-bold tracking-tight ${sizes.wrapper ?? "leading-[1.08]"} ${textColor} ${className}`}
     >
-      <span className={`block ${sizes.primary}`}>{split.primary}</span>
+      <span className={`block ${sizes.primary}`}>
+        {renderSerifTitleText(split.primary)}
+      </span>
       {split.accent ? (
         <span
           className={`mt-1.5 block italic ${light ? "text-olive-gold" : "text-theme-accent"} ${sizes.accent}`}
         >
-          {split.accent}
+          {renderSerifTitleText(split.accent)}
         </span>
       ) : null}
     </Tag>

@@ -5,7 +5,6 @@ import { usePageMeta } from "../hooks/usePageMeta";
 import * as publicService from "../services/public.service";
 import { DEFAULT_DESCRIPTION, PAGE_SEO, formatCategoryProjectsTitle } from "../utils/siteMeta";
 import { Section } from "../components/ui/Section";
-import { SectionTitle } from "../components/ui/SectionTitle";
 import { PageLoading } from "../components/ui/Loading";
 import { PageError } from "../components/ui/ErrorMessage";
 import { ProjectGrid } from "../components/projects/ProjectGrid";
@@ -59,12 +58,13 @@ const ProjectsList = () => {
 
 const ProjectsByCategory = ({ categorySlug }: { categorySlug: string }) => {
   const fetchData = useCallback(async () => {
-    const [categoryData, projects, categories] = await Promise.all([
+    const [categoryData, projects, categories, styleAssets] = await Promise.all([
       publicService.getCategoryBySlug(categorySlug),
       publicService.getProjectsByCategorySlug(categorySlug),
       publicService.getCategories(),
+      publicService.getStyleAssets().catch(() => []),
     ]);
-    return { ...categoryData, projects, categories };
+    return { ...categoryData, projects, categories, styleAssets };
   }, [categorySlug]);
 
   const { data, isLoading, error, refetch } = usePublicData(
@@ -88,57 +88,38 @@ const ProjectsByCategory = ({ categorySlug }: { categorySlug: string }) => {
   if (isLoading) return <PageLoading />;
   if (error) return <PageError message={error} onRetry={refetch} />;
 
-  const { category: loadedCategory, subCategories, projects, categories } = data!;
-  const bannerUrl = cloudinaryUrl(loadedCategory.image, { width: 1400 });
+  const { category: loadedCategory, subCategories, projects, categories, styleAssets } =
+    data!;
 
   return (
     <>
-      <Section
-        tone="dark"
-        size="lg"
-        className={bannerUrl ? "relative overflow-hidden" : ""}
-      >
-        {bannerUrl ? (
-          <>
-            <img
-              src={bannerUrl}
-              alt={loadedCategory.image?.alt || loadedCategory.name}
-              className="absolute inset-0 h-full w-full object-cover opacity-30"
-              loading="eager"
-              fetchPriority="high"
-              decoding="async"
-            />
-            <div className="absolute inset-0 bg-olive-bg-deep/75" />
-          </>
-        ) : null}
-        <div className="relative">
-          <SectionTitle
-            light
-            eyebrow="Category"
-            title={loadedCategory.name}
-            subtitle={loadedCategory.shortDescription || loadedCategory.description}
+      <PageHeroScrollStack>
+        <PageHeroBanner
+          imageKey={PROJECTS_HERO_BANNER_KEY}
+          styleAssets={styleAssets}
+          eyebrow="Portfolio"
+          title={loadedCategory.name}
+          subtitle={
+            loadedCategory.shortDescription || loadedCategory.description || undefined
+          }
+          imageAlt={loadedCategory.image?.alt || loadedCategory.name}
+        />
+        <Section tone="white" className="hero-scroll-over-panel">
+          <CategoryFilter categories={categories} activeSlug={categorySlug} />
+          {subCategories.length > 0 ? (
+            <div className="mt-10">
+              <h3 className="text-lg font-semibold text-forest-dark">
+                Related services
+              </h3>
+              <SubCategoryGrid items={subCategories} />
+            </div>
+          ) : null}
+          <ProjectGrid
+            projects={projects}
+            emptyMessage={`No projects published under ${loadedCategory.name} yet.`}
           />
-        </div>
-      </Section>
-
-      <Section tone="white">
-        <CategoryFilter
-          categories={categories}
-          activeSlug={categorySlug}
-        />
-        {subCategories.length > 0 ? (
-          <div className="mt-10">
-            <h3 className="text-lg font-semibold text-forest-dark">
-              Related services
-            </h3>
-            <SubCategoryGrid items={subCategories} />
-          </div>
-        ) : null}
-        <ProjectGrid
-          projects={projects}
-          emptyMessage={`No projects published under ${loadedCategory.name} yet.`}
-        />
-      </Section>
+        </Section>
+      </PageHeroScrollStack>
     </>
   );
 };

@@ -3,6 +3,7 @@ import { Container } from "../ui/Container";
 import { ScrollReveal } from "../ui/ScrollReveal";
 import { resolveStyleAssetImageByKey } from "../../utils/styleAssetMedia";
 import { splitDisplayTitle } from "../../utils/titleDisplay";
+import { renderSerifTitleText } from "../../utils/serifTitleText";
 
 export interface PageHeroBannerProps {
   imageKey: string;
@@ -62,11 +63,15 @@ export const PageHeroBanner = ({
             ) : null}
 
             <HeadingTag className="page-hero-banner__title">
-              <span className="page-hero-banner__title-primary">{titlePrimary}</span>
+              <span className="page-hero-banner__title-primary">
+                {renderSerifTitleText(titlePrimary)}
+              </span>
               {titleAccent ? (
                 <>
                   {" "}
-                  <span className="page-hero-banner__title-accent">{titleAccent}</span>
+                  <span className="page-hero-banner__title-accent">
+                    {renderSerifTitleText(titleAccent)}
+                  </span>
                 </>
               ) : null}
             </HeadingTag>

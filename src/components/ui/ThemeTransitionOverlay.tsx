@@ -1,4 +1,5 @@
 import type { Theme } from "../../context/ThemeContext";
+import { renderSerifTitleText } from "../../utils/serifTitleText";
 
 type TransitionStep = 0 | 1 | 2;
 
@@ -114,7 +115,7 @@ export const ThemeTransitionOverlay = ({
 
         <div className="mx-auto max-w-xs">
           <h3 className="mb-1.5 font-serif text-xl font-light tracking-wide sm:text-2xl">
-            {toLight ? "Illuminate" : "Dusk Mode"}
+            {toLight ? renderSerifTitleText("Illuminate") : "Dusk Mode"}
           </h3>
           <p
             className={`text-[11px] font-normal uppercase tracking-[0.2em] transition-colors duration-1000 ${

@@ -16,7 +16,7 @@ export const CategoryFilter = ({
     `shrink-0 px-4 py-2.5 text-sm font-medium transition active:scale-95 ${
       isActive
         ? "bg-forest text-white"
-        : "bg-white text-sage ring-1 ring-border hover:text-forest-dark"
+        : "bg-theme-elevated text-sage ring-1 ring-border hover:text-forest-dark"
     }`;
 
   return (

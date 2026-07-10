@@ -4,6 +4,7 @@ import type { LucideIcon } from "lucide-react";
 import { Container } from "../ui/Container";
 import { ScrollReveal } from "../ui/ScrollReveal";
 import { splitDisplayTitle } from "../../utils/titleDisplay";
+import { renderSerifTitleText } from "../../utils/serifTitleText";
 
 interface Feature {
   icon: LucideIcon;
@@ -61,7 +62,7 @@ export const IlluminateIntro = ({
 
           <h2 className="font-serif font-bold leading-[1.04] tracking-tight text-forest-dark">
             <span className="block text-[2.35rem] sm:text-5xl lg:text-[3.5rem] xl:text-[4rem]">
-              Illuminate Your
+              {renderSerifTitleText("Illuminate Your")}
             </span>
             <span className="mt-2 block text-[2.5rem] italic theme-accent-gradient sm:text-[3.25rem] lg:text-[3.75rem] xl:text-[4.25rem]">
               Outdoors.
@@ -144,11 +145,11 @@ export const IlluminateIntro = ({
                 </div>
 
                 <h3 className="font-serif text-[26px] leading-tight text-forest-dark">
-                  {primary}
+                  {renderSerifTitleText(primary)}
                 </h3>
                 {accent ? (
                   <div className="font-serif text-[26px] italic leading-tight text-theme-accent">
-                    {accent}
+                    {renderSerifTitleText(accent)}
                   </div>
                 ) : null}
 

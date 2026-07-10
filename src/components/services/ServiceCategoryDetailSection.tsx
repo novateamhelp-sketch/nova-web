@@ -3,6 +3,7 @@ import type { Category, SubCategory } from "../../types/api.types";
 import { cloudinaryUrl } from "../../utils/cloudinaryUrl";
 import { getServiceCategoryAnchorId } from "../../utils/serviceCategoryAnchors";
 import { splitDisplayTitle } from "../../utils/titleDisplay";
+import { renderSerifTitleText } from "../../utils/serifTitleText";
 import { ScrollReveal } from "../ui/ScrollReveal";
 import { ServiceSubCategoryShowcase } from "./ServiceSubCategoryShowcase";
 
@@ -68,11 +69,13 @@ export const ServiceCategoryDetailSection = ({
           >
             {titleAccent ? (
               <>
-                <span>{titlePrimary}</span>{" "}
-                <span className="italic text-theme-accent">{titleAccent}</span>
+                <span>{renderSerifTitleText(titlePrimary)}</span>{" "}
+                <span className="italic text-theme-accent">
+                  {renderSerifTitleText(titleAccent)}
+                </span>
               </>
             ) : (
-              category.name
+              renderSerifTitleText(category.name)
             )}
           </h2>
 

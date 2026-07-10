@@ -13,10 +13,18 @@ const navBtnClass =
 const GRID_BADGES = ["Craft", "Living", "Vision", "Lifestyle"] as const;
 
 const runCarouselTransition = (update: () => void) => {
+  const prefersReducedMotion =
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const isDesktop =
+    typeof window !== "undefined" &&
+    window.matchMedia("(min-width: 1024px)").matches;
+
   if (
     typeof document !== "undefined" &&
     "startViewTransition" in document &&
-    !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    isDesktop &&
+    !prefersReducedMotion
   ) {
     document.startViewTransition(update);
     return;

@@ -73,8 +73,8 @@ export const ContactInfo = ({ settings }: ContactInfoProps) => {
   const location = settings?.location || FALLBACK.location;
 
   return (
-    <div className="flex flex-col gap-5">
-      <article className="theme-card-border relative overflow-hidden bg-theme-elevated p-7 shadow-card transition-[border-color,box-shadow] duration-500 ease-out hover:border-theme-accent hover:shadow-card-hover sm:p-8">
+    <div className="flex min-w-0 flex-col gap-5">
+      <article className="theme-card-border relative overflow-hidden bg-theme-elevated p-5 shadow-card transition-[border-color,box-shadow] duration-500 ease-out hover:border-theme-accent hover:shadow-card-hover sm:p-7 lg:p-8">
         <div
           className="pointer-events-none absolute inset-0"
           style={{
@@ -141,28 +141,28 @@ export const ContactInfo = ({ settings }: ContactInfoProps) => {
         </div>
       </article>
 
-      <article className="theme-card-border bg-theme-elevated p-6 shadow-card transition-[border-color,box-shadow] duration-500 ease-out hover:border-theme-accent hover:shadow-card-hover sm:p-7">
+      <article className="theme-card-border min-w-0 bg-theme-elevated p-5 shadow-card transition-[border-color,box-shadow] duration-500 ease-out hover:border-theme-accent hover:shadow-card-hover sm:p-7">
         <p className="font-sans text-[10px] font-bold uppercase tracking-[0.22em] text-theme-kicker">
           Social Media
         </p>
-        <div className="mt-4 grid grid-cols-2 gap-3">
+        <div className="mt-4 grid min-w-0 grid-cols-2 gap-2 sm:gap-3">
           <a
             href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="theme-card-border inline-flex items-center justify-center gap-2 bg-theme-input px-4 py-3 font-sans text-sm font-semibold text-forest-dark transition hover:border-theme-accent/50 hover:text-theme-accent"
+            className="theme-card-border inline-flex min-w-0 items-center justify-center gap-1.5 bg-theme-input px-2 py-3 font-sans text-xs font-semibold text-forest-dark transition hover:border-theme-accent/50 hover:text-theme-accent sm:gap-2 sm:px-4 sm:text-sm"
           >
             <InstagramIcon />
-            Instagram
+            <span className="truncate">Instagram</span>
           </a>
           <a
             href="https://facebook.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="theme-card-border inline-flex items-center justify-center gap-2 bg-theme-input px-4 py-3 font-sans text-sm font-semibold text-forest-dark transition hover:border-theme-accent/50 hover:text-theme-accent"
+            className="theme-card-border inline-flex min-w-0 items-center justify-center gap-1.5 bg-theme-input px-2 py-3 font-sans text-xs font-semibold text-forest-dark transition hover:border-theme-accent/50 hover:text-theme-accent sm:gap-2 sm:px-4 sm:text-sm"
           >
             <FacebookIcon />
-            Facebook
+            <span className="truncate">Facebook</span>
           </a>
         </div>
       </article>

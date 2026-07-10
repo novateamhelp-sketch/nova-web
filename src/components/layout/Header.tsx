@@ -47,12 +47,12 @@ export const Header = () => {
         }
       >
         <Container>
-          <div className="flex h-14 items-center justify-between gap-4 transition-all duration-500 lg:h-16">
-            <Link to="/" className="flex shrink-0 items-center py-1">
-              <SiteLogo />
+          <div className="flex h-14 min-w-0 items-center justify-between gap-2 transition-all duration-500 sm:gap-3 lg:gap-4 lg:h-16">
+            <Link to="/" className="flex min-w-0 shrink items-center py-1">
+              <SiteLogo imageClassName="h-10 w-auto max-w-[min(100%,9.5rem)] object-contain sm:h-12 sm:max-w-[12rem] lg:h-14 lg:max-w-[220px] xl:h-16 xl:max-w-[300px]" />
             </Link>
 
-            <nav className="hidden h-full items-center gap-8 lg:flex">
+            <nav className="hidden h-full min-w-0 items-center gap-5 lg:flex xl:gap-8">
               <NavLink to="/" end className={({ isActive }) => headerNavLinkClass(isActive)}>
                 Home
               </NavLink>
@@ -73,19 +73,23 @@ export const Header = () => {
               <ServiceAreasNavDropdown isActive={serviceAreasActive} />
             </nav>
 
-            <div className="flex items-center gap-3">
-              <ButtonLink
-                to="/contact"
-                variant={transparentHeader ? "outline" : "primary"}
-                className={`hidden transition-all duration-300 ease-out hover:scale-105 active:scale-95 sm:inline-flex ${
-                  transparentHeader
-                    ? "!border-white/70 !text-white hover:!bg-white/10 hover:!text-olive-gold"
-                    : ""
-                }`}
-              >
-                Free Estimate
-              </ButtonLink>
-              <ThemeToggle />
+            <div className="flex shrink-0 items-center gap-2 sm:gap-3 lg:gap-3 xl:gap-4">
+              <div className="hidden sm:block">
+                <ButtonLink
+                  to="/contact"
+                  variant={transparentHeader ? "outline" : "primary"}
+                  className={`whitespace-nowrap transition-all duration-300 ease-out hover:scale-105 active:scale-95 ${
+                    transparentHeader
+                      ? "!border-white/70 !text-white hover:!bg-white/10 hover:!text-olive-gold"
+                      : ""
+                  }`}
+                >
+                  Free Estimate
+                </ButtonLink>
+              </div>
+              <div className="hidden lg:block">
+                <ThemeToggle />
+              </div>
               <button
                 type="button"
                 className="flex min-h-11 min-w-11 items-center justify-center rounded-none text-white transition-all duration-300 hover:scale-105 hover:bg-white/10 active:scale-95 lg:hidden"

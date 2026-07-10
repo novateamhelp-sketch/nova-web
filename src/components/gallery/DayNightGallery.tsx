@@ -8,6 +8,7 @@ import {
   galleryLocationBadge,
 } from "../../utils/galleryDisplay";
 import { splitDisplayTitle } from "../../utils/titleDisplay";
+import { renderSerifTitleText } from "../../utils/serifTitleText";
 
 interface DayNightGalleryProps {
   item: GalleryItem;
@@ -71,13 +72,17 @@ export const DayNightGallery = ({
         <h3 className="line-clamp-2 min-h-[3.25rem] font-serif text-xl font-bold leading-snug text-forest-dark sm:min-h-[3.5rem] sm:text-[1.35rem]">
           {titleSplit.mode === "default" && titleSplit.accent ? (
             <>
-              {titleSplit.primary}{" "}
-              <span className="italic text-theme-accent">{titleSplit.accent}</span>
+              {renderSerifTitleText(titleSplit.primary)}{" "}
+              <span className="italic text-theme-accent">
+                {renderSerifTitleText(titleSplit.accent)}
+              </span>
             </>
           ) : (
-            titleSplit.mode === "default"
-              ? titleSplit.primary
-              : item.title || "Untitled project"
+            renderSerifTitleText(
+              titleSplit.mode === "default"
+                ? titleSplit.primary
+                : item.title || "Untitled project"
+            )
           )}
         </h3>
 

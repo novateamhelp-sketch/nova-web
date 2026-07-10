@@ -43,7 +43,7 @@ export const Contact = () => {
 
       <section
         id="contact-page"
-        className="hero-scroll-over-panel scroll-mt-14 bg-theme-warm py-12 text-forest-dark sm:py-16 lg:scroll-mt-16 lg:py-20"
+        className="hero-scroll-over-panel scroll-mt-14 w-full overflow-x-hidden bg-theme-warm py-12 text-forest-dark sm:py-16 lg:scroll-mt-16 lg:py-20"
       >
         <Container>
           {isLoading ? (
@@ -51,7 +51,7 @@ export const Contact = () => {
           ) : error ? (
             <PageError message={error} onRetry={refetch} />
           ) : (
-            <div className="grid items-start gap-6 lg:grid-cols-2 lg:gap-8">
+            <div className="grid min-w-0 items-start gap-6 lg:grid-cols-2 lg:gap-10 xl:gap-12">
               <ContactInfo settings={data?.settings} />
               <ContactForm />
             </div>

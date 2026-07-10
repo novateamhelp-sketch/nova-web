@@ -30,7 +30,7 @@ export const Layout = () => (
     <SiteLogoProvider>
       <CategoriesNavProvider>
         <ScrollToTop />
-        <div className="flex min-h-screen flex-col">
+        <div className="flex min-h-screen w-full max-w-full flex-col overflow-x-hidden">
           <Header />
           <Main />
           <Footer />

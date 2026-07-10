@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Container } from "../ui/Container";
 import { ScrollReveal } from "../ui/ScrollReveal";
+import { renderSerifTitleText } from "../../utils/serifTitleText";
 
 export const IlluminateMissionBanner = () => (
   <section className="home-flow-cream relative overflow-hidden py-12 text-forest-dark sm:py-14 lg:py-16">
@@ -25,7 +26,7 @@ export const IlluminateMissionBanner = () => (
 
           <h2 className="font-serif font-bold leading-[1.08] tracking-tight text-forest-dark">
             <span className="block text-[2rem] sm:text-4xl lg:text-[2.75rem]">
-              Illuminate Your Outdoors with
+              {renderSerifTitleText("Illuminate Your Outdoors with")}
             </span>
             <span className="mt-2 block text-[2rem] italic text-theme-accent sm:mt-3 sm:text-4xl lg:text-[2.75rem]">
               Nova Outdoor Lighting

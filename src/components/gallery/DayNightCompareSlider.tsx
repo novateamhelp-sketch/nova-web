@@ -17,8 +17,8 @@ export const DayNightCompareSlider = ({
   const [dragging, setDragging] = useState(false);
   const [trackWidth, setTrackWidth] = useState(0);
 
-  const dayUrl = cloudinaryUrl(item.dayImage, { width: 1400 });
-  const nightUrl = cloudinaryUrl(item.nightImage, { width: 1400 });
+  const dayUrl = cloudinaryUrl(item.nightImage, { width: 1400 });
+  const nightUrl = cloudinaryUrl(item.dayImage, { width: 1400 });
   const nightReveal = 100 - position;
 
   useEffect(() => {
@@ -76,7 +76,7 @@ export const DayNightCompareSlider = ({
       {dayUrl ? (
         <img
           src={dayUrl}
-          alt={item.dayImage.alt || `${item.title} — day`}
+          alt={item.nightImage?.alt || `${item.title} — day`}
           className="absolute inset-0 h-full w-full object-cover"
           draggable={false}
         />
@@ -89,7 +89,7 @@ export const DayNightCompareSlider = ({
         {nightUrl ? (
           <img
             src={nightUrl}
-            alt={item.nightImage.alt || `${item.title} — night`}
+            alt={item.dayImage?.alt || `${item.title} — night`}
             className="absolute right-0 top-0 h-full max-w-none object-cover"
             style={{ width: trackWidth || "100%" }}
             draggable={false}

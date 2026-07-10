@@ -9,6 +9,7 @@ import { Section } from "../ui/Section";
 import { ScrollReveal } from "../ui/ScrollReveal";
 import { cloudinaryUrl } from "../../utils/cloudinaryUrl";
 import { splitDisplayTitle } from "../../utils/titleDisplay";
+import { renderSerifTitleText } from "../../utils/serifTitleText";
 import { DarkGridSection } from "./DarkGridSection";
 
 import "swiper/css";
@@ -127,9 +128,12 @@ const NewsSlideContent = ({
           </p>
 
           <h2 className="mt-3 font-serif text-3xl font-bold uppercase leading-[1.05] tracking-[0.04em] text-white sm:mt-4 sm:text-4xl lg:text-[2.75rem]">
-            {namePrimary}
+            {renderSerifTitleText(namePrimary ?? "")}
             {nameAccent ? (
-              <span className="italic text-olive-gold"> {nameAccent}</span>
+              <span className="italic text-olive-gold">
+                {" "}
+                {renderSerifTitleText(nameAccent)}
+              </span>
             ) : null}
           </h2>
 
@@ -171,9 +175,12 @@ const NewsSlideContent = ({
         </p>
 
         <h2 className="mt-2.5 font-serif text-[1.625rem] font-bold uppercase leading-[1.1] tracking-[0.04em] text-forest-dark sm:mt-3 sm:text-3xl lg:text-[2rem]">
-          {namePrimary}
+          {renderSerifTitleText(namePrimary ?? "")}
           {nameAccent ? (
-            <span className="italic text-olive-gold"> {nameAccent}</span>
+            <span className="italic text-olive-gold">
+              {" "}
+              {renderSerifTitleText(nameAccent)}
+            </span>
           ) : null}
         </h2>
 
