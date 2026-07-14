@@ -39,7 +39,12 @@ export const Hero = ({
   const activeSlider =
     activeSliders[activeIndex] ?? activeSliders[0] ?? sliders[0];
 
-  const desktopSlider = activeSliders[0] ?? sliders[0];
+  /** Desktop brand copy: prefer first slide that has a title (order alone can be empty). */
+  const desktopSlider = useMemo(() => {
+    const withTitle = activeSliders.find((slider) => slider.title?.trim());
+    return withTitle ?? activeSliders[0] ?? sliders[0];
+  }, [activeSliders, sliders]);
+
   const videoPoster = heroSlides[0]?.src;
   const videoSrc = resolveHeroVideoSrc(heroVideo);
 
@@ -125,7 +130,7 @@ export const Hero = ({
                 •
               </span>
               <span className="font-medium opacity-85">
-                Proudly illuminating luxury residences across New Jersey.
+                Home Improvement Contractor License Certification: 13VH09395800, Policy number:10143566941
               </span>
             </p>
           </div>

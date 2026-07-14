@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { Link } from "react-router-dom";
-import { Award, Handshake, Leaf, Sparkles } from "lucide-react";
+import { Award, FileBadge, Handshake, Leaf, Sparkles } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { Container } from "../components/ui/Container";
 import { Section } from "../components/ui/Section";
@@ -33,6 +33,12 @@ const MISSION =
 
 const VISION =
   "To be the leading company in outdoor lighting design and installation in our region, recognized for excellence in every project and our commitment to customer satisfaction.";
+
+const COMPANY_AFFILIATION =
+  "LumiScape is a branch of work belonging to M.M.J.J. Services LLC.";
+
+const LICENSE_CERTIFICATION = "13VH09395800";
+const POLICY_NUMBER = "10143566941";
 
 const VALUES: { icon: LucideIcon; title: string; text: string }[] = [
   {
@@ -77,101 +83,187 @@ export const About = () => {
           imageKey={ABOUT_HERO_BANNER_KEY}
           styleAssets={data?.styleAssets}
           eyebrow="About Us"
-          title="Nova Outdoor Lighting"
-          imageAlt="Nova Outdoor Lighting landscape and architectural illumination"
+          title="LumiScape"
+          imageAlt="LumiScape landscape and architectural illumination"
         />
 
         <section className="hero-scroll-over-panel relative overflow-hidden bg-theme-warm py-12 text-forest-dark sm:py-14 lg:py-16">
-        <div
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background:
-              "radial-gradient(ellipse 80% 50% at 50% 0%, color-mix(in srgb, var(--theme-accent) 6%, transparent) 0%, transparent 58%)",
-          }}
-          aria-hidden
-        />
+          <div
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(ellipse 80% 50% at 50% 0%, color-mix(in srgb, var(--theme-accent) 6%, transparent) 0%, transparent 58%)",
+            }}
+            aria-hidden
+          />
 
-        <Container className="relative">
-          <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
-            <ScrollReveal variant="slide-left" className="max-w-xl lg:max-w-none">
-              <div className="mb-6 flex items-center gap-3 sm:mb-8">
-                <span className="h-px w-10 shrink-0 bg-theme-accent" aria-hidden />
-                <p className="font-sans text-[11px] font-bold uppercase tracking-[0.22em] text-theme-accent sm:text-xs">
-                  Who we are
-                </p>
-              </div>
-
-              <h2 className="font-serif font-bold leading-[1.04] tracking-tight text-forest-dark">
-                <span className="block text-[2.35rem] sm:text-5xl lg:text-[3.5rem] xl:text-[4rem]">
-                  About our
-                </span>
-                <span className="mt-2 block text-[2.5rem] italic theme-accent-gradient sm:text-[3.25rem] lg:text-[3.75rem] xl:text-[4.25rem]">
-                  company
-                </span>
-              </h2>
-
-              <p className="mt-7 max-w-lg font-sans text-sm font-medium leading-relaxed tracking-[0.02em] text-body sm:mt-9 sm:text-base sm:leading-8">
-                {ABOUT_COMPANY_DESCRIPTION}
-              </p>
-
-              <div className="mt-8 sm:mt-9">
-                <Link
-                  to="/contact"
-                  className="inline-flex min-h-11 items-center justify-center rounded-none bg-[var(--theme-btn-solid-bg)] px-8 py-3 font-sans text-xs font-bold uppercase tracking-[0.14em] text-[var(--theme-btn-solid-text)] transition hover:brightness-110"
-                >
-                  Request Your Free Consultation!
-                </Link>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal variant="slide-right" className="w-full lg:justify-self-end">
-              <div className="relative w-full p-4">
-                <div
-                  className="pointer-events-none absolute -left-4 -top-4 z-0 h-32 w-32 border border-theme-accent/50"
-                  aria-hidden
-                />
-                <div className="service-area-benefits-panel relative z-10 p-8 shadow-[var(--theme-shadow-card)] sm:p-10 lg:min-h-[320px] lg:p-11">
-                  <ul className="space-y-4 sm:space-y-5">
-                    {ABOUT_COMPANY_BENEFITS.map((benefit) => (
-                      <li
-                        key={benefit}
-                        className="flex gap-3 font-sans text-sm font-medium leading-relaxed tracking-[0.02em] text-body sm:text-base sm:leading-7"
-                      >
-                        <span
-                          className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-theme-accent"
-                          aria-hidden
-                        />
-                        {benefit}
-                      </li>
-                    ))}
-                  </ul>
+          <Container className="relative">
+            <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+              <ScrollReveal variant="slide-left" className="max-w-xl lg:max-w-none">
+                <div className="mb-6 flex items-center gap-3 sm:mb-8">
+                  <span className="h-px w-10 shrink-0 bg-theme-accent" aria-hidden />
+                  <p className="font-sans text-[11px] font-bold uppercase tracking-[0.22em] text-theme-accent sm:text-xs">
+                    Who we are
+                  </p>
                 </div>
-                <div
-                  className="pointer-events-none absolute -bottom-4 -right-4 z-0 h-32 w-32 border border-theme-accent/50"
-                  aria-hidden
-                />
-              </div>
-            </ScrollReveal>
-          </div>
-        </Container>
+
+                <h2 className="font-serif font-bold leading-[1.04] tracking-tight text-forest-dark">
+                  <span className="block text-[2.35rem] sm:text-5xl lg:text-[3.5rem] xl:text-[4rem]">
+                    About our
+                  </span>
+                  <span className="mt-2 block text-[2.5rem] italic theme-accent-gradient sm:text-[3.25rem] lg:text-[3.75rem] xl:text-[4.25rem]">
+                    company
+                  </span>
+                </h2>
+
+                <p className="mt-7 max-w-lg font-sans text-sm font-medium leading-relaxed tracking-[0.02em] text-body sm:mt-9 sm:text-base sm:leading-8">
+                  {ABOUT_COMPANY_DESCRIPTION}
+                </p>
+
+                <div className="mt-8 sm:mt-9">
+                  <Link
+                    to="/contact"
+                    className="inline-flex min-h-11 items-center justify-center rounded-none bg-[var(--theme-btn-solid-bg)] px-8 py-3 font-sans text-xs font-bold uppercase tracking-[0.14em] text-[var(--theme-btn-solid-text)] transition hover:brightness-110"
+                  >
+                    Request Your Free Consultation!
+                  </Link>
+                </div>
+              </ScrollReveal>
+
+              <ScrollReveal variant="slide-right" className="w-full lg:justify-self-end">
+                <div className="relative w-full p-4">
+                  <div
+                    className="pointer-events-none absolute -left-4 -top-4 z-0 h-32 w-32 border border-theme-accent/50"
+                    aria-hidden
+                  />
+                  <div className="service-area-benefits-panel relative z-10 p-8 shadow-[var(--theme-shadow-card)] sm:p-10 lg:min-h-[320px] lg:p-11">
+                    <ul className="space-y-4 sm:space-y-5">
+                      {ABOUT_COMPANY_BENEFITS.map((benefit) => (
+                        <li
+                          key={benefit}
+                          className="flex gap-3 font-sans text-sm font-medium leading-relaxed tracking-[0.02em] text-body sm:text-base sm:leading-7"
+                        >
+                          <span
+                            className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-theme-accent"
+                            aria-hidden
+                          />
+                          {benefit}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div
+                    className="pointer-events-none absolute -bottom-4 -right-4 z-0 h-32 w-32 border border-theme-accent/50"
+                    aria-hidden
+                  />
+                </div>
+              </ScrollReveal>
+            </div>
+          </Container>
         </section>
       </PageHeroScrollStack>
 
       <Section tone="muted">
-        <div className="grid gap-6 lg:grid-cols-2">
-          <ScrollReveal variant="slide-left">
-            <Card>
+        <div className="grid items-stretch gap-6 lg:grid-cols-2">
+          <ScrollReveal variant="slide-left" className="h-full">
+            <Card className="h-full">
               <p className="eyebrow mb-2">Our Mission</p>
               <DisplayTitle as="h3" size="card" title="Our Mission" />
               <p className="mt-4 text-body leading-relaxed">{MISSION}</p>
             </Card>
           </ScrollReveal>
-          <ScrollReveal variant="slide-right">
-            <Card>
+          <ScrollReveal variant="slide-right" className="h-full">
+            <Card className="h-full">
               <p className="eyebrow mb-2">Our Vision</p>
               <DisplayTitle as="h3" size="card" title="Our Vision" />
               <p className="mt-4 text-body leading-relaxed">{VISION}</p>
             </Card>
+          </ScrollReveal>
+        </div>
+      </Section>
+
+      <Section tone="default" size="md">
+        <div className="grid items-start gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+          <ScrollReveal variant="slide-left" className="max-w-xl lg:max-w-none">
+            <div className="mb-5 flex items-center gap-3 sm:mb-6">
+              <span className="h-px w-10 shrink-0 bg-theme-accent" aria-hidden />
+              <p className="font-sans text-[11px] font-bold uppercase tracking-[0.22em] text-theme-accent sm:text-xs">
+                Credentials
+              </p>
+            </div>
+
+            <h2 className="font-serif font-bold leading-[1.08] tracking-tight text-forest-dark">
+              <span className="block text-[2rem] sm:text-4xl lg:text-[2.75rem]">
+                Licensed under
+              </span>
+              <span className="mt-2 block text-[2rem] italic theme-accent-gradient sm:mt-3 sm:text-4xl lg:text-[2.75rem]">
+                M.M.J.J. Services LLC
+              </span>
+            </h2>
+
+            <p className="mt-6 max-w-lg font-sans text-sm font-medium leading-relaxed tracking-[0.02em] text-body sm:mt-7 sm:text-base sm:leading-8">
+              {COMPANY_AFFILIATION}
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal variant="slide-right">
+            <div className="relative p-4">
+              <div
+                className="pointer-events-none absolute -left-3 -top-3 z-0 h-24 w-24 border border-theme-accent/50"
+                aria-hidden
+              />
+              <div className="home-mission-split-right relative z-10 space-y-6 p-7 shadow-[var(--theme-shadow-card)] sm:space-y-7 sm:p-8 lg:p-9">
+                <div className="flex items-start gap-4">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center bg-theme-accent/12">
+                    <FileBadge
+                      size={20}
+                      strokeWidth={1.75}
+                      className="text-theme-accent"
+                      aria-hidden
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-theme-accent sm:text-[11px]">
+                      Home Improvement Contractor
+                    </p>
+                    <p className="mt-1.5 font-sans text-sm font-medium leading-relaxed text-body sm:text-base">
+                      License Certification
+                    </p>
+                    <p className="mt-2 font-serif text-xl font-semibold tracking-wide text-forest-dark sm:text-2xl">
+                      {LICENSE_CERTIFICATION}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="h-px w-full bg-theme-accent/20" aria-hidden />
+
+                <div className="flex items-start gap-4">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center bg-theme-accent/12">
+                    <Award
+                      size={20}
+                      strokeWidth={1.75}
+                      className="text-theme-accent"
+                      aria-hidden
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-theme-accent sm:text-[11px]">
+                      Insurance
+                    </p>
+                    <p className="mt-1.5 font-sans text-sm font-medium leading-relaxed text-body sm:text-base">
+                      Policy number
+                    </p>
+                    <p className="mt-2 font-serif text-xl font-semibold tracking-wide text-forest-dark sm:text-2xl">
+                      {POLICY_NUMBER}
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div
+                className="pointer-events-none absolute -bottom-3 -right-3 z-0 h-24 w-24 border border-theme-accent/50"
+                aria-hidden
+              />
+            </div>
           </ScrollReveal>
         </div>
       </Section>

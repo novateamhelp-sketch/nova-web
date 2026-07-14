@@ -167,8 +167,8 @@
   --banner-btn-bg: var(--olive-gold);
   --banner-btn-text: #1a1208;
   --banner-btn-border: transparent;
-  --banner-btn-bg-hover: transparent;
-  --banner-btn-hover-filter: brightness(1.05);
+  --banner-btn-bg-hover: color-mix(in srgb, var(--olive-gold) 88%, white);
+  --banner-btn-hover-filter: none;
   --banner-subtitle-mode: long;
   --banner-cta-show-icon: block;
   --banner-glow-blur: 24px;

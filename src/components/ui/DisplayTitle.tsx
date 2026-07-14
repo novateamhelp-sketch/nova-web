@@ -54,13 +54,19 @@ export const DisplayTitle = ({
   const sizes = sizeClasses[size];
 
   if (split.mode === "brand") {
+    const accentSize = split.compound ? sizes.primary : sizes.accent;
+    const accentClass = `italic ${light ? "text-olive-gold" : "text-theme-accent"} ${accentSize}`;
     return (
       <Tag
         className={`font-serif font-bold tracking-tight ${sizes.wrapper ?? "leading-[1.08]"} ${textColor} ${className}`}
       >
         <span className={sizes.primary}>
-          {renderSerifTitleText(split.lead)} {renderSerifTitleText(split.linePrimary)}{" "}
-          <span className={`italic ${light ? "text-olive-gold" : "text-theme-accent"} ${sizes.accent}`}>
+          {renderSerifTitleText(split.lead)}
+          {split.linePrimary ? (
+            <> {renderSerifTitleText(split.linePrimary)}</>
+          ) : null}
+          {split.compound ? null : " "}
+          <span className={accentClass}>
             {renderSerifTitleText(split.accent)}
           </span>
         </span>

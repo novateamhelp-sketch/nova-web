@@ -56,7 +56,7 @@ export const IlluminateIntro = ({
           <div className="mb-8 flex items-center gap-3 sm:mb-10">
             <span className="h-px w-10 shrink-0 bg-theme-accent" aria-hidden />
             <p className="font-sans text-[11px] font-bold uppercase tracking-[0.22em] text-theme-accent sm:text-xs">
-              About Nova · Since 2025
+              About LumiScape · Since 2025
             </p>
           </div>
 
@@ -72,7 +72,7 @@ export const IlluminateIntro = ({
           <p className="mt-7 max-w-lg font-sans text-sm font-medium leading-relaxed tracking-[0.02em] text-sage sm:mt-9 sm:text-base sm:leading-8">
             At{" "}
             <strong className="font-semibold text-forest-dark">
-              Nova Outdoor Lighting
+              LumiScape
             </strong>
             , we specialize in transforming ordinary landscape features into
             breathtaking, luxury environments. Our designs prioritize safety,

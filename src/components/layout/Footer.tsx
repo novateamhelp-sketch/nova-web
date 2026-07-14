@@ -63,7 +63,7 @@ export const Footer = () => (
       </div>
 
       <div className="mt-10 border-t border-white/10 pt-6 text-center text-xs text-white/50">
-        © {new Date().getFullYear()} Nova Outdoor Lighting. All rights reserved.
+        © {new Date().getFullYear()} LumiScape. All rights reserved.
       </div>
     </Container>
   </footer>

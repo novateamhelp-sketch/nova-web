@@ -20,7 +20,7 @@ export const IlluminateMissionBanner = () => (
           <div className="mb-5 flex items-center gap-3 sm:mb-6">
             <span className="h-px w-10 shrink-0 bg-theme-accent" aria-hidden />
             <p className="font-sans text-[11px] font-bold uppercase tracking-[0.22em] text-theme-accent sm:text-xs">
-              About Nova · Since 2025
+              About LumiScape · Since 2025
             </p>
           </div>
 
@@ -29,7 +29,7 @@ export const IlluminateMissionBanner = () => (
               {renderSerifTitleText("Illuminate Your Outdoors with")}
             </span>
             <span className="mt-2 block text-[2rem] italic text-theme-accent sm:mt-3 sm:text-4xl lg:text-[2.75rem]">
-              Nova Outdoor Lighting
+              LumiScape
             </span>
           </h2>
         </ScrollReveal>
@@ -40,7 +40,7 @@ export const IlluminateMissionBanner = () => (
               <p>
                 At{" "}
                 <strong className="font-semibold text-forest-dark">
-                  Nova Outdoor Lighting
+                  LumiScape
                 </strong>
                 , we specialize in transforming outdoor spaces with stunning
                 lighting, landscaping, and hardscaping solutions. Our mission is to

@@ -1,7 +1,7 @@
 import type { ServiceArea } from "../types/api.types";
 import { getStateAbbrev } from "./slugify";
 
-export const SITE_NAME = "Nova Outdoor Lighting";
+export const SITE_NAME = "LumiScape";
 
 /** BCP 47 locale — US English for crawlers and social previews */
 export const SITE_LOCALE = "en-US";
@@ -37,9 +37,9 @@ export const PAGE_SEO = {
     description: `Browse completed outdoor and landscape lighting projects across ${SERVICE_AREA_LONG}. Real homes, real results in the ${SERVICE_AREA_TRI_STATE}.`,
   },
   about: {
-    title: "About Us | Nova Outdoor Lighting",
+    title: "About Us | LumiScape",
     description:
-      "Nova Outdoor Lighting transforms outdoor spaces with landscape lighting, hardscaping, and architectural illumination in New Jersey. Mission, vision, and values driven by quality and innovation.",
+      "LumiScape transforms outdoor spaces with landscape lighting, hardscaping, and architectural illumination in New Jersey. Mission, vision, and values driven by quality and innovation.",
   },
   contact: {
     title: `Free Outdoor Lighting Estimate in ${SERVICE_AREA_LABEL}`,
@@ -47,7 +47,7 @@ export const PAGE_SEO = {
   },
   notFound: {
     title: "Page Not Found",
-    description: "The page you are looking for does not exist on Nova Outdoor Lighting.",
+    description: "The page you are looking for does not exist on LumiScape.",
   },
 } as const;
 
@@ -78,7 +78,7 @@ export const truncateDescription = (text: string, max = 160): string =>
 
 export const serviceAreaIndexSeo = {
   title: `Service Areas — ${SERVICE_AREA_LABEL}`,
-  description: `Nova Outdoor Lighting serves homeowners in ${SERVICE_AREA_LONG}, ${SERVICE_COUNTRY}. Browse outdoor lighting coverage by state and county across the ${SERVICE_AREA_TRI_STATE}.`,
+  description: `LumiScape serves homeowners in ${SERVICE_AREA_LONG}, ${SERVICE_COUNTRY}. Browse outdoor lighting coverage by state and county across the ${SERVICE_AREA_TRI_STATE}.`,
   keywords: `${DEFAULT_KEYWORDS}, service area, counties served`,
 };
 
@@ -116,4 +116,4 @@ export const serviceAreaCountyIntro = (
   area: ServiceArea
 ): string =>
   area.customMessage.trim() ||
-  `Nova Outdoor Lighting provides outdoor lighting, landscape lighting, and hardscaping services to homeowners in ${county}, ${area.stateName}. Contact us for a free on-site estimate.`;
+  `LumiScape provides outdoor lighting, landscape lighting, and hardscaping services to homeowners in ${county}, ${area.stateName}. Contact us for a free on-site estimate.`;

@@ -1,5 +1,6 @@
 import { useSiteLogo } from "../../context/SiteLogoContext";
 import { cloudinaryUrl } from "../../utils/cloudinaryUrl";
+import { SITE_NAME } from "../../utils/siteMeta";
 
 interface SiteLogoProps {
   showText?: boolean;
@@ -28,7 +29,7 @@ export const SiteLogo = ({
     return (
       <img
         src={imageUrl}
-        alt={logo?.image?.alt || logo?.name || "Nova Outdoor Lighting"}
+        alt={logo?.image?.alt || logo?.name || SITE_NAME}
         className={imageClassName}
         width={300}
         height={64}
@@ -39,15 +40,15 @@ export const SiteLogo = ({
   return (
     <>
       <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gold">
-        <span className="text-lg font-bold text-forest-dark">N</span>
+        <span className="text-lg font-bold text-forest-dark">L</span>
       </div>
       {showText ? (
         <div className={alwaysShowText ? "block" : "hidden sm:block"}>
           <p className="text-sm font-bold leading-tight text-gold">
-            NOVA OUTDOOR
+            {SITE_NAME}
           </p>
           <p className="text-[10px] font-medium uppercase tracking-widest text-white/70">
-            Lighting
+            Outdoor Lighting
           </p>
         </div>
       ) : null}

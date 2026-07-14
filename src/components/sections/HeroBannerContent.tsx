@@ -12,7 +12,7 @@ export const HeroBannerContent = ({
   settings,
 }: HeroBannerContentProps) => {
   const eyebrow = slider?.subtitle
-    ? settings?.siteName || "Nova Outdoor Lighting"
+    ? settings?.siteName || "LumiScape"
     : "Bringing ideas to life";
 
   const titleLine = slider?.title || "Custom Outdoor";

@@ -31,7 +31,7 @@ export const resolveServiceAreaTitleParts = (
 };
 
 export const serviceAreaStateDescription = (stateName: string) =>
-  `At Nova Outdoor Lighting, we take pride in delivering high-quality, customized outdoor lighting solutions throughout ${stateName}. Whether you're looking to highlight your home's curb appeal, increase safety, or create a magical ambiance at night, our local team is ready to bring your vision to life.`;
+  `At LumiScape, we take pride in delivering high-quality, customized outdoor lighting solutions throughout ${stateName}. Whether you're looking to highlight your home's curb appeal, increase safety, or create a magical ambiance at night, our local team is ready to bring your vision to life.`;
 
 export const serviceAreaStateBenefits = (stateName: string) =>
   [
@@ -44,7 +44,7 @@ export const serviceAreaStateBenefits = (stateName: string) =>
 export const SERVICE_AREA_WHY_CHOOSE_US = [
   {
     title: "Commitment to Quality",
-    text: "At Nova Outdoor Lighting, we don't just install lights — we create atmosphere. We make sure every project is completed using the best materials and with the utmost care.",
+    text: "At LumiScape, we don't just install lights — we create atmosphere. We make sure every project is completed using the best materials and with the utmost care.",
   },
   {
     title: "Custom Projects for Every Client",

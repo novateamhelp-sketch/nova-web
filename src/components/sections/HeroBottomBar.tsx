@@ -37,7 +37,7 @@ export const HeroBottomBar = ({
           •
         </span>
         <span className="font-medium opacity-85">
-          Proudly illuminating luxury residences across New Jersey.
+          Home Improvement Contractor License Certification: 13VH09395800, Policy number:10143566941
         </span>
       </p>
     </div>

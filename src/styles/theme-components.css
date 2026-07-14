@@ -85,5 +85,7 @@
 
 .contact-banner__cta:hover {
   background: var(--banner-btn-bg-hover);
+  border-color: var(--banner-btn-border);
+  color: var(--banner-btn-text);
   filter: var(--banner-btn-hover-filter);
 }

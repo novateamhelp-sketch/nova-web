@@ -31,7 +31,7 @@ export const ProjectDetails = () => {
     title: project ? formatProjectTitle(project.name) : undefined,
     description:
       project?.description ||
-      `Outdoor and landscape lighting project completed by Nova Outdoor Lighting in the ${SERVICE_AREA_LABEL} tri-state area.`,
+      `Outdoor and landscape lighting project completed by LumiScape in the ${SERVICE_AREA_LABEL} tri-state area.`,
     ogImage: project
       ? cloudinaryUrl(project.mainImage, { width: 1200 })
       : undefined,

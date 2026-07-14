@@ -43,7 +43,7 @@ const toHeroSlide = (slider: Slider): HeroSlide | null => {
       slider.image?.alt ||
       slider.title ||
       slider.name ||
-      "Nova Outdoor Lighting",
+      "LumiScape",
   };
 };
 

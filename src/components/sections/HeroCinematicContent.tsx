@@ -3,6 +3,7 @@ import type { Slider, SiteSettings } from "../../types/api.types";
 import { ButtonLink } from "../ui/Button";
 import { DisplayTitle } from "../ui/DisplayTitle";
 import { OLIVE, oliveMix } from "../../constants/olivePalette";
+import { SITE_NAME } from "../../utils/siteMeta";
 
 interface HeroCinematicContentProps {
   slider?: Slider;
@@ -10,7 +11,7 @@ interface HeroCinematicContentProps {
   variant?: "overlay" | "panel" | "glass" | "centered";
 }
 
-const DEFAULT_TITLE = "Nova Outdoor Lighting";
+const DEFAULT_TITLE = SITE_NAME;
 const DEFAULT_TAGLINE =
   "Design, installation, innovation and custom lighting for luxury residences across New Jersey.";
 
@@ -31,9 +32,10 @@ export const HeroCinematicContent = ({
   settings,
   variant = "panel",
 }: HeroCinematicContentProps) => {
-  const title = slider?.title || settings?.siteName || DEFAULT_TITLE;
+  const title =
+    slider?.title?.trim() || settings?.siteName?.trim() || DEFAULT_TITLE;
   const eyebrow = "Bringing Ideas to Life";
-  const tagline = slider?.subtitle || DEFAULT_TAGLINE;
+  const tagline = slider?.subtitle?.trim() || DEFAULT_TAGLINE;
 
   const ctaLabel = slider?.buttonText || "Transform Your Space";
   const ctaUrl = slider?.buttonUrl || "/contact";

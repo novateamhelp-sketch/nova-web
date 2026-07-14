@@ -3,7 +3,7 @@ import { OLIVE, oliveMix } from "../../constants/olivePalette";
 
 export const HeroRatingBadge = ({ className = "" }: { className?: string }) => (
   <aside
-    className={`w-full max-w-[16rem] shrink-0 rounded-xl border px-4 py-2.5 text-center shadow-md sm:max-w-[16.5rem] sm:px-5 sm:py-3 ${className}`}
+    className={`w-full max-w-[22rem] shrink-0 rounded-xl border px-4 py-2.5 text-center shadow-md sm:max-w-[24rem] sm:px-5 sm:py-3 ${className}`}
     style={{
       borderColor: oliveMix(OLIVE.oliveMuted, 55),
       backgroundColor: oliveMix(OLIVE.bgDeep, 90),
@@ -28,10 +28,10 @@ export const HeroRatingBadge = ({ className = "" }: { className?: string }) => (
       </p>
     </div>
     <p
-      className="mx-auto mt-1.5 max-w-[13rem] font-sans text-[10px] leading-snug sm:max-w-[14rem] sm:text-[11px]"
+      className="mx-auto mt-1.5 max-w-none font-sans text-[10px] leading-snug sm:text-[11px]"
       style={{ color: oliveMix(OLIVE.text, 85) }}
     >
-      Proudly illuminating luxury residences across New Jersey.
+      Home Improvement Contractor License Certification: 13VH09395800, Policy number:10143566941
     </p>
   </aside>
 );

@@ -14,7 +14,7 @@ import {
 } from "../utils/siteMeta";
 
 export interface PageMetaOptions {
-  /** Page-specific segment, e.g. "Contact" → "Contact | Nova Outdoor Lighting" */
+  /** Page-specific segment, e.g. "Contact" → "Contact | LumiScape" */
   title?: string;
   /** Overrides the full document title (used for Home SEO defaults from API) */
   fullTitle?: string;

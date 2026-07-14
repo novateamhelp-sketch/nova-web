@@ -200,7 +200,7 @@ const ServiceAreaCountyContent = ({
           <div className="space-y-8">
             <p className="text-body">
               Looking for a trusted outdoor lighting company in {county},{" "}
-              {area.stateName}? Nova Outdoor Lighting designs and installs
+              {area.stateName}? LumiScape designs and installs
               landscape lighting, path lighting, and architectural lighting for
               residential properties throughout the area.
             </p>

@@ -15,7 +15,7 @@ export const HeroSlideContent = ({
 }: HeroSlideContentProps) => (
   <div className="relative max-w-2xl animate-fade-in">
     <p className="eyebrow mb-3">
-      {settings?.siteName || "Nova Outdoor Lighting"}
+      {settings?.siteName || "LumiScape"}
     </p>
     <h1 className="text-white">
       {slider?.title ||

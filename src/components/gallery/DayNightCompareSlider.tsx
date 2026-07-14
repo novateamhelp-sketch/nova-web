@@ -101,7 +101,7 @@ export const DayNightCompareSlider = ({
         Daytime Original
       </span>
       <span className="pointer-events-none absolute right-4 top-4 z-20 rounded-full border border-olive-gold/55 bg-olive-bg-deep/88 px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-olive-gold sm:text-[11px]">
-        Nova Night Artistry
+        LumiScape Night Artistry
       </span>
 
       <div

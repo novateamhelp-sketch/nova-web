@@ -38,7 +38,7 @@ export const ServiceAreaWhyChooseUs = () => (
             <div className="mb-6 flex items-center gap-3 sm:mb-8">
               <span className="h-px w-10 shrink-0 bg-theme-accent" aria-hidden />
               <p className="font-sans text-[11px] font-bold uppercase tracking-[0.22em] text-theme-accent sm:text-xs">
-                Why Nova
+                Why LumiScape
               </p>
             </div>
 
