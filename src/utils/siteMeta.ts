@@ -13,32 +13,33 @@ export const SERVICE_COUNTRY = "United States";
 export const SERVICE_COUNTRY_CODE = "US";
 
 /** Primary service region for titles and local SEO copy */
-export const SERVICE_AREA_LABEL = "Pennsylvania";
-export const SERVICE_AREA_LONG = "Pennsylvania";
-export const SERVICE_AREA_TRI_STATE = "Pennsylvania";
+export const SERVICE_AREA_LABEL = "NJ, NY & PA";
+export const SERVICE_AREA_LONG =
+  "New Jersey, New York, and Pennsylvania";
+export const SERVICE_AREA_TRI_STATE = "tri-state area";
 
 export const DEFAULT_TITLE = `${SITE_NAME} | Landscape & Outdoor Lighting in ${SERVICE_AREA_LABEL}`;
 
 export const DEFAULT_DESCRIPTION =
-  "Professional outdoor lighting, landscape lighting, and hardscaping for homeowners across Pennsylvania. Licensed & insured. Free on-site estimate.";
+  "Professional outdoor lighting, landscape lighting, and hardscaping for homeowners across the NJ, NY, and PA tri-state area. Licensed & insured. Free on-site estimate.";
 
 export const DEFAULT_KEYWORDS =
-  "outdoor lighting, landscape lighting, hardscaping, outdoor lighting company, landscape lighting installation, Pennsylvania outdoor lighting, Pennsylvania landscape lighting";
+  "outdoor lighting, landscape lighting, hardscaping, outdoor lighting company, landscape lighting installation, NJ outdoor lighting, NY outdoor lighting, Pennsylvania landscape lighting, tri-state area";
 
 /** Static page copy tuned for US local search */
 export const PAGE_SEO = {
   services: {
     title: `Outdoor Lighting & Landscaping Services in ${SERVICE_AREA_LABEL}`,
-    description: `Outdoor lighting, landscape lighting, and hardscaping services for residential properties in ${SERVICE_AREA_LONG}.`,
+    description: `Outdoor lighting, landscape lighting, and hardscaping services for residential properties in ${SERVICE_AREA_LONG}. Serving the ${SERVICE_AREA_TRI_STATE}.`,
   },
   projects: {
     title: `Outdoor Lighting Projects & Portfolio in ${SERVICE_AREA_LABEL}`,
-    description: `Browse completed outdoor and landscape lighting projects across ${SERVICE_AREA_LONG}. Real homes, real results.`,
+    description: `Browse completed outdoor and landscape lighting projects across ${SERVICE_AREA_LONG}. Real homes, real results in the ${SERVICE_AREA_TRI_STATE}.`,
   },
   about: {
     title: "About Us | LumiScape",
     description:
-      "LumiScape transforms outdoor spaces with landscape lighting, hardscaping, and architectural illumination in Pennsylvania. Mission, vision, and values driven by quality and innovation.",
+      "LumiScape transforms outdoor spaces with landscape lighting, hardscaping, and architectural illumination across New Jersey, New York, and Pennsylvania. Mission, vision, and values driven by quality and innovation.",
   },
   contact: {
     title: `Free Outdoor Lighting Estimate in ${SERVICE_AREA_LABEL}`,
@@ -77,8 +78,8 @@ export const truncateDescription = (text: string, max = 160): string =>
 
 export const serviceAreaIndexSeo = {
   title: `Service Areas — ${SERVICE_AREA_LABEL}`,
-  description: `LumiScape serves homeowners across ${SERVICE_AREA_LONG}, ${SERVICE_COUNTRY}. Browse outdoor lighting coverage and request a free estimate.`,
-  keywords: `${DEFAULT_KEYWORDS}, service area, counties served`,
+  description: `LumiScape serves homeowners in ${SERVICE_AREA_LONG}, ${SERVICE_COUNTRY}. Browse outdoor lighting coverage across the ${SERVICE_AREA_TRI_STATE}.`,
+  keywords: `${DEFAULT_KEYWORDS}, service area`,
 };
 
 export const serviceAreaStateSeo = (area: ServiceArea) => {

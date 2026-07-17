@@ -27,20 +27,12 @@ export const AppRouter = () => (
           element={<Navigate to="/service-areas/pennsylvania" replace />}
         />
         <Route
-          path="service-areas/new-jersey"
-          element={<Navigate to="/service-areas/pennsylvania" replace />}
-        />
-        <Route
           path="service-areas/new-jersey/:countySlug"
-          element={<Navigate to="/service-areas/pennsylvania" replace />}
-        />
-        <Route
-          path="service-areas/new-york"
-          element={<Navigate to="/service-areas/pennsylvania" replace />}
+          element={<Navigate to="/service-areas/new-jersey" replace />}
         />
         <Route
           path="service-areas/new-york/:countySlug"
-          element={<Navigate to="/service-areas/pennsylvania" replace />}
+          element={<Navigate to="/service-areas/new-york" replace />}
         />
         <Route path="service-areas/:slug" element={<ServiceArea />} />
         <Route path="service-areas/:slug/:countySlug" element={<ServiceArea />} />

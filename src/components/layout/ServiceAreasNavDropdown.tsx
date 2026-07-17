@@ -101,7 +101,7 @@ export const ServiceAreasNavDropdown = ({
 
           <div className="rounded-b-xl border-t border-white/10 bg-[#141414]/95 py-3 text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-white/80">
-              Residential & commercial coverage across Pennsylvania
+              Residential & commercial coverage across the tri-state area
             </p>
           </div>
         </div>

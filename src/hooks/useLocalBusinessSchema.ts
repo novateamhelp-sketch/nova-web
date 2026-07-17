@@ -35,6 +35,8 @@ export const useLocalBusinessSchema = (
         addressRegion: settings?.location || SERVICE_AREA_LONG,
       },
       areaServed: [
+        { "@type": "State", name: "New Jersey", containedInPlace: SERVICE_COUNTRY },
+        { "@type": "State", name: "New York", containedInPlace: SERVICE_COUNTRY },
         { "@type": "State", name: "Pennsylvania", containedInPlace: SERVICE_COUNTRY },
       ],
       knowsAbout: [

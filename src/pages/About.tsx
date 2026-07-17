@@ -19,7 +19,7 @@ import { splitDisplayTitle } from "../utils/titleDisplay";
 import { renderSerifTitleText } from "../utils/serifTitleText";
 
 const ABOUT_COMPANY_DESCRIPTION =
-  "Design, installation, and maintenance for residential and commercial outdoor spaces across Pennsylvania.";
+  "Design, installation, and maintenance for residential and commercial outdoor spaces across New Jersey, New York, and Pennsylvania.";
 
 const ABOUT_COMPANY_BENEFITS = [
   "Landscape lighting, hardscaping, and architectural illumination for gardens, patios, pathways, and facades.",

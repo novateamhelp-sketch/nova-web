@@ -13,7 +13,7 @@ interface HeroCinematicContentProps {
 
 const DEFAULT_TITLE = SITE_NAME;
 const DEFAULT_TAGLINE =
-  "Design, installation, innovation and custom lighting for luxury residences across Pennsylvania.";
+  "Design, installation, innovation and custom lighting for luxury residences across New Jersey, New York, and Pennsylvania.";
 
 const centeredCtaClassName =
   "inline-flex min-h-11 items-center justify-center rounded-none bg-olive-gold px-10 py-2.5 font-sans text-[10px] font-bold uppercase tracking-[0.2em] text-theme-accent-foreground transition-all duration-300 hover:brightness-105 hover:shadow-[0_8px_24px_color-mix(in_srgb,var(--theme-accent)_32%,transparent)] sm:min-h-12 sm:px-12 sm:text-[11px]";

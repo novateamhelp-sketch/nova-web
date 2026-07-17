@@ -20,7 +20,7 @@ export const Footer = () => (
           </Link>
           <p className="text-sm leading-relaxed">
             Professional outdoor lighting, landscaping, and hardscaping across
-            Pennsylvania.
+            New Jersey, New York, and Pennsylvania.
           </p>
         </div>
 

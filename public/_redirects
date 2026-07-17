@@ -1,6 +1,4 @@
 /service-areas/connecticut /service-areas/pennsylvania 301
-/service-areas/new-jersey /service-areas/pennsylvania 301
-/service-areas/new-jersey/* /service-areas/pennsylvania 301
-/service-areas/new-york /service-areas/pennsylvania 301
-/service-areas/new-york/* /service-areas/pennsylvania 301
+/service-areas/new-jersey/* /service-areas/new-jersey 301
+/service-areas/new-york/* /service-areas/new-york 301
 /* /index.html 200
