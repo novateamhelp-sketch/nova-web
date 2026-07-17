@@ -59,7 +59,7 @@ export const ContactCTA = ({
               <p className="max-w-lg font-sans text-base leading-relaxed text-white/72 lg:text-[1.05rem] lg:leading-[1.75]">
                 From architectural uplighting to path and accent lighting, our
                 specialists create custom outdoor lighting plans for homes across
-                NJ, NY, and CT.
+                Pennsylvania.
               </p>
 
               <div className="flex flex-wrap items-center gap-4 pt-1">

@@ -52,7 +52,7 @@ export const SERVICE_AREA_WHY_CHOOSE_US = [
   },
   {
     title: "Local Expert Team",
-    text: "Our team is made up of experienced local professionals who understand the climate and specific needs of each area in New Jersey, New York, and Connecticut. This allows us to deliver highly effective and regionally adapted solutions.",
+    text: "Our team is made up of experienced local professionals who understand the climate and specific needs of each area in Pennsylvania. This allows us to deliver highly effective and regionally adapted solutions.",
   },
   {
     title: "Fast and Efficient Service",

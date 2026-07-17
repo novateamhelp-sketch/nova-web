@@ -26,7 +26,7 @@ export const HeroSlideContent = ({
     <p className="mt-5 text-body-light">
       {slider?.subtitle ||
         (fallback
-          ? "Landscape lighting, hardscaping, and custom outdoor design across New Jersey, New York, and Connecticut."
+          ? "Landscape lighting, hardscaping, and custom outdoor design across Pennsylvania."
           : "")}
     </p>
     <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-4">

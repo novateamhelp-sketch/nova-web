@@ -20,7 +20,7 @@ export const HeroBannerContent = ({
 
   const description =
     slider?.subtitle ||
-    "With a passion for premium outdoor lighting, sophisticated hardscaping, and vibrant landscaping in New Jersey, New York, and Connecticut.";
+    "With a passion for premium outdoor lighting, sophisticated hardscaping, and vibrant landscaping in Pennsylvania.";
 
   const ctaLabel = slider?.buttonText || "Transform Your Space";
   const ctaUrl = slider?.buttonUrl || "/contact";

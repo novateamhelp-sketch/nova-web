@@ -14,7 +14,6 @@ const STATE_ABBREVS: Record<string, string> = {
   arkansas: "AR",
   california: "CA",
   colorado: "CO",
-  connecticut: "CT",
   delaware: "DE",
   florida: "FL",
   georgia: "GA",

@@ -33,7 +33,9 @@ export const ServiceAreaCountiesSection = ({
               </div>
 
               <h2 className="font-serif text-[2rem] font-bold leading-tight tracking-tight text-forest-dark sm:text-4xl lg:text-[2.75rem]">
-                {area.stateName} Counties
+                {countyCount > 0
+                  ? `${area.stateName} Counties`
+                  : `${area.stateName} Service Area`}
               </h2>
             </ScrollReveal>
 
