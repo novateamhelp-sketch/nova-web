@@ -5,6 +5,10 @@ import { ButtonLink } from "../ui/Button";
 import { ThemeToggle } from "../ui/ThemeToggle";
 import { useCategoriesNav } from "../../context/CategoriesNavContext";
 import { SERVICE_AREA_NAV_ITEMS } from "../../config/serviceAreas.config";
+import {
+  CONTACT_FALLBACK,
+  useSiteSettings,
+} from "../../hooks/useSiteSettings";
 
 interface MobileMenuProps {
   open: boolean;
@@ -24,6 +28,9 @@ export const MobileMenu = ({ open, onClose }: MobileMenuProps) => {
   const [servicesOpen, setServicesOpen] = useState(false);
   const [serviceAreasOpen, setServiceAreasOpen] = useState(false);
   const { menuCategories } = useCategoriesNav();
+  const { data: settings } = useSiteSettings();
+  const phoneCalls =
+    settings?.phoneCalls?.trim() || CONTACT_FALLBACK.phoneCalls;
 
   useEffect(() => {
     if (!open) return;
@@ -197,11 +204,11 @@ export const MobileMenu = ({ open, onClose }: MobileMenuProps) => {
             <ThemeToggle />
           </div>
           <a
-            href="tel:9083970275"
+            href={`tel:${phoneCalls.replace(/\D/g, "")}`}
             className="flex min-h-11 items-center gap-2 text-sm text-white/80"
           >
             <Phone size={18} strokeWidth={1.75} />
-            908-397-0275
+            {phoneCalls}
           </a>
           <ButtonLink
             to="/contact"

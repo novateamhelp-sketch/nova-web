@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 import { usePublicData } from "../hooks/usePublicData";
+import { useSiteSettings } from "../hooks/useSiteSettings";
 import { usePageMeta } from "../hooks/usePageMeta";
 import { PAGE_SEO } from "../utils/siteMeta";
 import * as publicService from "../services/public.service";
@@ -18,24 +19,29 @@ export const Contact = () => {
     description: PAGE_SEO.contact.description,
   });
 
-  const fetchContact = useCallback(async () => {
-    const [home, styleAssets] = await Promise.all([
-      publicService.getHome(),
-      publicService.getStyleAssets().catch(() => []),
-    ]);
-    return { settings: home.settings, styleAssets };
-  }, []);
+  const {
+    data: settings,
+    isLoading: settingsLoading,
+    error,
+    refetch,
+  } = useSiteSettings();
 
-  const { data, isLoading, error, refetch } = usePublicData(
-    "contact-settings",
-    fetchContact
+  const fetchStyleAssets = useCallback(
+    () => publicService.getStyleAssets().catch(() => []),
+    []
   );
+  const { data: styleAssets, isLoading: assetsLoading } = usePublicData(
+    "style-assets",
+    fetchStyleAssets
+  );
+
+  const isLoading = settingsLoading || assetsLoading;
 
   return (
     <PageHeroScrollStack>
       <PageHeroBanner
         imageKey={CONTACT_HERO_BANNER_KEY}
-        styleAssets={data?.styleAssets}
+        styleAssets={styleAssets}
         eyebrow="Contact"
         title="Request a free consultation"
         subtitle="Tell us about your property and we'll get back to you shortly."
@@ -52,7 +58,7 @@ export const Contact = () => {
             <PageError message={error} onRetry={refetch} />
           ) : (
             <div className="grid min-w-0 items-start gap-6 lg:grid-cols-2 lg:gap-10 xl:gap-12">
-              <ContactInfo settings={data?.settings} />
+              <ContactInfo settings={settings} />
               <ContactForm />
             </div>
           )}

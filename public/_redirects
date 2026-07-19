@@ -1,4 +1,7 @@
-/service-areas/connecticut /service-areas/pennsylvania 301
-/service-areas/new-jersey/* /service-areas/new-jersey 301
-/service-areas/new-york/* /service-areas/new-york 301
-/* /index.html 200
+# Legacy / county URL redirects (must come before the SPA fallback)
+/service-areas/connecticut    /service-areas/pennsylvania  301
+/service-areas/new-jersey/*   /service-areas/new-jersey    301
+/service-areas/new-york/*     /service-areas/new-york      301
+
+# SPA fallback — required so React Router routes work on reload
+/*    /index.html   200

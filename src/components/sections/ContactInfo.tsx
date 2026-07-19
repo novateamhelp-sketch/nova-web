@@ -2,6 +2,7 @@ import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
 import type { SiteSettings } from "../../types/api.types";
+import { CONTACT_FALLBACK } from "../../hooks/useSiteSettings";
 
 const InstagramIcon = ({ size = 18 }: { size?: number }) => (
   <svg
@@ -33,13 +34,6 @@ const FacebookIcon = ({ size = 18 }: { size?: number }) => (
   </svg>
 );
 
-const FALLBACK = {
-  phoneCalls: "908-397-0275",
-  phoneMessages: "908-370-2842",
-  email: "novasales@novainc.com",
-  location: "Somerset County, New Jersey",
-};
-
 interface ContactInfoProps {
   settings?: SiteSettings | null;
 }
@@ -67,10 +61,11 @@ const ContactRow = ({ icon: Icon, label, children }: ContactRowProps) => (
 );
 
 export const ContactInfo = ({ settings }: ContactInfoProps) => {
-  const phoneCalls = settings?.phoneCalls || FALLBACK.phoneCalls;
-  const phoneMessages = settings?.phoneMessages || FALLBACK.phoneMessages;
-  const email = settings?.email || FALLBACK.email;
-  const location = settings?.location || FALLBACK.location;
+  const phoneCalls = settings?.phoneCalls?.trim() || CONTACT_FALLBACK.phoneCalls;
+  const phoneMessages =
+    settings?.phoneMessages?.trim() || CONTACT_FALLBACK.phoneMessages;
+  const email = settings?.email?.trim() || CONTACT_FALLBACK.email;
+  const location = settings?.location?.trim() || CONTACT_FALLBACK.location;
 
   return (
     <div className="flex min-w-0 flex-col gap-5">

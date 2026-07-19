@@ -1,0 +1,25 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# Legacy / county URL redirects (evaluated before the SPA fallback)
+[[redirects]]
+  from = "/service-areas/connecticut"
+  to = "/service-areas/pennsylvania"
+  status = 301
+
+[[redirects]]
+  from = "/service-areas/new-jersey/*"
+  to = "/service-areas/new-jersey"
+  status = 301
+
+[[redirects]]
+  from = "/service-areas/new-york/*"
+  to = "/service-areas/new-york"
+  status = 301
+
+# SPA fallback — reload / deep links must serve index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
