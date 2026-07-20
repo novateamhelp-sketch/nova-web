@@ -30,7 +30,7 @@ export const SectionTitle = ({
       <p
         className={`mt-4 max-w-2xl font-sans text-[10px] font-bold uppercase leading-snug tracking-[0.18em] sm:text-xs sm:tracking-[0.2em] md:text-sm ${
           align === "center" ? "mx-auto" : ""
-        } ${light ? "text-white/85" : "text-theme-kicker"}`}
+        } ${light ? "text-white/85" : "text-sage"}`}
       >
         {subtitle}
       </p>

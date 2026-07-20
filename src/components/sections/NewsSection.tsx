@@ -150,7 +150,7 @@ const NewsSlideContent = ({
           <div className="overflow-hidden border-2 border-olive-gold/60 p-1 sm:p-1.5">
             {item.image?.url ? (
               <img
-                src={cloudinaryUrl(item.image, { width: 960, height: 600 })}
+                src={cloudinaryUrl(item.image, { width: 1400, height: 900 })}
                 alt={item.image.alt || item.name || item.title}
                 className="aspect-[16/10] h-auto w-full object-cover"
                 loading="lazy"
@@ -197,7 +197,7 @@ const NewsSlideContent = ({
         <div className="overflow-hidden border-2 border-olive-gold/70 bg-theme-card p-1.5 shadow-[0_12px_40px_rgba(31,32,23,0.08)] sm:p-2">
           {item.image?.url ? (
             <img
-              src={cloudinaryUrl(item.image, { width: 960, height: 600 })}
+              src={cloudinaryUrl(item.image, { width: 1400, height: 900 })}
               alt={item.image.alt || item.name || item.title}
               className="aspect-[5/4] w-full object-cover sm:aspect-[16/11] lg:aspect-[5/4] lg:max-h-[18rem]"
               loading="lazy"

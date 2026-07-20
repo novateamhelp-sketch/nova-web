@@ -28,7 +28,7 @@ export const ServiceSubCategoryShowcase = ({
 
       <ul className="space-y-8 lg:space-y-10">
         {activeItems.map((item, index) => {
-          const imageUrl = cloudinaryUrl(item.image, { width: 900, height: 700 });
+          const imageUrl = cloudinaryUrl(item.image, { width: 1400, height: 1050 });
           const imageFirst = index % 2 === 0;
 
           return (

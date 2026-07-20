@@ -13,7 +13,7 @@ interface ServiceCategoryCollageCardProps {
 export const ServiceCategoryCollageCard = ({
   category,
 }: ServiceCategoryCollageCardProps) => {
-  const imageUrl = cloudinaryUrl(category.image, { width: 700, height: 700 });
+  const imageUrl = cloudinaryUrl(category.image, { width: 1100, height: 1100 });
   const split = splitDisplayTitle(category.name);
   const titlePrimary = split.mode === "default" ? split.primary : category.name;
   const titleAccent = split.mode === "default" ? split.accent : null;

@@ -18,7 +18,7 @@ export const ServiceCategoryDetailSection = ({
   subCategories,
   index,
 }: ServiceCategoryDetailSectionProps) => {
-  const imageUrl = cloudinaryUrl(category.image, { width: 1200, height: 900 });
+  const imageUrl = cloudinaryUrl(category.image, { width: 1600, height: 1200 });
   const imageFirst = index % 2 === 0;
   const split = splitDisplayTitle(category.name);
   const titlePrimary = split.mode === "default" ? split.primary : category.name;

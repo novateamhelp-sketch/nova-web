@@ -81,7 +81,7 @@ const ProjectsByCategory = ({ categorySlug }: { categorySlug: string }) => {
       category?.description ||
       DEFAULT_DESCRIPTION,
     ogImage: category
-      ? cloudinaryUrl(category.image, { width: 1200 })
+      ? cloudinaryUrl(category.image, { width: 1600 })
       : undefined,
   });
 

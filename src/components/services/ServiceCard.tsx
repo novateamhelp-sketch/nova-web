@@ -8,7 +8,7 @@ interface ServiceCardProps {
 }
 
 export const ServiceCard = ({ category }: ServiceCardProps) => {
-  const imageUrl = cloudinaryUrl(category.image, { width: 600 });
+  const imageUrl = cloudinaryUrl(category.image, { width: 1000 });
 
   return (
     <Link to={`/services/${category.slug}`}>

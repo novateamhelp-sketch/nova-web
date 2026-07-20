@@ -33,7 +33,7 @@ export const ProjectDetails = () => {
       project?.description ||
       `Outdoor and landscape lighting project completed by LumiScape in the ${SERVICE_AREA_LABEL} tri-state area.`,
     ogImage: project
-      ? cloudinaryUrl(project.mainImage, { width: 1200 })
+      ? cloudinaryUrl(project.mainImage, { width: 1600 })
       : undefined,
     ogType: "article",
   });
@@ -47,7 +47,7 @@ export const ProjectDetails = () => {
   return (
     <>
       <Section tone="dark" size="lg">
-        <SectionTitle light eyebrow="Project" title={project!.name} />
+        <SectionTitle eyebrow="Project" title={project!.name} />
         <div className="relative mt-4">
           <ProjectInfo project={project!} />
         </div>

@@ -14,7 +14,7 @@ export const SiteLogo = ({
   imageClassName = "h-12 w-auto max-w-[240px] object-contain sm:h-14 lg:h-16 lg:max-w-[300px]",
 }: SiteLogoProps) => {
   const { logo, isLoading } = useSiteLogo();
-  const imageUrl = cloudinaryUrl(logo?.image, { width: 560, height: 200 });
+  const imageUrl = cloudinaryUrl(logo?.image, { width: 800, height: 280 });
 
   if (isLoading) {
     return (

@@ -17,7 +17,7 @@ export const CategoryCarouselCard = ({
   badge,
 }: CategoryCarouselCardProps) => {
   const isFeatured = variant === "featured";
-  const imageUrl = cloudinaryUrl(category.image, { width: 900, height: 1100 });
+  const imageUrl = cloudinaryUrl(category.image, { width: 1200, height: 1400 });
   const blurb =
     category.shortDescription?.trim() ||
     category.description?.trim() ||

@@ -13,5 +13,5 @@ export const resolveInteractiveShowroomImage = (
   );
   const image = asset?.images[0];
   if (!image) return SHOWROOM_IMAGE_FALLBACK;
-  return cloudinaryUrl(image, { width: 1600, height: 1000 }) || SHOWROOM_IMAGE_FALLBACK;
+  return cloudinaryUrl(image, { width: 1920, height: 1200 }) || SHOWROOM_IMAGE_FALLBACK;
 };

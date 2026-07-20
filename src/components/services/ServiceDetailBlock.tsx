@@ -7,7 +7,7 @@ interface ServiceDetailBlockProps {
 }
 
 export const ServiceDetailBlock = ({ category }: ServiceDetailBlockProps) => {
-  const imageUrl = cloudinaryUrl(category.image, { width: 1200 });
+  const imageUrl = cloudinaryUrl(category.image, { width: 1600 });
 
   return (
     <div className="grid gap-8 lg:grid-cols-2 lg:items-center">

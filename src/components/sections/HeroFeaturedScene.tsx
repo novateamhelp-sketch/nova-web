@@ -36,8 +36,8 @@ export const HeroFeaturedScene = ({
 
   const imageSrc =
     cloudinaryUrl(slider?.image, {
-      width: 960,
-      height: 1200,
+      width: 1400,
+      height: 1600,
       crop: "fill",
       trim: true,
     }) || slide.src;

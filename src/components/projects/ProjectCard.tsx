@@ -9,7 +9,7 @@ interface ProjectCardProps {
 }
 
 export const ProjectCard = ({ project }: ProjectCardProps) => {
-  const imageUrl = cloudinaryUrl(project.mainImage, { width: 600 });
+  const imageUrl = cloudinaryUrl(project.mainImage, { width: 1000 });
   const categoryName = getRefName(project.category);
 
   return (

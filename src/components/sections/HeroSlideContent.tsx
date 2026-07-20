@@ -75,4 +75,4 @@ export const HeroBackground = ({
   ) : null;
 
 export const getHeroImage = (slider?: Slider) =>
-  cloudinaryUrl(slider?.image, { width: 1600 });
+  cloudinaryUrl(slider?.image, { width: 1920 });

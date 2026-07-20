@@ -112,7 +112,7 @@ const ServiceDetail = ({ slug }: { slug: string }) => {
       category?.description ||
       DEFAULT_DESCRIPTION,
     ogImage: category
-      ? cloudinaryUrl(category.image, { width: 1200 })
+      ? cloudinaryUrl(category.image, { width: 1600 })
       : undefined,
   });
 
@@ -126,7 +126,6 @@ const ServiceDetail = ({ slug }: { slug: string }) => {
     <>
       <Section tone="dark" size="lg">
         <SectionTitle
-          light
           eyebrow="Service"
           title={category!.name}
           subtitle={category!.shortDescription}

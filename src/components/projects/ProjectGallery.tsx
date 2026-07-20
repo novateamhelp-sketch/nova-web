@@ -29,14 +29,14 @@ export const ProjectGallery = ({
 
   const items = [
     ...(mainImage?.url
-      ? [toGalleryItem(mainImage, mainImage.alt || projectName, 600, 1600)]
+      ? [toGalleryItem(mainImage, mainImage.alt || projectName, 900, 2000)]
       : []),
     ...images.map((img) =>
       toGalleryItem(
         img.image,
         img.image.alt || img.title || projectName,
-        600,
-        1600
+        900,
+        2000
       )
     ),
   ];

@@ -12,7 +12,7 @@ export const SubCategoryGrid = ({ items }: SubCategoryGridProps) => {
   return (
     <div className="mt-10 grid gap-6 sm:grid-cols-2">
       {items.map((sub) => {
-        const imageUrl = cloudinaryUrl(sub.image, { width: 500 });
+        const imageUrl = cloudinaryUrl(sub.image, { width: 1400 });
         return (
           <Card key={sub._id} className="overflow-hidden p-0">
             {imageUrl ? (

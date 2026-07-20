@@ -38,7 +38,7 @@ const toHeroSlide = (slider: Slider): HeroSlide | null => {
   return {
     id: slider._id,
     src,
-    thumbSrc: cloudinaryUrl(slider.image, { width: 400 }) || src,
+    thumbSrc: cloudinaryUrl(slider.image, { width: 640 }) || src,
     alt:
       slider.image?.alt ||
       slider.title ||
