@@ -1,7 +1,3 @@
-# Legacy / county URL redirects (must come before the SPA fallback)
-/service-areas/connecticut    /service-areas/pennsylvania  301
-/service-areas/new-jersey/*   /service-areas/new-jersey    301
-/service-areas/new-york/*     /service-areas/new-york      301
-
-# SPA fallback — required so React Router routes work on reload
-/*    /index.html   200
+# SPA fallback for React Router (Netlify).
+# The ! forces the rewrite even when Pretty URLs / existing paths conflict.
+/*    /index.html   200!
