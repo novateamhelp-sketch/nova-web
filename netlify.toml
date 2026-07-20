@@ -2,10 +2,8 @@
   command = "npm run build"
   publish = "dist"
 
-# SPA fallback — must serve index.html for every client route on reload.
-# force = true is required so Netlify does not return its own 404 page.
+# SPA fallback for client routes. force must stay false so /assets/* still load.
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-  force = true

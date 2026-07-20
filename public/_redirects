@@ -1,3 +1,3 @@
 # SPA fallback for React Router (Netlify).
-# The ! forces the rewrite even when Pretty URLs / existing paths conflict.
-/*    /index.html   200!
+# Do NOT use 200! / force — that rewrites real JS/CSS assets to index.html (blank page).
+/*    /index.html   200
