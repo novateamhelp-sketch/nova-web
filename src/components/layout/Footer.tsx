@@ -6,13 +6,49 @@ import {
   useSiteSettings,
 } from "../../hooks/useSiteSettings";
 
-const footerLinks = [
-  { to: "/services", label: "Services" },
+const serviceLinks = [
+  { to: "/services", label: "All Services" },
+  { to: "/services/outdoor-lighting", label: "Outdoor Lighting" },
   { to: "/projects", label: "Projects" },
-  { to: "/about", label: "About" },
+];
+
+const companyLinks = [
+  { to: "/about", label: "About Us" },
   { to: "/service-areas", label: "Service Areas" },
   { to: "/contact", label: "Contact" },
 ];
+
+const legalLinks = [
+  { to: "/privacy", label: "Privacy Policy" },
+  { to: "/terms", label: "Terms & Conditions" },
+  { to: "/accessibility", label: "Accessibility" },
+];
+
+const FooterLinkList = ({
+  title,
+  links,
+}: {
+  title: string;
+  links: { to: string; label: string }[];
+}) => (
+  <div>
+    <p className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-olive-gold">
+      {title}
+    </p>
+    <ul className="space-y-2">
+      {links.map((link) => (
+        <li key={link.to}>
+          <Link
+            to={link.to}
+            className="text-sm transition hover:text-olive-gold"
+          >
+            {link.label}
+          </Link>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
 
 export const Footer = () => {
   const { data: settings } = useSiteSettings();
@@ -27,7 +63,7 @@ export const Footer = () => {
   return (
     <footer className="border-t border-theme-border-subtle bg-olive-bg-deep text-white/80">
       <Container className="py-12">
-        <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-3">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <Link to="/" className="mb-4 inline-flex items-center gap-3">
               <SiteLogo
@@ -40,31 +76,7 @@ export const Footer = () => {
               Professional outdoor lighting, landscaping, and hardscaping across
               New Jersey, New York, and Pennsylvania.
             </p>
-          </div>
-
-          <div>
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-olive-gold">
-              Quick Links
-            </p>
-            <ul className="space-y-2">
-              {footerLinks.map((link) => (
-                <li key={link.to}>
-                  <Link
-                    to={link.to}
-                    className="text-sm transition hover:text-olive-gold"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <p className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-olive-gold">
-              Contact
-            </p>
-            <ul className="space-y-2 text-sm">
+            <ul className="mt-5 space-y-2 text-sm">
               <li>
                 Calls:{" "}
                 <a
@@ -94,6 +106,10 @@ export const Footer = () => {
               <li>{location}</li>
             </ul>
           </div>
+
+          <FooterLinkList title="Services" links={serviceLinks} />
+          <FooterLinkList title="Company" links={companyLinks} />
+          <FooterLinkList title="Legal" links={legalLinks} />
         </div>
 
         <div className="mt-10 border-t border-white/10 pt-6 text-center text-xs text-white/50">

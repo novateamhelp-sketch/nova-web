@@ -1,5 +1,8 @@
+import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 import {
   Mail,
   MapPin,
@@ -31,7 +34,12 @@ interface ContactFormProps {
   variant?: ContactFormVariant;
 }
 
+const TURNSTILE_SITE_KEY = import.meta.env.VITE_TURNSTILE_SITE_KEY as
+  | string
+  | undefined;
+
 interface CardFieldProps {
+  id: string;
   label: string;
   icon: LucideIcon;
   registration: UseFormRegisterReturn;
@@ -44,6 +52,7 @@ interface CardFieldProps {
 }
 
 const CardField = ({
+  id,
   label,
   icon: Icon,
   registration,
@@ -55,7 +64,10 @@ const CardField = ({
   onChange,
 }: CardFieldProps) => (
   <div>
-    <label className="mb-2 block font-sans text-sm font-semibold text-forest-dark">
+    <label
+      htmlFor={id}
+      className="mb-2 block font-sans text-sm font-semibold text-forest-dark"
+    >
       {label}
     </label>
     <div className="relative">
@@ -66,6 +78,7 @@ const CardField = ({
         aria-hidden
       />
       <input
+        id={id}
         {...registration}
         onChange={(event) => {
           registration.onChange(event);
@@ -75,16 +88,21 @@ const CardField = ({
         autoComplete={autoComplete}
         placeholder={placeholder}
         disabled={disabled}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={error ? `${id}-error` : undefined}
         className="w-full rounded-none border-0 bg-theme-input py-3.5 pr-4 pl-11 font-sans text-sm text-forest-dark placeholder:text-muted focus:ring-2 focus:ring-theme-accent/35 focus:outline-none disabled:opacity-60"
       />
     </div>
     {error ? (
-      <p className="mt-1 text-xs text-red-600">{error.message}</p>
+      <p id={`${id}-error`} className="mt-1 text-xs text-red-600" role="alert">
+        {error.message}
+      </p>
     ) : null}
   </div>
 );
 
 interface CardTextAreaProps {
+  id: string;
   label: string;
   registration: UseFormRegisterReturn;
   error?: FieldError;
@@ -93,6 +111,7 @@ interface CardTextAreaProps {
 }
 
 const CardTextArea = ({
+  id,
   label,
   registration,
   error,
@@ -100,7 +119,10 @@ const CardTextArea = ({
   disabled,
 }: CardTextAreaProps) => (
   <div>
-    <label className="mb-2 block font-sans text-sm font-semibold text-forest-dark">
+    <label
+      htmlFor={id}
+      className="mb-2 block font-sans text-sm font-semibold text-forest-dark"
+    >
       {label}
     </label>
     <div className="relative">
@@ -111,20 +133,26 @@ const CardTextArea = ({
         aria-hidden
       />
       <textarea
+        id={id}
         {...registration}
         rows={5}
         placeholder={placeholder}
         disabled={disabled}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={error ? `${id}-error` : undefined}
         className="w-full resize-y rounded-none border-0 bg-theme-input py-3.5 pr-4 pl-11 font-sans text-sm text-forest-dark placeholder:text-muted focus:ring-2 focus:ring-theme-accent/35 focus:outline-none disabled:opacity-60"
       />
     </div>
     {error ? (
-      <p className="mt-1 text-xs text-red-600">{error.message}</p>
+      <p id={`${id}-error`} className="mt-1 text-xs text-red-600" role="alert">
+        {error.message}
+      </p>
     ) : null}
   </div>
 );
 
 interface EstimateFieldProps {
+  id: string;
   label: string;
   registration: UseFormRegisterReturn;
   error?: FieldError;
@@ -136,6 +164,7 @@ interface EstimateFieldProps {
 }
 
 const EstimateField = ({
+  id,
   label,
   registration,
   error,
@@ -146,10 +175,14 @@ const EstimateField = ({
   onChange,
 }: EstimateFieldProps) => (
   <div>
-    <label className="mb-2 block font-sans text-xs font-semibold uppercase tracking-[0.12em] text-muted">
+    <label
+      htmlFor={id}
+      className="mb-2 block font-sans text-xs font-semibold uppercase tracking-[0.12em] text-muted"
+    >
       {label}
     </label>
     <input
+      id={id}
       {...registration}
       onChange={(event) => {
         registration.onChange(event);
@@ -159,15 +192,20 @@ const EstimateField = ({
       autoComplete={autoComplete}
       placeholder={placeholder}
       disabled={disabled}
+      aria-invalid={error ? true : undefined}
+      aria-describedby={error ? `${id}-error` : undefined}
       className="w-full border-0 border-b border-border bg-transparent py-2.5 font-sans text-sm text-forest-dark placeholder:text-muted focus:border-theme-accent focus:outline-none disabled:opacity-60"
     />
     {error ? (
-      <p className="mt-1 text-xs text-red-600">{error.message}</p>
+      <p id={`${id}-error`} className="mt-1 text-xs text-red-600" role="alert">
+        {error.message}
+      </p>
     ) : null}
   </div>
 );
 
 interface EstimateTextAreaProps {
+  id: string;
   label: string;
   registration: UseFormRegisterReturn;
   error?: FieldError;
@@ -176,6 +214,7 @@ interface EstimateTextAreaProps {
 }
 
 const EstimateTextArea = ({
+  id,
   label,
   registration,
   error,
@@ -183,23 +222,140 @@ const EstimateTextArea = ({
   disabled,
 }: EstimateTextAreaProps) => (
   <div>
-    <label className="mb-2 block font-sans text-xs font-semibold uppercase tracking-[0.12em] text-muted">
+    <label
+      htmlFor={id}
+      className="mb-2 block font-sans text-xs font-semibold uppercase tracking-[0.12em] text-muted"
+    >
       {label}
     </label>
     <textarea
+      id={id}
       {...registration}
       rows={4}
       placeholder={placeholder}
       disabled={disabled}
+      aria-invalid={error ? true : undefined}
+      aria-describedby={error ? `${id}-error` : undefined}
       className="w-full resize-y border-0 border-b border-border bg-transparent py-2.5 font-sans text-sm text-forest-dark placeholder:text-muted focus:border-theme-accent focus:outline-none disabled:opacity-60"
     />
     {error ? (
-      <p className="mt-1 text-xs text-red-600">{error.message}</p>
+      <p id={`${id}-error`} className="mt-1 text-xs text-red-600" role="alert">
+        {error.message}
+      </p>
     ) : null}
   </div>
 );
 
+interface LegalExtrasProps {
+  idPrefix: string;
+  register: ReturnType<typeof useForm<ContactFormValues>>["register"];
+  setValue: ReturnType<typeof useForm<ContactFormValues>>["setValue"];
+  errors: ReturnType<typeof useForm<ContactFormValues>>["formState"]["errors"];
+  isSubmitting: boolean;
+  turnstileRef: React.RefObject<TurnstileInstance | null>;
+  captchaKey: number;
+}
+
+const LegalExtras = ({
+  idPrefix,
+  register,
+  setValue,
+  errors,
+  isSubmitting,
+  turnstileRef,
+  captchaKey,
+}: LegalExtrasProps) => (
+  <div className="space-y-4">
+    <div>
+      <label className="flex cursor-pointer items-start gap-3">
+        <input
+          id={`${idPrefix}-accepted-legal`}
+          type="checkbox"
+          className="mt-1 h-4 w-4 shrink-0 rounded border-border text-theme-accent focus:ring-theme-accent"
+          disabled={isSubmitting}
+          aria-invalid={errors.acceptedLegal ? true : undefined}
+          aria-describedby={
+            errors.acceptedLegal ? `${idPrefix}-accepted-legal-error` : undefined
+          }
+          {...register("acceptedLegal")}
+        />
+        <span className="font-sans text-sm leading-relaxed text-sage">
+          I agree to the{" "}
+          <Link
+            to="/privacy"
+            className="font-semibold text-theme-accent hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Privacy Policy
+          </Link>{" "}
+          and{" "}
+          <Link
+            to="/terms"
+            className="font-semibold text-theme-accent hover:underline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Terms of Service
+          </Link>
+          .
+        </span>
+      </label>
+      {errors.acceptedLegal ? (
+        <p
+          id={`${idPrefix}-accepted-legal-error`}
+          className="mt-1 text-xs text-red-600"
+          role="alert"
+        >
+          {errors.acceptedLegal.message}
+        </p>
+      ) : null}
+    </div>
+
+    {TURNSTILE_SITE_KEY ? (
+      <div>
+        <Turnstile
+          key={captchaKey}
+          ref={turnstileRef}
+          siteKey={TURNSTILE_SITE_KEY}
+          options={{ theme: "auto" }}
+          onSuccess={(token) => {
+            setValue("turnstileToken", token, {
+              shouldValidate: true,
+              shouldDirty: true,
+            });
+          }}
+          onExpire={() => {
+            setValue("turnstileToken", "", { shouldValidate: true });
+          }}
+          onError={() => {
+            setValue("turnstileToken", "", { shouldValidate: true });
+          }}
+        />
+        {errors.turnstileToken ? (
+          <p className="mt-1 text-xs text-red-600" role="alert">
+            {errors.turnstileToken.message}
+          </p>
+        ) : null}
+      </div>
+    ) : (
+      <p className="text-xs text-red-600" role="alert">
+        Captcha is not configured. Please contact the site administrator.
+      </p>
+    )}
+
+    <p className="font-sans text-[11px] leading-relaxed text-muted sm:text-xs">
+      Project estimates are preliminary and may change after an onsite
+      evaluation. Submitting this form does not create a contract.
+    </p>
+  </div>
+);
+
 export const ContactForm = ({ variant = "page" }: ContactFormProps) => {
+  const turnstileRef = useRef<TurnstileInstance | null>(null);
+  const [captchaKey, setCaptchaKey] = useState(0);
+  const idPrefix = variant === "estimate" ? "estimate" : "contact";
+
   const {
     register,
     handleSubmit,
@@ -211,14 +367,36 @@ export const ContactForm = ({ variant = "page" }: ContactFormProps) => {
     defaultValues: contactFormDefaultValues,
   });
 
+  const resetFormAndCaptcha = () => {
+    reset(contactFormDefaultValues);
+    turnstileRef.current?.reset();
+    setCaptchaKey((key) => key + 1);
+  };
+
   const onSubmit = async (values: ContactFormValues) => {
     try {
-      const result = await contactService.submitContact(values);
-      reset(contactFormDefaultValues);
+      const result = await contactService.submitContact({
+        firstName: values.firstName,
+        lastName: values.lastName,
+        email: values.email,
+        phone: values.phone,
+        streetAddress: values.streetAddress,
+        city: values.city,
+        state: values.state,
+        zipCode: values.zipCode,
+        message: values.message,
+        acceptedPrivacyPolicy: true,
+        acceptedTermsOfService: true,
+        turnstileToken: values.turnstileToken,
+      });
+      resetFormAndCaptcha();
       await showContactFormSuccess(
         result.message || "Thank you. We will contact you soon."
       );
     } catch (err) {
+      turnstileRef.current?.reset();
+      setValue("turnstileToken", "", { shouldValidate: false });
+      setCaptchaKey((key) => key + 1);
       await showContactFormError(
         getApiErrorMessage(err, "Could not send your message")
       );
@@ -246,6 +424,7 @@ export const ContactForm = ({ variant = "page" }: ContactFormProps) => {
         >
           <div className="grid gap-5 sm:grid-cols-2">
             <EstimateField
+              id={`${idPrefix}-first-name`}
               label="Name"
               registration={register("firstName")}
               error={errors.firstName}
@@ -254,6 +433,7 @@ export const ContactForm = ({ variant = "page" }: ContactFormProps) => {
               disabled={isSubmitting}
             />
             <EstimateField
+              id={`${idPrefix}-last-name`}
               label="Last name"
               registration={register("lastName")}
               error={errors.lastName}
@@ -264,6 +444,7 @@ export const ContactForm = ({ variant = "page" }: ContactFormProps) => {
           </div>
 
           <EstimateField
+            id={`${idPrefix}-email`}
             label="Email Address"
             type="email"
             registration={register("email")}
@@ -274,6 +455,7 @@ export const ContactForm = ({ variant = "page" }: ContactFormProps) => {
           />
 
           <EstimateField
+            id={`${idPrefix}-phone`}
             label="Phone"
             type="tel"
             registration={register("phone")}
@@ -290,6 +472,7 @@ export const ContactForm = ({ variant = "page" }: ContactFormProps) => {
           />
 
           <EstimateField
+            id={`${idPrefix}-street`}
             label="Street Address"
             registration={register("streetAddress")}
             error={errors.streetAddress}
@@ -300,6 +483,7 @@ export const ContactForm = ({ variant = "page" }: ContactFormProps) => {
 
           <div className="grid gap-5 sm:grid-cols-3">
             <EstimateField
+              id={`${idPrefix}-city`}
               label="City/Town"
               registration={register("city")}
               error={errors.city}
@@ -308,6 +492,7 @@ export const ContactForm = ({ variant = "page" }: ContactFormProps) => {
               disabled={isSubmitting}
             />
             <EstimateField
+              id={`${idPrefix}-state`}
               label="State"
               registration={register("state")}
               error={errors.state}
@@ -316,6 +501,7 @@ export const ContactForm = ({ variant = "page" }: ContactFormProps) => {
               disabled={isSubmitting}
             />
             <EstimateField
+              id={`${idPrefix}-zip`}
               label="ZIP Code"
               registration={register("zipCode")}
               error={errors.zipCode}
@@ -332,11 +518,22 @@ export const ContactForm = ({ variant = "page" }: ContactFormProps) => {
           </div>
 
           <EstimateTextArea
+            id={`${idPrefix}-message`}
             label="Tell us more about your project"
             registration={register("message")}
             error={errors.message}
             placeholder="Describe your property, goals, and timeline..."
             disabled={isSubmitting}
+          />
+
+          <LegalExtras
+            idPrefix={idPrefix}
+            register={register}
+            setValue={setValue}
+            errors={errors}
+            isSubmitting={isSubmitting}
+            turnstileRef={turnstileRef}
+            captchaKey={captchaKey}
           />
 
           <button
@@ -347,11 +544,6 @@ export const ContactForm = ({ variant = "page" }: ContactFormProps) => {
             {isSubmitting ? "Sending..." : "Submit Request"}
             <Send size={14} strokeWidth={2} aria-hidden />
           </button>
-
-          <p className="text-center font-sans text-[11px] leading-relaxed text-muted">
-            By submitting, you agree to be contacted about your outdoor lighting
-            project. We never share your information.
-          </p>
         </form>
       </div>
     );
@@ -376,6 +568,7 @@ export const ContactForm = ({ variant = "page" }: ContactFormProps) => {
       <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-5" noValidate>
         <div className="grid gap-5 sm:grid-cols-2">
           <CardField
+            id={`${idPrefix}-first-name`}
             label="Name *"
             icon={User}
             registration={register("firstName")}
@@ -385,6 +578,7 @@ export const ContactForm = ({ variant = "page" }: ContactFormProps) => {
             disabled={isSubmitting}
           />
           <CardField
+            id={`${idPrefix}-last-name`}
             label="Last name *"
             icon={User}
             registration={register("lastName")}
@@ -397,6 +591,7 @@ export const ContactForm = ({ variant = "page" }: ContactFormProps) => {
 
         <div className="grid gap-5 sm:grid-cols-2">
           <CardField
+            id={`${idPrefix}-email`}
             label="Email Address *"
             icon={Mail}
             type="email"
@@ -407,6 +602,7 @@ export const ContactForm = ({ variant = "page" }: ContactFormProps) => {
             disabled={isSubmitting}
           />
           <CardField
+            id={`${idPrefix}-phone`}
             label="Phone *"
             icon={Phone}
             type="tel"
@@ -425,6 +621,7 @@ export const ContactForm = ({ variant = "page" }: ContactFormProps) => {
         </div>
 
         <CardField
+          id={`${idPrefix}-street`}
           label="Street Address *"
           icon={MapPin}
           registration={register("streetAddress")}
@@ -436,6 +633,7 @@ export const ContactForm = ({ variant = "page" }: ContactFormProps) => {
 
         <div className="grid gap-5 sm:grid-cols-3">
           <CardField
+            id={`${idPrefix}-city`}
             label="City/Town *"
             icon={MapPin}
             registration={register("city")}
@@ -445,6 +643,7 @@ export const ContactForm = ({ variant = "page" }: ContactFormProps) => {
             disabled={isSubmitting}
           />
           <CardField
+            id={`${idPrefix}-state`}
             label="State *"
             icon={MapPin}
             registration={register("state")}
@@ -454,6 +653,7 @@ export const ContactForm = ({ variant = "page" }: ContactFormProps) => {
             disabled={isSubmitting}
           />
           <CardField
+            id={`${idPrefix}-zip`}
             label="ZIP Code *"
             icon={MapPin}
             registration={register("zipCode")}
@@ -471,11 +671,22 @@ export const ContactForm = ({ variant = "page" }: ContactFormProps) => {
         </div>
 
         <CardTextArea
+          id={`${idPrefix}-message`}
           label="Tell us more about your project *"
           registration={register("message")}
           error={errors.message}
           placeholder="Describe your property, goals, and timeline..."
           disabled={isSubmitting}
+        />
+
+        <LegalExtras
+          idPrefix={idPrefix}
+          register={register}
+          setValue={setValue}
+          errors={errors}
+          isSubmitting={isSubmitting}
+          turnstileRef={turnstileRef}
+          captchaKey={captchaKey}
         />
 
         <button

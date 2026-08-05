@@ -194,4 +194,7 @@ export interface ContactPayload {
   state: string;
   zipCode: string;
   message: string;
+  acceptedPrivacyPolicy: boolean;
+  acceptedTermsOfService: boolean;
+  turnstileToken: string;
 }

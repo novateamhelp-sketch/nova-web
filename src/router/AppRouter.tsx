@@ -7,6 +7,9 @@ import { ProjectDetails } from "../pages/ProjectDetails";
 import { About } from "../pages/About";
 import { Contact } from "../pages/Contact";
 import { ServiceArea } from "../pages/ServiceArea";
+import { PrivacyPolicy } from "../pages/PrivacyPolicy";
+import { TermsOfService } from "../pages/TermsOfService";
+import { AccessibilityStatement } from "../pages/AccessibilityStatement";
 import { NotFound } from "../pages/NotFound";
 
 export const AppRouter = () => (
@@ -21,6 +24,9 @@ export const AppRouter = () => (
         <Route path="projects/:slug" element={<ProjectDetails />} />
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="privacy" element={<PrivacyPolicy />} />
+        <Route path="terms" element={<TermsOfService />} />
+        <Route path="accessibility" element={<AccessibilityStatement />} />
         <Route path="service-areas" element={<ServiceArea />} />
         <Route
           path="service-areas/connecticut"

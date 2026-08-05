@@ -48,6 +48,15 @@ export const contactFormSchema = z.object({
     .trim()
     .min(1, "Tell us more about your project")
     .max(5000),
+  acceptedLegal: z
+    .boolean()
+    .refine((value) => value === true, {
+      message: "You must agree to the Privacy Policy and Terms of Service",
+    }),
+  turnstileToken: z
+    .string()
+    .trim()
+    .min(1, "Please complete the captcha verification"),
 });
 
 export type ContactFormValues = z.infer<typeof contactFormSchema>;
@@ -62,4 +71,6 @@ export const contactFormDefaultValues: ContactFormValues = {
   state: "",
   zipCode: "",
   message: "",
+  acceptedLegal: false,
+  turnstileToken: "",
 };

@@ -45,6 +45,18 @@ export const PAGE_SEO = {
     title: `Free Outdoor Lighting Estimate in ${SERVICE_AREA_LABEL}`,
     description: `Request a free on-site estimate for outdoor or landscape lighting in ${SERVICE_AREA_LONG}. Call or message our US team today.`,
   },
+  privacy: {
+    title: "Privacy Policy",
+    description: `How ${SITE_NAME} collects and uses contact and estimate form information for outdoor lighting services in ${SERVICE_AREA_LONG}.`,
+  },
+  terms: {
+    title: "Terms & Conditions",
+    description: `Website terms of use, estimate disclaimers, and service conditions for ${SITE_NAME} in ${SERVICE_AREA_LONG}.`,
+  },
+  accessibility: {
+    title: "Accessibility Statement",
+    description: `${SITE_NAME}'s commitment to an accessible website and how to request assistance.`,
+  },
   notFound: {
     title: "Page Not Found",
     description: "The page you are looking for does not exist on LumiScape.",
