@@ -15,13 +15,13 @@ export const ServiceDetailBlock = ({ category }: ServiceDetailBlockProps) => {
         <img
           src={imageUrl}
           alt={category.image?.alt || category.name}
-          className="w-full rounded-xl object-cover shadow-[var(--shadow-card)] lg:aspect-[4/3]"
+          className="w-full rounded-xl object-cover shadow-(--shadow-card) lg:aspect-4/3"
           loading="lazy"
           decoding="async"
         />
       ) : (
         <div
-          className="aspect-[4/3] w-full rounded-xl bg-forest/5 lg:aspect-[4/3]"
+          className="aspect-4/3 w-full rounded-xl bg-forest/5"
           aria-hidden
         />
       )}

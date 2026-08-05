@@ -407,7 +407,7 @@ export const ContactForm = ({ variant = "page" }: ContactFormProps) => {
     return (
       <div
         id="contact-form"
-        className="bg-theme-elevated px-6 py-8 shadow-[var(--shadow-card)] sm:px-8 sm:py-10"
+        className="bg-theme-elevated px-6 py-8 shadow-(--shadow-card) sm:px-8 sm:py-10"
       >
         <h2 className="font-serif text-2xl font-bold text-forest-dark sm:text-[1.75rem]">
           Request Your{" "}
