@@ -12,9 +12,9 @@ export const ContactCTA = ({
   settings,
   backgroundImageUrl,
 }: ContactCTAProps) => {
-  const phone = settings?.phoneCalls || "908-397-4060";
-  const email = settings?.email || "hello@novaoutdoor.com";
-  const studio = settings?.location || "Princeton, NJ";
+  const phone = settings?.phoneCalls || "908-370-2842";
+  const email = settings?.email || "info@lumiscapeservices.com";
+  const studio = settings?.location || "Somerset County, New Jersey";
   const phoneHref = `tel:${phone.replace(/\D/g, "")}`;
 
   return (

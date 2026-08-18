@@ -7,7 +7,7 @@ export const SITE_SETTINGS_CACHE_KEY = "site-settings";
 
 /** Contact defaults when settings are still loading or missing. */
 export const CONTACT_FALLBACK = {
-  phoneCalls: "908-397-4060",
+  phoneCalls: "908-370-2842",
   phoneMessages: "908-370-2842",
   email: "info@lumiscapeservices.com",
   location: "Somerset County, New Jersey",
