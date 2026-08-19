@@ -97,11 +97,13 @@ export const DayNightCompareSlider = ({
         ) : null}
       </div>
 
-      <span className="pointer-events-none absolute left-4 top-4 z-20 rounded-full bg-olive-bg/92 px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-olive-text sm:text-[11px]">
-        Daytime Original
+      <span className="pointer-events-none absolute left-2 top-3 z-20 max-w-[48%] truncate rounded-full bg-olive-bg/92 px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.12em] text-olive-text sm:left-4 sm:top-4 sm:max-w-none sm:px-3.5 sm:py-1.5 sm:text-[11px] sm:tracking-[0.14em]">
+        <span className="sm:hidden">Daytime</span>
+        <span className="hidden sm:inline">Daytime Original</span>
       </span>
-      <span className="pointer-events-none absolute right-4 top-4 z-20 rounded-full border border-olive-gold/55 bg-olive-bg-deep/88 px-3.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-olive-gold sm:text-[11px]">
-        LumiScape Night Artistry
+      <span className="pointer-events-none absolute right-2 bottom-3 z-20 max-w-[55%] truncate rounded-full border border-olive-gold/55 bg-olive-bg-deep/88 px-2.5 py-1 text-[9px] font-bold uppercase tracking-[0.12em] text-olive-gold sm:bottom-auto sm:right-4 sm:top-4 sm:max-w-none sm:px-3.5 sm:py-1.5 sm:text-[11px] sm:tracking-[0.14em]">
+        <span className="sm:hidden">Night</span>
+        <span className="hidden sm:inline">LumiScape Night Artistry</span>
       </span>
 
       <div

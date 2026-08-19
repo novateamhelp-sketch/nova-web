@@ -47,9 +47,9 @@ export const Header = () => {
         }
       >
         <Container>
-          <div className="flex h-14 min-w-0 items-center justify-between gap-2 transition-all duration-500 sm:gap-3 lg:gap-4 lg:h-16">
-            <Link to="/" className="flex min-w-0 shrink items-center py-1">
-              <SiteLogo imageClassName="h-10 w-auto max-w-[min(100%,9.5rem)] object-contain sm:h-12 sm:max-w-[12rem] lg:h-14 lg:max-w-[220px] xl:h-16 xl:max-w-[300px]" />
+          <div className="flex h-14 min-w-0 items-center justify-between gap-2 overflow-visible transition-all duration-500 sm:gap-3 lg:h-16 lg:gap-4">
+            <Link to="/" className="relative z-10 flex min-w-0 shrink items-center overflow-visible">
+              <SiteLogo imageClassName="origin-left scale-[1.28] h-12 w-auto max-w-[min(100%,11.5rem)] object-contain sm:h-14 sm:max-w-[14rem] lg:h-16 lg:max-w-[260px] xl:max-w-[320px]" />
             </Link>
 
             <nav className="hidden h-full min-w-0 items-center gap-5 lg:flex xl:gap-8">
